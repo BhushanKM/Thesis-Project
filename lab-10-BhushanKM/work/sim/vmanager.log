@@ -1,0 +1,131 @@
+vmanager: *W,db.runs.toomany: You have 96,357 runs in the database. 100,000 is limit for installed edition.
+Cadence vManager(64): 22.03-s001: (c) Copyright 1995-2022 Cadence Design Systems Inc - Simulator version: 22.03-s012 - Coverage engine version: 22.03-s012
+Starting gui mode
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_08_23_20_25_1173/merged_ucds/default/1765260785069/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+Adding recursive exclude to Section CSCE 616 Project Fall2024/HTAX_v014/Functional Coverage/System Interface
+Adding recursive exclude to Section CSCE 616 Project Fall2024/HTAX_v014/Functional Coverage/Burst Mode
+Adding recursive exclude to Section CSCE 616 Project Fall2024/HTAX_v014/Burst Mode
+Adding recursive exclude to Section CSCE 616 Project Fall2024/HTAX_v014/HTOC Protocol
+Adding recursive exclude to Section CSCE 616 Project Fall2024/HTAX_v014/System Interface
+vmanager: *W,db.runs.toomany: You have 96,357 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,387 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,573 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,576 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,runner.startingSession: Starting session /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif
+vmanager: *W,runner.drmWarning: Runner: DRM: Job limit of 100 was reduced to 1 due to usage of Serial Local DRM.
+vmanager: *I,runner.sessionStarted: Session htax_regress.bhushan_123.25_12_09_14_12_24_5956 started.
+vmanager: *W,db.runs.toomany: You have 96,621 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,621 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,621 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,582 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,636 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,681 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,681 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,636 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,676 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,662 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,662 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_14_12_24_5956/merged_ucds/default/1765314566692/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 96,705 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,723 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_14_12_24_5956/merged_ucds/default/1765314566692/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 96,832 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,832 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,runner.startingSession: Starting session /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif
+vmanager: *W,runner.drmWarning: Runner: DRM: Job limit of 100 was reduced to 1 due to usage of Serial Local DRM.
+vmanager: *I,runner.sessionStarted: Session htax_regress.bhushan_123.25_12_09_15_31_32_0923 started.
+vmanager: *W,db.runs.toomany: You have 96,877 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,675 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,705 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,746 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,776 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,907 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,907 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,907 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 96,943 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,013 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,013 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,013 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,013 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,013 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,064 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,064 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,064 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was not reused due to different configuration or set of runs.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_15_31_32_0923/merged_ucds/default/1765320860223/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 97,064 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,124 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,124 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,runner.startingSession: Starting session /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif
+vmanager: *W,runner.drmWarning: Runner: DRM: Job limit of 100 was reduced to 1 due to usage of Serial Local DRM.
+vmanager: *I,runner.sessionStarted: Session htax_regress.bhushan_123.25_12_09_17_11_12_7626 started.
+vmanager: *W,db.runs.toomany: You have 97,228 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,238 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,093 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,093 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,134 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,279 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,384 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,487 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,487 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,462 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,357 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was not reused due to different configuration or set of runs.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_17_11_12_7626/merged_ucds/default/1765325041180/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 97,462 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 97,497 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was partially reused for analysis (21 out of 22 runs were reused): /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_17_11_12_7626/merged_ucds/default/1765325041180/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_17_11_12_7626/merged_ucds/default/1765325590077/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 97,728 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_17_11_12_7626/merged_ucds/default/1765325590077/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 97,745 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,runner.drmWarning: Runner: DRM: Job limit of 100 was reduced to 1 due to usage of Serial Local DRM.
+vmanager: *I,MERGL1: The merged icc coverage cache was partially reused for analysis (22 out of 23 runs were reused): /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_17_11_12_7626/merged_ucds/default/1765325590077/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 97,692 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_15_31_32_0923/merged_ucds/default/1765320860223/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 97,707 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 98,122 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_04_12_22_06_9026/merged_ucds/default/1764873657223/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 98,122 runs in the database. 100,000 is limit for installed edition.
+Adding recursive exclude to Section CSCE 616 Project Fall2024/HTAX_v014/Functional Coverage/System Interface
+Adding recursive exclude to Metrics Port CSCE 616 Project Fall2024/HTAX_v014/Functional Coverage/TX Interface/Dest_port_VC
+Adding recursive exclude to Metrics Port CSCE 616 Project Fall2024/HTAX_v014/Functional Coverage/TX Interface/TX_VC_LENGTH
+Adding recursive exclude to Metrics Port CSCE 616 Project Fall2024/HTAX_v014/Functional Coverage/TX Interface/TX_DEST_PORT_LENGT
+Adding recursive exclude to Section CSCE 616 Project Fall2024/HTAX_v014/Functional Coverage/Burst Mode
+vmanager: *W,db.runs.toomany: You have 98,502 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 98,780 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 98,869 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 98,869 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_17_11_12_7626/merged_ucds/default/1765326384865/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 98,854 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 98,874 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_17_11_12_7626/merged_ucds/default/1765326384865/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 98,824 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 98,864 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 98,969 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,590 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,960 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,960 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,960 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,971 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,971 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,971 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,983 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,983 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,983 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,983 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,893 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,939 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,950 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,950 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,986 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,997 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,850 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_04_12_22_06_9026/merged_ucds/default/1764873657223/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 99,960 runs in the database. 100,000 is limit for installed edition.
+vmanager: *I,MERGL1: The merged icc coverage cache was reused for analysis: /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_09_15_31_32_0923/merged_ucds/default/1765320860223/merged_tests/icc_4e8e3c4e_636b2083.ucd(merged)
+vmanager: *W,db.runs.toomany: You have 99,997 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,985 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,952 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,964 runs in the database. 100,000 is limit for installed edition.
+vmanager: *W,db.runs.toomany: You have 99,964 runs in the database. 100,000 is limit for installed edition.

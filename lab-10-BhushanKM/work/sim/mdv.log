@@ -1,0 +1,774 @@
+[ERROR] 2025-12-02 07:16:16 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-02 07:16:21 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 37935
+[ERROR] 2025-12-02 07:19:15 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Session not started. Parse error: Illegal attribute definition - missing ':'  (/home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif:34):session.unable_start_session_with_msg: Session not started. Parse error: Illegal attribute definition - missing ':'  (/home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif:34)
+[ERROR] 2025-12-02 07:19:15 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Session not started. Parse error: Illegal attribute definition - missing ':'  (/home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif:34)
+com.cadence.mdv.exceptions.NotStartedSessionException:  session not started!
+	at com.cadence.mdv.services.runner.RoadRunner.startSession(RoadRunner.java:470)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy136.startSession(Unknown Source)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionInternal(SessionOperationsService.java:1498)
+	at com.cadence.mdv.services.SessionOperationsService.startSession(SessionOperationsService.java:1421)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.startSession(SessionOperationRemoteAspectService.java:90)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.startSession(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.startSession(Unknown Source)
+	at com.cadence.mdv.gui.actions.NGVActionManager$89$2.doWork(NGVActionManager.java:7450)
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:69)
+	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:304)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:343)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[ERROR] 2025-12-02 07:19:59 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Session not started. Parse error: Illegal attribute definition - missing ':'  (/home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif:64):session.unable_start_session_with_msg: Session not started. Parse error: Illegal attribute definition - missing ':'  (/home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif:64)
+[ERROR] 2025-12-02 07:19:59 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Session not started. Parse error: Illegal attribute definition - missing ':'  (/home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/run_vm.vsif:64)
+com.cadence.mdv.exceptions.NotStartedSessionException:  session not started!
+	at com.cadence.mdv.services.runner.RoadRunner.startSession(RoadRunner.java:470)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy136.startSession(Unknown Source)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionInternal(SessionOperationsService.java:1498)
+	at com.cadence.mdv.services.SessionOperationsService.startSession(SessionOperationsService.java:1421)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.startSession(SessionOperationRemoteAspectService.java:90)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.startSession(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.startSession(Unknown Source)
+	at com.cadence.mdv.gui.actions.NGVActionManager$89$2.doWork(NGVActionManager.java:7450)
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:69)
+	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:304)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:343)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[ERROR] 2025-12-02 07:20:34 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Failed creating archive file '':report.tar_failed: Failed creating archive file ''
+[ERROR] 2025-12-02 07:20:34 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Failed creating archive file ''
+com.cadence.mdv.exceptions.MDVException: untar failed - output dir doesn't exist 
+	at com.cadence.mdv.services.SessionOperationsService.unTar(SessionOperationsService.java:479)
+	at com.cadence.mdv.services.SessionOperationsService.importSessionWithSessionDir(SessionOperationsService.java:426)
+	at com.cadence.mdv.services.SessionOperationsService.importSessionWithSessionDir(SessionOperationsService.java:417)
+	at com.cadence.mdv.services.SessionOperationsService.importSessionWithSessionDir(SessionOperationsService.java:410)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.importSessionWithSessionDir(SessionOperationRemoteAspectService.java:166)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.importSessionWithSessionDir(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.importSessionWithSessionDir(Unknown Source)
+	at com.cadence.mdv.gui.actions.NGVActionManager$96.doWork(NGVActionManager.java:7787)
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:69)
+	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:304)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:343)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[ERROR] 2025-12-02 15:45:35 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-02 15:45:41 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 38757
+[INFO ] 2025-12-02 17:23:50 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 33517
+[ERROR] 2025-12-02 18:36:14 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-02 18:36:20 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 41713
+[ERROR] 2025-12-04 06:28:47 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-04 06:28:53 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 44233
+[ERROR] 2025-12-04 17:24:53 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-04 17:25:00 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 35585
+[ERROR] 2025-12-04 20:50:05 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-04 20:54:21 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about is_lang_vlog
+[ERROR] 2025-12-05 21:27:45 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-05 21:27:50 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 44613
+[ERROR] 2025-12-05 21:49:02 [com.cadence.mdv.services.SessionOperationsService] [pool-10-thread-8] - Failed to import session static info for sessionDir /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_04_12_41_10_7124
+org.springframework.remoting.RemoteAccessException: Cannot access Hessian remote service at [https://_U_/remoting/SessionService]; nested exception is java.lang.reflect.InvocationTargetException
+	at org.springframework.remoting.caucho.HessianClientInterceptor.convertHessianAccessException(HessianClientInterceptor.java:293)
+	at org.springframework.remoting.caucho.HessianClientInterceptor.invoke(HessianClientInterceptor.java:265)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy43.importSessionStaticInfo(Unknown Source)
+	at com.cadence.mdv.services.SessionOperationsService.importSessionStaticInfoFromFS(SessionOperationsService.java:664)
+	at com.cadence.mdv.services.SessionOperationsService.doImportSessionStaticInfo(SessionOperationsService.java:604)
+	at com.cadence.mdv.services.SessionOperationsService.importSessionStaticInfo(SessionOperationsService.java:562)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.importSessionStaticInfo(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.importSessionStaticInfo(Unknown Source)
+	at com.cadence.mdv.services.runner.callbacks.FixedRoadRunnerCallbacksImpl.handleStaticSessionData(FixedRoadRunnerCallbacksImpl.java:373)
+	at com.cadence.mdv.services.runner.callbacks.StaticSessionDataCallbackImpl.callback(StaticSessionDataCallbackImpl.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.sun.jna.CallbackReference$DefaultCallbackProxy.invokeCallback(CallbackReference.java:444)
+	at com.sun.jna.CallbackReference$DefaultCallbackProxy.callback(CallbackReference.java:474)
+	at com.sun.jna.Native.invokePointer(Native Method)
+	at com.sun.jna.Function.invokePointer(Function.java:432)
+	at com.sun.jna.Function.invokeString(Function.java:592)
+	at com.sun.jna.Function.invoke(Function.java:356)
+	at com.sun.jna.Function.invoke(Function.java:276)
+	at com.sun.jna.Library$Handler.invoke(Library.java:216)
+	at jdk.proxy2/jdk.proxy2.$Proxy137.startSessionWithExtraInfo(Unknown Source)
+	at com.cadence.mdv.services.runner.RoadRunner.startSessionFromVsifFile(RoadRunner.java:613)
+	at com.cadence.mdv.services.runner.RoadRunner.startSession(RoadRunner.java:463)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy136.startSession(Unknown Source)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionInternal(SessionOperationsService.java:1498)
+	at com.cadence.mdv.services.SessionOperationsService.startSession(SessionOperationsService.java:1421)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.startSession(SessionOperationRemoteAspectService.java:90)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionWithRerunData(SessionOperationsService.java:1273)
+	at com.cadence.mdv.services.SessionOperationsService.doRerun0(SessionOperationsService.java:1245)
+	at com.cadence.mdv.services.SessionOperationsService.rerunSession(SessionOperationsService.java:1161)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.rerunSession(SessionOperationRemoteAspectService.java:274)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.rerunSession(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.rerunSession(Unknown Source)
+	at com.cadence.mdv.gui.actions.NGVActionManager$2$2.doWork(NGVActionManager.java:306)
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:69)
+	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:304)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:343)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.cadence.ufi.service.interceptor.ProxyWrapperServiceInterceptor.invoke(ProxyWrapperServiceInterceptor.java:57)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy43.importSessionStaticInfo(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.remoting.caucho.HessianClientInterceptor.invoke(HessianClientInterceptor.java:248)
+	... 83 common frames omitted
+Caused by: com.cadence.mdv.exceptions.MDVException: not permitted add runs
+	at com.cadence.mdv.services.SessionDBServices.importSessionStaticInfo(SessionDBServices.java:330)
+	at jdk.internal.reflect.GeneratedMethodAccessor250.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)
+	at com.cadence.mdv.services.security.BkndSecurityAspect.checkPerms(BkndSecurityAspect.java:57)
+	at jdk.internal.reflect.GeneratedMethodAccessor83.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy3/jdk.proxy3.$Proxy122.importSessionStaticInfo(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor250.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at com.cadence.ufi.service.interceptor.ArgumentsToHandlesServiceInterceptor.invoke(ArgumentsToHandlesServiceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at com.cadence.mdv.remoting.UserInfoOnLocalInterceptor.invoke(UserInfoOnLocalInterceptor.java:20)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at com.cadence.mdv.connection_control.ConnectionControlStatCollectorInterceptor.invoke(ConnectionControlStatCollectorInterceptor.java:40)
+	at com.cadence.mdv.connection_control.ConnectionControlInterceptor.invoke(ConnectionControlInterceptor.java:42)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy3/jdk.proxy3.$Proxy225.importSessionStaticInfo(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor250.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.caucho.hessian.server.HessianSkeleton.invoke(HessianSkeleton.java:302)
+	at com.caucho.hessian.server.HessianSkeleton.invoke(HessianSkeleton.java:217)
+	at org.springframework.remoting.caucho.HessianExporter.doInvoke(HessianExporter.java:223)
+	at org.springframework.remoting.caucho.HessianExporter.invoke(HessianExporter.java:138)
+	at com.cadence.mdv.remoting.CustomHessianServiceExporter.doHandle0(CustomHessianServiceExporter.java:116)
+	at com.cadence.mdv.remoting.CustomHessianServiceExporter.handleRequest(CustomHessianServiceExporter.java:93)
+	at org.springframework.web.context.support.HttpRequestHandlerServlet.service(HttpRequestHandlerServlet.java:67)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:859)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1623)
+	at com.cadence.mdv.services.security.MasterAuthenticationFilter.doFilter(MasterAuthenticationFilter.java:94)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1610)
+	at com.cadence.ngv.filters.CorsResponseXFilter.doFilter(CorsResponseXFilter.java:67)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1588)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1557)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220)
+	at com.cadence.mdv.embdsrv.JettyServer$1.handle(JettyServer.java:85)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:502)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ssl.SslConnection$DecryptedEndPoint.onFillable(SslConnection.java:411)
+	at org.eclipse.jetty.io.ssl.SslConnection.onFillable(SslConnection.java:305)
+	at org.eclipse.jetty.io.ssl.SslConnection$2.succeeded(SslConnection.java:159)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+	... 1 common frames omitted
+[ERROR] 2025-12-05 21:49:02 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Session not started. Unable to add additional runs, This system already use 99,970 of allowed 100,000 runs.;VSIF processing error: Failed to save session id to the DB. Session won't start. (:-1):session.unable_start_session_with_msg: Session not started. Unable to add additional runs, This system already use 99,970 of allowed 100,000 runs.;VSIF processing error: Failed to save session id to the DB. Session won't start. (:-1)
+[ERROR] 2025-12-05 21:49:02 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Session not started. Unable to add additional runs, This system already use 99,970 of allowed 100,000 runs.;VSIF processing error: Failed to save session id to the DB. Session won't start. (:-1)
+com.cadence.mdv.exceptions.NotStartedSessionException:  session not started!
+	at com.cadence.mdv.services.runner.RoadRunner.startSession(RoadRunner.java:470)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy136.startSession(Unknown Source)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionInternal(SessionOperationsService.java:1498)
+	at com.cadence.mdv.services.SessionOperationsService.startSession(SessionOperationsService.java:1421)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.startSession(SessionOperationRemoteAspectService.java:90)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionWithRerunData(SessionOperationsService.java:1273)
+	at com.cadence.mdv.services.SessionOperationsService.doRerun0(SessionOperationsService.java:1245)
+	at com.cadence.mdv.services.SessionOperationsService.rerunSession(SessionOperationsService.java:1161)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.rerunSession(SessionOperationRemoteAspectService.java:274)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.rerunSession(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.rerunSession(Unknown Source)
+	at com.cadence.mdv.gui.actions.NGVActionManager$2$2.doWork(NGVActionManager.java:306)
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:69)
+	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:304)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:343)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[ERROR] 2025-12-05 21:58:46 [com.cadence.mdv.services.SessionOperationsService] [pool-10-thread-4] - Failed to import session static info for sessionDir /home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_04_12_41_10_7124
+org.springframework.remoting.RemoteAccessException: Cannot access Hessian remote service at [https://_U_/remoting/SessionService]; nested exception is java.lang.reflect.InvocationTargetException
+	at org.springframework.remoting.caucho.HessianClientInterceptor.convertHessianAccessException(HessianClientInterceptor.java:293)
+	at org.springframework.remoting.caucho.HessianClientInterceptor.invoke(HessianClientInterceptor.java:265)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy43.importSessionStaticInfo(Unknown Source)
+	at com.cadence.mdv.services.SessionOperationsService.importSessionStaticInfoFromFS(SessionOperationsService.java:664)
+	at com.cadence.mdv.services.SessionOperationsService.doImportSessionStaticInfo(SessionOperationsService.java:604)
+	at com.cadence.mdv.services.SessionOperationsService.importSessionStaticInfo(SessionOperationsService.java:562)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.importSessionStaticInfo(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.importSessionStaticInfo(Unknown Source)
+	at com.cadence.mdv.services.runner.callbacks.FixedRoadRunnerCallbacksImpl.handleStaticSessionData(FixedRoadRunnerCallbacksImpl.java:373)
+	at com.cadence.mdv.services.runner.callbacks.StaticSessionDataCallbackImpl.callback(StaticSessionDataCallbackImpl.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.sun.jna.CallbackReference$DefaultCallbackProxy.invokeCallback(CallbackReference.java:444)
+	at com.sun.jna.CallbackReference$DefaultCallbackProxy.callback(CallbackReference.java:474)
+	at com.sun.jna.Native.invokePointer(Native Method)
+	at com.sun.jna.Function.invokePointer(Function.java:432)
+	at com.sun.jna.Function.invokeString(Function.java:592)
+	at com.sun.jna.Function.invoke(Function.java:356)
+	at com.sun.jna.Function.invoke(Function.java:276)
+	at com.sun.jna.Library$Handler.invoke(Library.java:216)
+	at jdk.proxy2/jdk.proxy2.$Proxy137.startSessionWithExtraInfo(Unknown Source)
+	at com.cadence.mdv.services.runner.RoadRunner.startSessionFromVsifFile(RoadRunner.java:613)
+	at com.cadence.mdv.services.runner.RoadRunner.startSession(RoadRunner.java:463)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy136.startSession(Unknown Source)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionInternal(SessionOperationsService.java:1498)
+	at com.cadence.mdv.services.SessionOperationsService.startSession(SessionOperationsService.java:1421)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.startSession(SessionOperationRemoteAspectService.java:90)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionWithRerunData(SessionOperationsService.java:1273)
+	at com.cadence.mdv.services.SessionOperationsService.doRerun0(SessionOperationsService.java:1245)
+	at com.cadence.mdv.services.SessionOperationsService.rerunSession(SessionOperationsService.java:1161)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.rerunSession(SessionOperationRemoteAspectService.java:274)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.rerunSession(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.rerunSession(Unknown Source)
+	at com.cadence.mdv.gui.actions.NGVActionManager$2$2.doWork(NGVActionManager.java:306)
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:69)
+	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:304)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:343)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.cadence.ufi.service.interceptor.ProxyWrapperServiceInterceptor.invoke(ProxyWrapperServiceInterceptor.java:57)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy43.importSessionStaticInfo(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.remoting.caucho.HessianClientInterceptor.invoke(HessianClientInterceptor.java:248)
+	... 83 common frames omitted
+Caused by: com.cadence.mdv.exceptions.MDVException: not permitted add runs
+	at com.cadence.mdv.services.SessionDBServices.importSessionStaticInfo(SessionDBServices.java:330)
+	at jdk.internal.reflect.GeneratedMethodAccessor250.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)
+	at com.cadence.mdv.services.security.BkndSecurityAspect.checkPerms(BkndSecurityAspect.java:57)
+	at jdk.internal.reflect.GeneratedMethodAccessor83.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)
+	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy3/jdk.proxy3.$Proxy122.importSessionStaticInfo(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor250.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at com.cadence.ufi.service.interceptor.ArgumentsToHandlesServiceInterceptor.invoke(ArgumentsToHandlesServiceInterceptor.java:52)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at com.cadence.mdv.remoting.UserInfoOnLocalInterceptor.invoke(UserInfoOnLocalInterceptor.java:20)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at com.cadence.mdv.connection_control.ConnectionControlStatCollectorInterceptor.invoke(ConnectionControlStatCollectorInterceptor.java:40)
+	at com.cadence.mdv.connection_control.ConnectionControlInterceptor.invoke(ConnectionControlInterceptor.java:42)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy3/jdk.proxy3.$Proxy225.importSessionStaticInfo(Unknown Source)
+	at jdk.internal.reflect.GeneratedMethodAccessor250.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at com.caucho.hessian.server.HessianSkeleton.invoke(HessianSkeleton.java:302)
+	at com.caucho.hessian.server.HessianSkeleton.invoke(HessianSkeleton.java:217)
+	at org.springframework.remoting.caucho.HessianExporter.doInvoke(HessianExporter.java:223)
+	at org.springframework.remoting.caucho.HessianExporter.invoke(HessianExporter.java:138)
+	at com.cadence.mdv.remoting.CustomHessianServiceExporter.doHandle0(CustomHessianServiceExporter.java:116)
+	at com.cadence.mdv.remoting.CustomHessianServiceExporter.handleRequest(CustomHessianServiceExporter.java:93)
+	at org.springframework.web.context.support.HttpRequestHandlerServlet.service(HttpRequestHandlerServlet.java:67)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:859)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1623)
+	at com.cadence.mdv.services.security.MasterAuthenticationFilter.doFilter(MasterAuthenticationFilter.java:94)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1610)
+	at com.cadence.ngv.filters.CorsResponseXFilter.doFilter(CorsResponseXFilter.java:67)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1588)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1557)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220)
+	at com.cadence.mdv.embdsrv.JettyServer$1.handle(JettyServer.java:85)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:502)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ssl.SslConnection$DecryptedEndPoint.onFillable(SslConnection.java:411)
+	at org.eclipse.jetty.io.ssl.SslConnection.onFillable(SslConnection.java:305)
+	at org.eclipse.jetty.io.ssl.SslConnection$2.succeeded(SslConnection.java:159)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+	... 1 common frames omitted
+[ERROR] 2025-12-05 21:58:46 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Session not started. Unable to add additional runs, This system already use 99,970 of allowed 100,000 runs.;VSIF processing error: Failed to save session id to the DB. Session won't start. (:-1):session.unable_start_session_with_msg: Session not started. Unable to add additional runs, This system already use 99,970 of allowed 100,000 runs.;VSIF processing error: Failed to save session id to the DB. Session won't start. (:-1)
+[ERROR] 2025-12-05 21:58:46 [com.cadence.ufi.gui.util.UFIExceptionHandler] [AWT-EventQueue-0] - Session not started. Unable to add additional runs, This system already use 99,970 of allowed 100,000 runs.;VSIF processing error: Failed to save session id to the DB. Session won't start. (:-1)
+com.cadence.mdv.exceptions.NotStartedSessionException:  session not started!
+	at com.cadence.mdv.services.runner.RoadRunner.startSession(RoadRunner.java:470)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy136.startSession(Unknown Source)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionInternal(SessionOperationsService.java:1498)
+	at com.cadence.mdv.services.SessionOperationsService.startSession(SessionOperationsService.java:1421)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.startSession(SessionOperationRemoteAspectService.java:90)
+	at com.cadence.mdv.services.SessionOperationsService.startSessionWithRerunData(SessionOperationsService.java:1273)
+	at com.cadence.mdv.services.SessionOperationsService.doRerun0(SessionOperationsService.java:1245)
+	at com.cadence.mdv.services.SessionOperationsService.rerunSession(SessionOperationsService.java:1161)
+	at com.cadence.mdv.services.SessionOperationRemoteAspectService.rerunSession(SessionOperationRemoteAspectService.java:274)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:213)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.rerunSession(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:333)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:207)
+	at jdk.proxy2/jdk.proxy2.$Proxy134.rerunSession(Unknown Source)
+	at com.cadence.mdv.gui.actions.NGVActionManager$2$2.doWork(NGVActionManager.java:306)
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:69)
+	at java.desktop/javax.swing.SwingWorker$1.call(SwingWorker.java:304)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.desktop/javax.swing.SwingWorker.run(SwingWorker.java:343)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[ERROR] 2025-12-06 01:56:44 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-06 01:56:49 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 41083
+[ERROR] 2025-12-09 02:53:44 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-09 02:53:50 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 33327
+[ERROR] 2025-12-09 05:05:18 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about is_lang_vlog
+[ERROR] 2025-12-09 05:07:15 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about is_lang_vlog
+[ERROR] 2025-12-09 07:48:08 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-09 07:48:14 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 33691
+[ERROR] 2025-12-09 19:52:05 [com.cadence.mdv.services.ClientLinkToServerImpl] [main] - No XLM Home defined in the server project
+[INFO ] 2025-12-09 19:52:11 [com.cadence.mdv.imc.Main] [main] - Binding debug tools http on port: 46751
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:26 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 19:56:27 [com.cadence.ufi.bl.BLDataSet] [AWT-EventQueue-0] - ASSERTION Trying to access an obsolete data set com.cadence.mdv.vplanDataSets.BLVplanMetricItemsTreeDataSet@23c528b0
+[ERROR] 2025-12-09 20:03:26 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:03:34 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:05:25 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:05:30 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:05:37 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:06:06 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:07:42 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:08:14 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:08:36 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about REQUIRED_PROOF_BOUND
+[ERROR] 2025-12-09 20:08:43 [com.cadence.mdv.bl.impl.core.blNative.MDVEntitySimpleFallbackHandler] [AWT-EventQueue-0] - Slim entity had to fallback because someone asked about is_lang_vlog

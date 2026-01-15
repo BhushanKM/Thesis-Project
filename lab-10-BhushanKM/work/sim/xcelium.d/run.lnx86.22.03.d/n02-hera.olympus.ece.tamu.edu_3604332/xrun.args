@@ -1,0 +1,7 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-f
+run_vm.f
++UVM_TESTNAME=htax_parallel_coverage_test

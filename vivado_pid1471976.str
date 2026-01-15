@@ -1,0 +1,168 @@
+/*
+
+AMD Vivado v2023.1 (64-bit) [Major: 2023, Minor: 1]
+SW Build: 3865809 on Sun May  7 15:04:56 MDT 2023
+IP Build: 3864474 on Sun May  7 20:36:21 MDT 2023
+IP Build: 3864474 on Sun May  7 20:36:21 MDT 2023
+
+Process ID (PID): 1471976
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Thu Jan 15 15:26:38 CST 2026
+Time zone: 	Central Standard Time (America/Chicago)
+
+OS: Red Hat Enterprise Linux release 8.10 (Ootpa)
+OS Version: 4.18.0-553.89.1.el8_10.x86_64
+OS Architecture: amd64
+Available processors (cores): 1
+
+Display: localhost:45.0
+Screen size: 1920x1080
+Screen resolution (DPI): 100
+Available screens: 2
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+OS font scaling: 100%
+
+Java version: 	17.0.3 64-bit
+JavaFX version: 17.0.1
+Java home: 	/opt/coe/Xilinx/Vivado/2023.1/tps/lnx64/jre17.0.3_7
+Java executable: 	/opt/coe/Xilinx/Vivado/2023.1/tps/lnx64/jre17.0.3_7/bin/java
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Djdk.gtk.version=2, -Dsun.java2d.uiScale.enabled=false, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, -XX:+UseStringDeduplication, -XX:MaxGCPauseMillis=200, -XX:+ParallelRefProcEnabled, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED, -XX:NewSize=80m, -XX:MaxNewSize=80m, -Xms512m, -Xmx4072m, -Xss10m, -Xrs]
+Java initial memory (-Xms): 	512 MB
+Java maximum memory (-Xmx):	 3 GB
+
+User name: 	bhushan_123
+User home directory: /home/grads/b/bhushan_123
+User working directory: /home/grads/b/bhushan_123/thesis_project
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /opt/coe/Xilinx/Vivado
+HDI_APPROOT: /opt/coe/Xilinx/Vivado/2023.1
+RDI_DATADIR: /opt/coe/Xilinx/SharedData/2023.1/data:/opt/coe/Xilinx/Vivado/2023.1/data
+RDI_BINDIR: /opt/coe/Xilinx/Vivado/2023.1/bin
+
+Vivado preferences file: /home/grads/b/bhushan_123/.Xilinx/Vivado/2023.1/vivado.xml
+Vivado preferences directory: /home/grads/b/bhushan_123/.Xilinx/Vivado/2023.1/
+Vivado layouts directory: /home/grads/b/bhushan_123/.Xilinx/Vivado/2023.1/data/layouts
+PlanAhead jar file: 	/opt/coe/Xilinx/Vivado/2023.1/lib/classes/planAhead.jar
+Vivado log file: 	/home/grads/b/bhushan_123/thesis_project/vivado.log
+Vivado journal file: 	/home/grads/b/bhushan_123/thesis_project/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-1471976-n01-zeus.olympus.ece.tamu.edu
+Non-Default Parameters:	[]
+
+Xilinx & AMD Environment Variables
+--------------------------------------------------------------------------------------------
+RDI_APPROOT: /opt/coe/Xilinx/Vivado/2023.1
+RDI_BASEROOT: /opt/coe/Xilinx/Vivado
+RDI_BINROOT: /opt/coe/Xilinx/Vivado/2023.1/bin
+RDI_BUILD: yes
+RDI_DATADIR: /opt/coe/Xilinx/SharedData/2023.1/data:/opt/coe/Xilinx/Vivado/2023.1/data
+RDI_INSTALLROOT: /opt/coe/Xilinx
+RDI_INSTALLVER: 2023.1
+RDI_JAVA_PLATFORM: 
+RDI_JAVA_VERSION: 17.0.3_7
+RDI_LIBDIR: /opt/coe/Xilinx/Vivado/2023.1/lib/lnx64.o/Rhel/8:/opt/coe/Xilinx/Vivado/2023.1/lib/lnx64.o/Rhel:/opt/coe/Xilinx/Vivado/2023.1/lib/lnx64.o
+RDI_OPT_EXT: .o
+RDI_PATCHROOT: 
+RDI_PLATFORM: lnx64
+RDI_PREPEND_PATH: /opt/coe/Xilinx/Vitis/2023.1/bin:/opt/coe/Xilinx/Vivado/2023.1/ids_lite/ISE/bin/lin64
+RDI_PROG: /opt/coe/Xilinx/Vivado/2023.1/bin/unwrapped/lnx64.o/vivado
+RDI_SESSION_INFO: /home/grads/b/bhushan_123/thesis_project:n01-zeus.olympus.ece.tamu.edu_1768512371_1471878
+RDI_SHARED_DATA: /opt/coe/Xilinx/SharedData/2023.1/data
+RDI_TPS_ROOT: /opt/coe/Xilinx/Vivado/2023.1/tps/lnx64
+RDI_USE_JDK17: True
+SHELL: /bin/bash
+XILINX: /opt/coe/Xilinx/Vivado/2023.1/ids_lite/ISE
+XILINX_DSP: /opt/coe/Xilinx/Vivado/2023.1/ids_lite/ISE
+XILINX_HLS: /opt/coe/Xilinx/Vitis_HLS/2023.1
+XILINX_PLANAHEAD: /opt/coe/Xilinx/Vivado/2023.1
+XILINX_SDK: /opt/coe/Xilinx/Vitis/2023.1
+XILINX_VITIS: /opt/coe/Xilinx/Vitis/2023.1
+XILINX_VIVADO: /opt/coe/Xilinx/Vivado/2023.1
+XILINX_VIVADO_HLS: /opt/coe/Xilinx/Vivado/2023.1
+
+
+GUI allocated memory:	504 MB
+GUI max memory:		4,064 MB
+Engine allocated memory: 2,105 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// WARNING: HEventQueue.dispatchEvent() is taking  5249 ms.
+// Tcl Message: start_gui 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,115 MB. GUI used memory: 79 MB. Current time: 1/15/26, 3:26:39 PM CST
+// WARNING: HEventQueue.dispatchEvent() is taking  1001 ms.
+selectList(PAResourceQtoS.SyntheticaGettingStartedView_RECENT_PROJECTS, "/home/grads/b/bhushan_123/thesis_project/ECC_1bit/ECC_1bit.xpr", 0); // b.c
+// [GUI Memory]: 115 MB (+118161kb) [00:00:53]
+// [Engine Memory]: 2,126 MB (+2077755kb) [00:00:53]
+// Opening Vivado Project: /home/grads/b/bhushan_123/thesis_project/ECC_1bit/ECC_1bit.xpr. Version: Vivado v2023.1 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 2,265 MB (+33952kb) [00:00:56]
+// WARNING: HEventQueue.dispatchEvent() is taking  3075 ms.
+// Tcl Message: open_project /home/grads/b/bhushan_123/thesis_project/ECC_1bit/ECC_1bit.xpr 
+// Tcl Message: INFO: [filemgmt 56-3] Default IP Output Path : Could not find the directory '/home/grads/b/bhushan_123/thesis_project/ECC_1bit/ECC_1bit.gen/sources_1'. 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/coe/Xilinx/Vivado/2023.1/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,329 MB. GUI used memory: 80 MB. Current time: 1/15/26, 3:27:19 PM CST
+// Project name: ECC_1bit; location: /home/grads/b/bhushan_123/thesis_project/ECC_1bit; part: xc7z010clg400-1
+dismissDialog("Open Project"); // bq
+// [GUI Memory]: 125 MB (+4836kb) [00:01:00]
+// Tcl Message: update_compile_order -fileset sources_1 
+// [GUI Memory]: 143 MB (+12141kb) [00:07:36]
+// Elapsed time: 797 seconds
+collapseTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 22); // f
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 22); // f
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 22); // f
+collapseTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 22); // f
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // f
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// Tcl (Dont Echo) Command: 'rdi::info_commands {device::*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {debug::*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {*}'
+// WARNING: HEventQueue.dispatchEvent() is taking  2925 ms.
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // f
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// [GUI Memory]: 151 MB (+998kb) [00:14:29]
+// Elapsed time: 11 seconds
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, Simulation]", 1, false); // s
+// Elapsed time: 156 seconds
+selectButton(PAResourceTtoZ.VerilogOptionsChooserPanel_SPECIFY_COMPILATION_OPTIONS_FOR_VERILOG, (String) null); // r
+dismissDialog("Verilog Options"); // b
+selectButton(PAResourceTtoZ.VerilogOptionsChooserPanel_SPECIFY_COMPILATION_OPTIONS_FOR_VERILOG, (String) null); // r
+selectButton(PAResourceItoN.MultiFileChooser_ADD_DIRECTORIES, "Add Directories"); // B
+// Elapsed time: 22 seconds
+dismissFolderChooser();
+selectButton(PAResourceItoN.NameValuePanel_ADD_VALUE, "Add Value"); // B
+dismissDialog("Add Value"); // v.b
+// Elapsed time: 102 seconds
+dismissDialog("Verilog Options"); // b
+// [GUI Memory]: 172 MB (+13162kb) [00:19:41]
+// HMemoryUtils.trashcanNow. Engine heap size: 2,339 MB. GUI used memory: 113 MB. Current time: 1/15/26, 3:46:02 PM CST
+dismissDialog("Settings"); // d

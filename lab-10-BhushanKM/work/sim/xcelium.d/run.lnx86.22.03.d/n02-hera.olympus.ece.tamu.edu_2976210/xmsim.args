@@ -1,0 +1,41 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-INPUT
+"@source /opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv/files/tcl/uvm_sim.tcl"
++UVM_VERBOSITY=UVM_LOW
++access+rwc
+-uvmhome
+/opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv
+-sv_lib
+/opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv/lib/libuvmpli.so
+-INPUT
+waves.tcl
+-COVOVERWRITE
+-COVWORKDIR
+/home/grads/b/bhushan_123/lab-10-BhushanKM/work/sim/regression/htax_regress.bhushan_123.25_12_04_12_41_10_7124/chain_7/all_test/run_281/cov_work
+-SVSEED
+random
++UVM_TESTNAME=htax_parallel_coverage_test
+-MESSAGES
+-SV_LIB
+/opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv/lib/libuvmdpi.so
++EMGRLOG
+xrun.log
+-XLSTIME
+1764976676
+-XLKEEP
+-XLMODE
+./xcelium.d/run.lnx86.22.03.d
+-RUNMODE
+-CDSLIB
+./xcelium.d/run.lnx86.22.03.d/cds.lib
+-HDLVAR
+./xcelium.d/run.lnx86.22.03.d/hdl.var
+-XLNAME
+xrun
+-XLVERSION
+"TOOL:	xrun	22.03-s012"
+-XLNAME
+./xcelium.d/run.lnx86.22.03.d/n02-hera.olympus.ece.tamu.edu_2976210
