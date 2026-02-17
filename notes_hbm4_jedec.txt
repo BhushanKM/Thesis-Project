@@ -1,0 +1,347 @@
+================================================================================
+                    HBM4 ON-DIE ECC SPECIFICATION NOTES
+                    JEDEC Standard No. 270-4 (Pages 131-142)
+================================================================================
+
+Document Source: ECC_datasheet_hbm4.pdf
+Standard: JEDEC Standard No. 270-4
+Section: 6.9 On-die DRAM ECC
+
+================================================================================
+1. ECC OVERVIEW (Section 6.9.1)
+================================================================================
+
+HBM4 uses symbol-based on-die ECC with the following features:
+
+CODEWORD STRUCTURE:
+- Minimum codeword size: 304 bits
+- User data access size: 256b + 16b = 272b
+- Symbol size: Implementation specific
+- Check bits: ~32b (assuming 16b single symbol correction)
+
+KEY FEATURES:
+- Symbol-based on-die ECC
+- Real-time ECC transparency via two SEV pins per PC
+- SBE signaled only after SBE threshold exceeded
+- Automated on-die error scrubbing mechanism
+- Single bit READ and WRITE data interface parity
+
+DATA COMPOSITION:
+- 256b transmitted over 32 DQ pins × BL8
+- 16b transmitted over 2 ECC pins × BL8
+- Total: 272b user data per codeword
+
+ECC ENGINE BLOCKS:
+1. Check Bit Generator - generates parity/check bits on write
+2. Syndrome Generator - computes syndrome on read
+3. Syndrome Decode - determines error location and magnitude
+4. Error Correction - corrects data before output
+
+================================================================================
+2. ON-DIE ECC REQUIREMENTS (Section 6.9.2)
+================================================================================
+
+CODEWORD SPECIFICATIONS:
+- Data-word: 272b (256b data per PC + 16b meta data per PC)
+- Check-bits: Implementation specific (e.g., 32b for 16b symbol correction)
+- Total codeword: 304b minimum
+
+ERROR CORRECTION CAPABILITY:
+- Corrects all errors ≤ single symbol size within symbol boundary
+- DRAM shall NOT write corrected data back to array during read cycle
+- On writes: DRAM computes check bits and writes data + check bits to array
+
+META DATA (MD) BITS:
+- Controlled via MR9 OP0
+- If MD disabled, DRAM may assume any value for 16b MD portion
+- ECC engine treatment of MD bits not affected by interface MD setting
+
+IMPLEMENTATION FLEXIBILITY:
+- H-matrix: Implementation specific
+- Symbol size: Implementation specific
+- Number of codewords: Implementation specific
+
+================================================================================
+3. FAULT ISOLATION REQUIREMENTS (Section 6.9.3)
+================================================================================
+
+- Fault isolation manages errors to stay within certain boundaries
+- Boundaries chosen according to ECC symbol size
+- Design must guarantee most common multi-bit faults create errors
+  constrained to correctable symbol-size or fewer bits
+
+================================================================================
+4. ERROR CHECK AND SCRUB - ECS (Section 6.9.4)
+================================================================================
+
+AUTO ECS FUNCTION:
+- Operates in background during REFab and SRF periods
+- Internally: read, detect errors, correct errors, write back (scrub)
+- Provides transparency - errors logged during ECS
+
+ECS READ-MODIFY-WRITE CYCLE:
+1. Read entire codeword(s) from DRAM array
+2. Single-bit error → correct and write back
+3. Correctable multi-bit error → correct and write back (if MR9 OP6 enabled)
+4. Uncorrectable error → DO NOT modify or write back
+5. No error → may or may not write back (implementation specific)
+
+MODE REGISTER CONTROL:
++------------------+----------+----------------------------------------+
+| Function         | Register | Value                                  |
++------------------+----------+----------------------------------------+
+| Auto ECS REFab   | MR9 OP4  | 1 = Enabled, 0 = Disabled (default)    |
+| Auto ECS SRF     | MR9 OP5  | 1 = Enabled, 0 = Disabled (default)    |
+| CEm during ECS   | MR9 OP6  | 1 = Enabled, 0 = Disabled (default)    |
+| ECS Log Reset    | MR9 OP7  | 1 = Reset (self-clearing), 0 = Maintain|
+| ECS Log Auto-Rst | MR8 OP2  | 1 = Reset on readout, 0 = Disabled     |
++------------------+----------+----------------------------------------+
+
+TIMING PARAMETERS:
+- tECSC: Max time for HBM4 to complete ECS operation
+- tECSint: Average ECS interval to cover all codewords in tECS period
+- tECS: Period to complete ECS on all codewords (recommended: 24 hours)
+- ERRTH: Vendor-specific filter threshold for transparency
+
+ECS INTERVAL CALCULATION (for 24-hour tECS):
++------------------+------------------------+------------------------+
+| Configuration    | 24Gb × 4/8/12/16       | 32Gb × 4/8/12/16       |
++------------------+------------------------+------------------------+
+| GB per device    | 12/24/36/48 GB         | 16/32/48/64 GB         |
+| Gb per PC        | 1.5 Gb                 | 2 Gb                   |
+| Codewords/PC/SID | 2^22 × 1.5             | 2^23                   |
+| tECSint [ms]     | 13.733                 | 10.300                 |
++------------------+------------------------+------------------------+
+
+ECS OPERATION MODES:
+1. REFab only (MR9 OP4=1, OP5=0): ECS during refresh commands
+2. Self Refresh only (MR9 OP4=0, OP5=1): ECS during self refresh
+3. Both modes (MR9 OP4=1, OP5=1): ECS in both refresh and self refresh
+
+ERROR LOGGING:
+- Logged per PC and SID via IEEE1500 interface
+- Format: Bank, Row, Column, Error Type
+- Logged within tECSC
+
+ERROR OVERWRITE PRIORITY:
++----------+------+------+------+------+
+| Previous | NE   | CEs  | CEm  | UE   |
++----------+------+------+------+------+
+| NE       | None | Upd  | Upd  | Upd  |
+| CEs      | Keep | Upd  | Upd  | Upd  |
+| CEm      | Keep | Keep | Upd  | Upd  |
+| UE       | Keep | Keep | Keep | Upd  |
++----------+------+------+------+------+
+
+ERROR COUNTING:
+- ERRCNT = number of CEs accumulated during ECS
+- Maintained independently per PC and SID
+- CEs count as one event
+- CEm and UE do NOT count toward ERRCNT
+- Auto-reset after each tECS period
+
+ECS FLAG (OPTIONAL):
+- Included in REFab and SRE commands
+- ECS=H: Suppress ECS operations
+- ECS=L: Enable ECS operations
+
+================================================================================
+5. ON-DIE ECC TRANSPARENCY PROTOCOL (Section 6.9.5)
+================================================================================
+
+TRANSPARENCY MECHANISMS:
++---------------------------+-----------+------------------------+
+| Attribute                 | Operation | Mechanism              |
++---------------------------+-----------+------------------------+
+| Real-time severity        | RD/RDA    | Two SEV pins per PC    |
+| Error address/severity log| ECS       | IEEE1500 register      |
++---------------------------+-----------+------------------------+
+
+SEVERITY ENCODINGS (SEV[1:0] per BL8):
++------+--------+---+---+---+---+---+---+---+---+
+| Type | Pin    | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
++------+--------+---+---+---+---+---+---+---+---+
+| NE   | SEV[0] | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+|      | SEV[1] | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
++------+--------+---+---+---+---+---+---+---+---+
+| CEs  | SEV[0] | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
+|      | SEV[1] | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
++------+--------+---+---+---+---+---+---+---+---+
+| CEm  | SEV[0] | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
+|      | SEV[1] | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
++------+--------+---+---+---+---+---+---+---+---+
+| UE   | SEV[0] | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+|      | SEV[1] | 0 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
++------+--------+---+---+---+---+---+---+---+---+
+
+ERROR TYPES:
+- NE: No Error
+- CEs: Corrected single-bit error
+- CEm: Corrected multi-bit error (within symbol)
+- UE: Uncorrectable Error
+
+SEVERITY TRANSMISSION RULES:
+- NE → transmit NE
+- CEs → transmit NE if ERRCNT ≤ ERRTH, else transmit CEs
+- CEm → transmit CEm
+- UE → transmit UE
+
+CONTROL:
+- MR9 OP1: Enable/disable severity metadata signaling
+
+================================================================================
+6. ECC ENGINE TEST MODE (Section 6.9.6)
+================================================================================
+
+PURPOSE:
+- Test on-die ECC engine functionality (not error access into core)
+- Outcome reported via transparency protocol
+
+MODE REGISTER SETTINGS:
++----------------------+----------+----------------------------------+
+| Function             | Register | Value                            |
++----------------------+----------+----------------------------------+
+| ECC Engine Test Mode | MR9 OP2  | 0 = Normal, 1 = Test Mode        |
+| Error Vector Pattern | MR9 OP3  | 0 = CW0, 1 = CW1                 |
++----------------------+----------+----------------------------------+
+
+ERROR VECTOR PATTERNS:
+- CW0: Data '1' = error bit, Data '0' = non-error bit
+- CW1: Data '0' = error bit, Data '1' = non-error bit
+
+TEST MODE OPERATION:
+1. WR functions as error injection command
+2. RD functions as outcome output command
+3. Write DQ data is error injection pattern
+4. Read DQ/ECC/SEV data is ECC engine test outcome
+
+TEST SEQUENCE:
+1. Set MR9 OP[3:2] for test mode entry
+2. Enable SEVR (MR9 OP1)
+3. Set MD bit (MR9 OP0) as desired
+4. Write error pattern
+5. Read output after tWTR
+6. Check DQ for corrected data and SEV for severity
+7. Repeat WR-RD sequence
+8. Exit by setting MR9 OP2 = 0
+
+EXPECTED OUTPUTS (CW0 mode):
++----------+------------------+------------------+----------+
+| Severity | Input[271:0]     | Output[271:0]    | SEV[1:0] |
++----------+------------------+------------------+----------+
+| NE       | 0000...0000      | 0000...0000      | NE       |
+| CEs      | 1000...0000      | 0000...0000      | CEs      |
+| CEm      | 0000...00001111  | 0000...0000      | CEm      |
+| UE       | (uncorrectable)  | (not specified)  | UE       |
++----------+------------------+------------------+----------+
+
+RESTRICTIONS IN TEST MODE:
+- Core is not accessed
+- No data retention guaranteed
+- Allowed commands: CNOP, WR, RD, MRS (to disable test mode)
+- WR and RD must use same address
+- No ACT command required
+- ERRTH value is ignored
+
+DATA COMPOSITION:
+- PC0: DQ[31:0], DBI[3:0], ECC[1:0], SEV[1:0]
+- PC1: DQ[63:32], DBI[7:4], ECC[3:2], SEV[3:2]
+
+================================================================================
+7. KEY IMPLEMENTATION NOTES FOR THESIS PROJECT
+================================================================================
+
+ALIGNMENT WITH DBB-ECC IMPLEMENTATION:
+- Codeword size: 304b matches RS16(19,17) → 19 symbols × 16b
+- Data size: 272b matches 17 data symbols × 16b
+- Check bits: 32b matches 2 parity symbols × 16b
+- Symbol-based ECC aligns with GF(2^16) implementation
+
+DESIGN CONSIDERATIONS:
+1. Encoder must compute check bits on write path
+2. Decoder must:
+   - Generate syndromes
+   - Decode error location and magnitude
+   - Correct errors before output
+   - NOT write back corrected data during normal reads
+3. Transparency signals (SEV) must be generated
+
+ERROR HANDLING PRIORITY:
+1. Single symbol errors → correct
+2. Multi-bit errors within symbol → correct (CEm)
+3. Uncorrectable errors → pass through with UE flag
+
+INTERFACE REQUIREMENTS:
+- 32 DQ pins per PC
+- 2 ECC pins per PC
+- 2 SEV pins per PC
+- BL8 burst length
+
+================================================================================
+8. RTL IMPLEMENTATION STATUS
+================================================================================
+
+IMPLEMENTED MODULES (JEDEC-Compliant DBB-ECC for HBM4):
+
++------------------------+--------------------------------------------------+
+| Module                 | Description                                      |
++------------------------+--------------------------------------------------+
+| ecc_engine_top.v       | Top-level with JEDEC test mode (MR9 OP2/OP3)     |
+| ecc_encoder.v          | RS16(19,17) encoder, 272b→304b                   |
+| ecc_decoder.v          | Full DBB-ECC decoder with SSE/DBE correction     |
+| gf_mul_16.v            | GF(2^16) multiplier variants (see below)         |
+| gf_inv_16.v            | GF inverse + T-sum search modules                |
++------------------------+--------------------------------------------------+
+
+GF MULTIPLIER VARIANTS (gf_mul_16.v):
+
++------------------------+----------+-----------+-------------+----------------+
+| Module                 | Latency  | Throughput| Symbol Size | Use Case       |
++------------------------+----------+-----------+-------------+----------------+
+| gf_mul_16              | 1 cycle  | 1/cycle   | 16-bit      | Default        |
+| gf_mul_16_pipelined    | 4 cycles | 1/cycle   | 16-bit      | High-freq      |
+| gf_mul_param           | 1 cycle  | 1/cycle   | 8/16/32-bit | Configurable   |
+| gf_mul_param_comb      | 0 cycles | N/A       | 8/16/32-bit | Combinational  |
++------------------------+----------+-----------+-------------+----------------+
+
+FORMAL VERIFICATION PROPERTIES (gf_mul_16.v):
+- P1: Multiplicative identity (a * 1 = a)
+- P2: Multiplicative zero (a * 0 = 0)
+- P3: Commutativity (a * b = b * a)
+- P4: Output validity timing
+- P5: Result bounded
+- P6: Deterministic output
+- Enabled with `ifdef FORMAL
+
+JEDEC COMPLIANCE CHECKLIST:
+
+[✓] Codeword: 304b (272b data + 32b check bits)
+[✓] Symbol-based ECC with 16-bit symbols
+[✓] Single symbol error correction (SSE)
+[✓] Double bit error correction (DBE) - DBB-ECC extension
+[✓] Severity encoding: NE(00), CEs(01), CEm(11), UE(10)
+[✓] Test mode support (error injection via WR, outcome via RD)
+[✓] No write-back of corrected data during normal reads
+
+GALOIS FIELD IMPLEMENTATION:
+
+Primitive Polynomial: x^16 + x^5 + x^3 + x + 1 (0x1002B)
+
+Inverse Computation Options:
+1. Sequential (gf_inv_16): 31 cycles latency
+2. Pipelined (gf_inv_16_pipelined): 15 cycles latency, 1/cycle throughput
+3. LUT-based (gf_inv_16_sbe_lut): Combinational for single-bit patterns
+
+BUG FIXES APPLIED:
+- Corrected gf_inv_16_sbe_lut inverse values (bit 15 was 0x002B, now 0xAF9E)
+- Added pipelined inverse for lower-latency decoder paths
+
+T-VALUES FOR H-MATRIX (RS16(19,17)):
+T[0]=0x00AC  T[1]=0x0056  T[2]=0x002B  T[3]=0x8000  T[4]=0x4000
+T[5]=0x2000  T[6]=0x1000  T[7]=0x0800  T[8]=0x0400  T[9]=0x0200
+T[10]=0x0100 T[11]=0x0080 T[12]=0x0040 T[13]=0x0020 T[14]=0x0010
+T[15]=0x0008 T[16]=0x0004
+
+================================================================================
+                              END OF NOTES
+================================================================================

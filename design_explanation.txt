@@ -1,0 +1,1164 @@
+================================================================================
+COMPLETE DESIGN EXPLANATION: HBM4 ECC ENGINE
+================================================================================
+Author: Bhushan Kiran Munoli
+Project: ECC Implementation for HBM3/HBM4
+Date: 2026
+
+This document provides a comprehensive explanation of the ECC (Error Correction
+Code) engine design for High Bandwidth Memory (HBM). The design implements the
+DBB-ECC algorithm from the paper "DBB-ECC: Random Double Bit and Burst Error
+Correction Code for HBM3".
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+
+1.  Executive Summary
+2.  System Overview
+3.  Mathematical Foundation
+4.  Module Hierarchy
+5.  GF(2^16) Multiplier (gf_mul_16.v)
+6.  ECC Encoder (ecc_encoder.v)
+7.  ECC Decoder (ecc_decoder.v)
+8.  ECC Engine Top (ecc_engine_top.v)
+9.  Complete System Topology
+10. Data Flow Diagrams
+11. Operating Modes
+12. JEDEC Compliance
+13. Clock and Reset Architecture
+14. Power Optimization Features
+15. Design Statistics
+
+================================================================================
+1. EXECUTIVE SUMMARY
+================================================================================
+
+What is this design?
+--------------------
+This is a complete Error Correction Code (ECC) engine for HBM (High Bandwidth
+Memory) that can:
+- DETECT all single-symbol errors and double-bit errors
+- CORRECT single-symbol errors (up to 16 bits in one symbol)
+- CORRECT double-bit errors (2 bits in different symbols)
+- Report error severity per JEDEC HBM4 specification
+
+Why is ECC needed for HBM?
+--------------------------
+HBM operates at very high speeds (up to 8+ Gbps per pin) with thousands of
+data bits transferred in parallel. At these speeds and densities:
+- Soft errors from cosmic rays become significant
+- Manufacturing defects may cause bit failures
+- Signal integrity issues can corrupt data
+
+The ECC engine adds redundancy (32 bits of parity per 272 bits of data) to
+detect and correct these errors transparently.
+
+Key Specifications:
+-------------------
+┌────────────────────────────────────────────────────────────────────────────┐
+│ Parameter              │ Value                                             │
+├────────────────────────┼───────────────────────────────────────────────────┤
+│ Code Type              │ RS16(19,17) - Reed-Solomon like                   │
+│ Data Width             │ 272 bits (17 symbols × 16 bits)                   │
+│ Parity Width           │ 32 bits (2 symbols × 16 bits)                     │
+│ Codeword Width         │ 304 bits (19 symbols × 16 bits)                   │
+│ Galois Field           │ GF(2^16)                                          │
+│ Primitive Polynomial   │ x^16 + x^5 + x^3 + x + 1 (0x1002B)               │
+│ Error Correction       │ 1 symbol (any pattern) OR 2 bits (different sym)  │
+│ Error Detection        │ 2+ symbol errors detected as uncorrectable        │
+│ Clock Domains          │ 1 (single clock)                                  │
+│ Reset Type             │ Asynchronous active-low                           │
+└────────────────────────┴───────────────────────────────────────────────────┘
+
+================================================================================
+2. SYSTEM OVERVIEW
+================================================================================
+
+2.1 High-Level Block Diagram
+----------------------------
+
+                              ┌─────────────────────────────────────────┐
+                              │           ECC ENGINE TOP                │
+                              │         (ecc_engine_top.v)              │
+                              │                                         │
+   ┌─────────────┐           │  ┌─────────────┐    ┌─────────────┐    │
+   │             │  wr_data  │  │             │    │             │    │
+   │   MEMORY    │──────────►│  │   ENCODER   │    │   DECODER   │    │
+   │ CONTROLLER  │  272 bits │  │             │    │             │    │
+   │             │           │  └──────┬──────┘    └──────┬──────┘    │
+   │             │◄──────────│─────────┘                  │           │
+   │             │ codeword  │      304 bits              │           │
+   │             │  304 bits │                            │           │
+   │             │           │  ┌─────────────────────────┘           │
+   │             │◄──────────│──┤ rd_data_out (272 bits)              │
+   │             │           │  │ error_detected                      │
+   │             │           │  │ error_corrected                     │
+   │             │           │  │ sev_out[1:0]                        │
+   └─────────────┘           │  └─────────────────────────────────────│
+                              │                                         │
+                              │  ┌─────────────────────────────────┐   │
+                              │  │     TEST MODE LOGIC             │   │
+                              │  │  (JEDEC HBM4 compliant)         │   │
+                              │  └─────────────────────────────────┘   │
+                              └─────────────────────────────────────────┘
+
+2.2 What Each Block Does
+------------------------
+
+ENCODER (ecc_encoder.v):
+  - Takes 272 bits of data
+  - Computes 32 bits of parity (P0, P1)
+  - Outputs 304-bit codeword
+  - Uses 17 GF multipliers in parallel
+
+DECODER (ecc_decoder.v):
+  - Takes 304-bit codeword
+  - Computes syndromes S0 and S1
+  - Locates errors using syndrome analysis
+  - Corrects errors by XORing correction pattern
+  - Outputs corrected 272-bit data + status flags
+
+GF MULTIPLIER (gf_mul_16.v):
+  - Performs multiplication in GF(2^16)
+  - Core building block used throughout
+  - Optimized for power and timing
+
+TEST MODE LOGIC:
+  - Allows error injection for testing
+  - JEDEC HBM4 compliant (MR9 OP2, OP3)
+  - Supports CW0 and CW1 patterns
+
+================================================================================
+3. MATHEMATICAL FOUNDATION
+================================================================================
+
+3.1 Galois Field GF(2^16)
+-------------------------
+
+The design operates in GF(2^16), a finite field with 65,536 elements.
+
+Why GF(2^16)?
+- Each HBM data symbol is 16 bits wide
+- GF(2^16) allows treating each symbol as a single field element
+- Enables powerful algebraic error correction
+
+Primitive Polynomial:
+  p(x) = x^16 + x^5 + x^3 + x + 1
+
+In binary: 0x1002B (with implicit x^16 term)
+
+This polynomial is:
+- Irreducible (cannot be factored)
+- Primitive (generates all non-zero elements)
+
+Field Element Representation:
+  Each element is a 16-bit value representing a polynomial:
+  a = a15·x^15 + a14·x^14 + ... + a1·x + a0
+
+Arithmetic Operations:
+  Addition: XOR (bitwise)
+    a + b = a XOR b
+
+  Multiplication: Polynomial multiplication mod p(x)
+    a × b = (a · b) mod p(x)
+
+3.2 The H-Matrix (Parity Check Matrix)
+--------------------------------------
+
+The code is defined by its parity check matrix H:
+
+        ┌                                                           ┐
+        │  1      1      1    ...    1      1      1      1    0   │
+    H = │                                                           │
+        │  T0     T1     T2   ...   T14    T15    T16     0    1   │
+        └                                                           ┘
+
+Where:
+  - Row 1: All ones (for P0 calculation)
+  - Row 2: T-values for P1 calculation
+  - Ti = α^(n-1-i) where α is primitive element, n=19
+
+T-Value Table:
+┌───────┬─────────────┬────────────────────────────────────────────────────┐
+│ Index │ T-Value     │ Meaning                                            │
+├───────┼─────────────┼────────────────────────────────────────────────────┤
+│ T0    │ 0x00AC      │ α^18 = x^7 + x^5 + x^3 + x^2                       │
+│ T1    │ 0x0056      │ α^17 = x^6 + x^4 + x^2 + x                         │
+│ T2    │ 0x002B      │ α^16 = x^5 + x^3 + x + 1 (= primitive poly mod)    │
+│ T3    │ 0x8000      │ α^15 = x^15                                        │
+│ T4    │ 0x4000      │ α^14 = x^14                                        │
+│ T5    │ 0x2000      │ α^13 = x^13                                        │
+│ T6    │ 0x1000      │ α^12 = x^12                                        │
+│ T7    │ 0x0800      │ α^11 = x^11                                        │
+│ T8    │ 0x0400      │ α^10 = x^10                                        │
+│ T9    │ 0x0200      │ α^9  = x^9                                         │
+│ T10   │ 0x0100      │ α^8  = x^8                                         │
+│ T11   │ 0x0080      │ α^7  = x^7                                         │
+│ T12   │ 0x0040      │ α^6  = x^6                                         │
+│ T13   │ 0x0020      │ α^5  = x^5                                         │
+│ T14   │ 0x0010      │ α^4  = x^4                                         │
+│ T15   │ 0x0008      │ α^3  = x^3                                         │
+│ T16   │ 0x0004      │ α^2  = x^2                                         │
+│ T17   │ 0x0002      │ α^1  = x     (for P0 position)                     │
+│ T18   │ 0x0001      │ α^0  = 1     (for P1 position)                     │
+└───────┴─────────────┴────────────────────────────────────────────────────┘
+
+3.3 Syndrome Calculation
+------------------------
+
+For a received codeword C = [C0, C1, ..., C18], syndromes are:
+
+  S0 = C0 ⊕ C1 ⊕ C2 ⊕ ... ⊕ C18         (XOR of all symbols)
+
+  S1 = T0·C0 ⊕ T1·C1 ⊕ ... ⊕ T18·C18   (weighted sum)
+
+Syndrome Interpretation:
+┌─────────────┬─────────────┬────────────────────────────────────────────┐
+│ S0          │ S1          │ Meaning                                    │
+├─────────────┼─────────────┼────────────────────────────────────────────┤
+│ 0           │ 0           │ No error                                   │
+│ ≠0          │ ≠0          │ Error detected, check if correctable       │
+│ 0           │ ≠0          │ Error in parity only OR multi-symbol error │
+│ ≠0          │ 0           │ Possible error pattern                     │
+└─────────────┴─────────────┴────────────────────────────────────────────┘
+
+3.4 Error Location and Correction
+---------------------------------
+
+Single Symbol Error (SSE):
+  If Ti·S0 ⊕ S1 = 0 for some i, then:
+  - Error is at position i
+  - Error pattern is S0
+  - Correction: Ci_corrected = Ci ⊕ S0
+
+Double Bit Error (DBE):
+  When S0 has Hamming weight = 2 (exactly two 1-bits):
+  - Split S0 into Ej0 and Ej1 (single-bit patterns)
+  - Find positions i0, i1 where Ti0·Ej0 ⊕ Ti1·Ej1 ⊕ S1 = 0
+  - Correct both positions
+
+================================================================================
+4. MODULE HIERARCHY
+================================================================================
+
+4.1 File Structure
+------------------
+
+ECC_1bit/ECC_1bit.srcs/sources_1/new/
+├── ecc_engine_top.v      # Top-level module with test mode
+│   ├── ecc_encoder       # Encoder instance
+│   ├── ecc_decoder       # Decoder instance
+│   └── sev_burst_generator  # JEDEC SEV timing generator
+├── ecc_encoder.v         # RS16(19,17) encoder
+│   └── gf_mul_16_opt_reg # 17 GF multiplier instances
+├── ecc_decoder.v         # RS16(19,17) decoder
+│   └── gf_mul_16_opt_reg # 70+ GF multiplier instances
+│   └── gf_mul_16_opt_comb # Combinational multipliers
+└── gf_mul_16.v           # GF(2^16) multiplier module
+    ├── gf_mul_16_opt     # Parameterized base module
+    ├── gf_mul_16_opt_reg # Registered wrapper
+    └── gf_mul_16_opt_comb # Combinational wrapper
+
+4.2 Instance Count
+------------------
+
+┌─────────────────────────┬─────────────────────────────────────────────────┐
+│ Module                  │ Instances                                       │
+├─────────────────────────┼─────────────────────────────────────────────────┤
+│ ecc_engine_top          │ 1 (top level)                                   │
+│ ecc_encoder             │ 1                                               │
+│ ecc_decoder             │ 1                                               │
+│ sev_burst_generator     │ 1                                               │
+│ gf_mul_16_opt_reg       │ 17 (encoder) + 19 (S1) + 19 (SSE) + 34 (DBE)   │
+│                         │ = 89 total registered multipliers               │
+│ gf_mul_16_opt_comb      │ ~32 (DBE type detection)                        │
+└─────────────────────────┴─────────────────────────────────────────────────┘
+
+================================================================================
+5. GF(2^16) MULTIPLIER (gf_mul_16.v)
+================================================================================
+
+5.1 Purpose
+-----------
+Performs multiplication of two 16-bit values in GF(2^16). This is the
+fundamental building block used throughout the ECC engine.
+
+5.2 Algorithm: Shift-and-Add
+----------------------------
+
+The multiplier uses the classic shift-and-add algorithm adapted for GF(2^16):
+
+For a × b:
+  1. Initialize: result = 0, temp_a = a
+  2. For each bit i of b (0 to 15):
+     a. If b[i] = 1: result = result XOR temp_a
+     b. Shift temp_a left by 1
+     c. If MSB was 1: temp_a = temp_a XOR POLY (reduction)
+  3. Return result
+
+Visual Representation:
+
+  b = [b15, b14, ..., b1, b0]
+       ↓    ↓        ↓   ↓
+      ┌──┐ ┌──┐    ┌──┐ ┌──┐
+      │×?│ │×?│    │×?│ │×?│   (conditional on each bit)
+      └─┬┘ └─┬┘    └─┬┘ └─┬┘
+        │    │      │    │
+        ▼    ▼      ▼    ▼
+       a·2^15 ... a·2^1  a·2^0   (shifted versions of a)
+        │    │      │    │
+        └────┴──────┴────┘
+                │
+                ▼
+           XOR Tree
+                │
+                ▼
+             Result
+
+5.3 Module Interface
+--------------------
+
+module gf_mul_16_opt #(
+    parameter REGISTERED      = 1,    // 0=combinational, 1=registered
+    parameter PIPELINE_STAGES = 0,    // Future: pipeline depth
+    parameter CLOCK_GATING    = 1,    // Enable clock gating
+    parameter OPERAND_ISOLATE = 1     // Gate inputs when invalid
+)(
+    input  wire        clk,
+    input  wire        rst_n,
+    input  wire        valid_in,
+    input  wire [15:0] a,           // First operand
+    input  wire [15:0] b,           // Second operand
+    output wire        valid_out,
+    output wire [15:0] p            // Product: a × b in GF(2^16)
+);
+
+5.4 Implementation Details
+--------------------------
+
+Shift Logic (for each stage i):
+```
+tmp_a[i] = tmp_a[i-1][15] ? (tmp_a[i-1] << 1) ^ POLY 
+                          : (tmp_a[i-1] << 1);
+```
+
+Accumulation Logic:
+```
+partial[i] = b[i] ? partial[i-1] ^ tmp_a[i] 
+                  : partial[i-1];
+```
+
+5.5 Optimization Features
+-------------------------
+
+1. ZERO BYPASS:
+   - If a=0 or b=0, result is immediately 0
+   - Saves power by avoiding unnecessary computation
+
+2. OPERAND ISOLATION:
+   - When valid_in=0, inputs are gated to 0
+   - Prevents unnecessary switching in idle cycles
+
+3. CLOCK GATING:
+   - Output register only updates when valid_in=1
+   - Reduces dynamic power
+
+4. BALANCED XOR TREE:
+   - 4-level tree structure instead of linear chain
+   - Reduces critical path depth
+
+5.6 Wrapper Modules
+-------------------
+
+gf_mul_16_opt_comb: Combinational (no clock)
+  - Used where latency cannot be tolerated
+  - Direct combinational path from inputs to output
+
+gf_mul_16_opt_reg: Registered (1 cycle latency)
+  - Used in main datapath
+  - Includes all power optimizations
+
+================================================================================
+6. ECC ENCODER (ecc_encoder.v)
+================================================================================
+
+6.1 Purpose
+-----------
+Encodes 272 bits of data into a 304-bit codeword by computing and appending
+two 16-bit parity symbols.
+
+6.2 Interface
+-------------
+
+module ecc_encoder (
+    input  wire         clk,
+    input  wire         rst_n,
+    input  wire         valid_in,
+    input  wire [271:0] data_in,       // 17 data symbols
+    output reg          valid_out,
+    output reg  [303:0] codeword_out   // 19 symbols (data + parity)
+);
+
+6.3 Data Organization
+---------------------
+
+Input Data (272 bits = 17 symbols × 16 bits):
+
+  data_in[271:0] = [D0, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, D16]
+                    ↑                                                                      ↑
+                  MSB                                                                    LSB
+                  [271:256]                                                             [15:0]
+
+Output Codeword (304 bits = 19 symbols × 16 bits):
+
+  codeword_out[303:0] = [D0, D1, ..., D16, P0, P1]
+                                          ↑   ↑
+                                       [31:16] [15:0]
+
+6.4 Parity Calculation
+----------------------
+
+P0 (Simple XOR Parity):
+  P0 = D0 ⊕ D1 ⊕ D2 ⊕ ... ⊕ D16
+
+  This is the XOR of all data symbols. If any symbol has an error,
+  P0 will detect it (but not locate it alone).
+
+P1 (Weighted Parity):
+  P1 = T0·D0 ⊕ T1·D1 ⊕ T2·D2 ⊕ ... ⊕ T16·D16
+
+  Each data symbol is multiplied by its corresponding T-value,
+  then all products are XORed together.
+
+6.5 Encoder Architecture
+------------------------
+
+                           data_in[271:0]
+                                 │
+          ┌──────────────────────┼──────────────────────┐
+          │                      │                      │
+          ▼                      ▼                      ▼
+      ┌───────┐              ┌───────┐              ┌───────┐
+      │  D0   │              │  D8   │              │  D16  │
+      │[271:  │              │[143:  │              │ [15:  │
+      │ 256]  │              │ 128]  │              │  0]   │
+      └───┬───┘              └───┬───┘              └───┬───┘
+          │                      │                      │
+    ┌─────┴─────┐          ┌─────┴─────┐          ┌─────┴─────┐
+    │           │          │           │          │           │
+    ▼           ▼          ▼           ▼          ▼           ▼
+┌───────┐  ┌────────┐  ┌───────┐  ┌────────┐  ┌───────┐  ┌────────┐
+│       │  │GF_MUL  │  │       │  │GF_MUL  │  │       │  │GF_MUL  │
+│  XOR  │  │ T0×D0  │  │  XOR  │  │ T8×D8  │  │  XOR  │  │T16×D16 │
+│       │  │        │  │       │  │        │  │       │  │        │
+└───┬───┘  └────┬───┘  └───┬───┘  └────┬───┘  └───┬───┘  └────┬───┘
+    │           │          │           │          │           │
+    └─────┬─────┘          └─────┬─────┘          └─────┬─────┘
+          │                      │                      │
+          │    ┌─────────────────┼─────────────────┐    │
+          │    │                 │                 │    │
+          ▼    ▼                 ▼                 ▼    ▼
+      ┌────────────┐        ┌────────────┐        ┌────────────┐
+      │  17-input  │        │  17-input  │        │  17-input  │
+      │  XOR Tree  │        │  XOR Tree  │        │  XOR Tree  │
+      │   (P0)     │        │   (P1)     │        │   (cont)   │
+      └─────┬──────┘        └─────┬──────┘        └────────────┘
+            │                     │
+            ▼                     ▼
+          ┌───┐                 ┌───┐
+          │P0 │                 │P1 │
+          └─┬─┘                 └─┬─┘
+            │                     │
+            └──────────┬──────────┘
+                       │
+                       ▼
+              ┌────────────────┐
+              │  Output Reg    │
+              │  {data, P0, P1}│
+              └────────────────┘
+                       │
+                       ▼
+              codeword_out[303:0]
+
+6.6 Timing
+----------
+
+Latency: 2 clock cycles
+  - Cycle 1: GF multiplications (Ti × Di) - registered in multipliers
+  - Cycle 2: XOR trees and output registration
+
+Throughput: 1 codeword per cycle (after initial latency)
+
+================================================================================
+7. ECC DECODER (ecc_decoder.v)
+================================================================================
+
+7.1 Purpose
+-----------
+Decodes a 304-bit codeword, detects errors, corrects correctable errors,
+and outputs the corrected 272-bit data along with status flags.
+
+7.2 Interface
+-------------
+
+module ecc_decoder (
+    input  wire         clk,
+    input  wire         rst_n,
+    input  wire         valid_in,
+    input  wire [303:0] codeword_in,   // 19 symbols
+    output reg          valid_out,
+    output reg  [271:0] data_out,      // Corrected data (17 symbols)
+    output reg          error_detected,
+    output reg          error_corrected,
+    output reg          multi_bit_error,   // CEm indicator
+    output reg          uncorrectable
+);
+
+7.3 Decoder Architecture Overview
+---------------------------------
+
+The decoder consists of five major stages:
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         ECC DECODER ARCHITECTURE                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  codeword_in[303:0]                                                         │
+│         │                                                                   │
+│         ▼                                                                   │
+│  ┌─────────────────────────────────────────────────────────────┐           │
+│  │              STAGE 1: SYNDROME GENERATOR                     │           │
+│  │                                                              │           │
+│  │  S0 = C0 ⊕ C1 ⊕ ... ⊕ C18                                  │           │
+│  │  S1 = T0·C0 ⊕ T1·C1 ⊕ ... ⊕ T18·C18                        │           │
+│  │                                                              │           │
+│  │  Also: s0_weight = popcount(S0)                             │           │
+│  └──────────────────────┬──────────────────────────────────────┘           │
+│                         │                                                   │
+│         ┌───────────────┼───────────────┐                                  │
+│         ▼               ▼               ▼                                  │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐                          │
+│  │  STAGE 2:   │ │  STAGE 3:   │ │  STAGE 3:   │                          │
+│  │    SSE      │ │    DBE      │ │    DBE      │                          │
+│  │  LOCATOR    │ │  weight=1   │ │  weight=2   │                          │
+│  │             │ │  LOCATOR    │ │  LOCATOR    │                          │
+│  └──────┬──────┘ └──────┬──────┘ └──────┬──────┘                          │
+│         │               │               │                                   │
+│         └───────────────┼───────────────┘                                  │
+│                         ▼                                                   │
+│  ┌─────────────────────────────────────────────────────────────┐           │
+│  │              STAGE 4: DECISION LOGIC                         │           │
+│  │                                                              │           │
+│  │  Priority: SSE > DBE_w1 > DBE_w2 > Uncorrectable            │           │
+│  │                                                              │           │
+│  │  Determines: error_type, locations, correction_patterns      │           │
+│  └──────────────────────┬──────────────────────────────────────┘           │
+│                         │                                                   │
+│                         ▼                                                   │
+│  ┌─────────────────────────────────────────────────────────────┐           │
+│  │              STAGE 5: ERROR CORRECTOR                        │           │
+│  │                                                              │           │
+│  │  corrected_symbol[i] = received_symbol[i] ⊕ error_pattern   │           │
+│  └──────────────────────┬──────────────────────────────────────┘           │
+│                         │                                                   │
+│                         ▼                                                   │
+│               data_out[271:0] + status flags                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+7.4 Stage 1: Syndrome Generator
+-------------------------------
+
+S0 Calculation:
+  Simple XOR of all 19 codeword symbols
+  - Requires: 19-input XOR tree
+  - Latency: Combinational
+
+S1 Calculation:
+  - 19 GF multipliers compute Ti × Ci in parallel
+  - 19-input XOR tree combines products
+  - Latency: 1 cycle (registered multipliers)
+
+S0 Weight Calculation:
+  - Population count (number of 1s) in S0
+  - Used to classify error type
+  - weight=0: No error in data, possible parity-only error
+  - weight=1: Single bit error, one symbol affected
+  - weight=2: Double bit error, two symbols affected
+  - weight>2: Single symbol error (multi-bit within one symbol)
+
+7.5 Stage 2: SSE Locator (Single Symbol Error)
+----------------------------------------------
+
+For single symbol errors, the error location satisfies:
+  Ti × S0 = S1
+
+Algorithm:
+  1. Compute Ti × S0 for all 19 positions (parallel GF multipliers)
+  2. Check if (Ti × S0) ⊕ S1 = 0 for each position
+  3. If match found, error is at position i, pattern is S0
+
+Implementation:
+```
+  sse_check[i] = T_S0[i] ^ S1;      // For each position
+  sse_match[i] = (sse_check[i] == 16'h0);
+  sse_found = |sse_match;           // OR of all matches
+```
+
+7.6 Stage 3: DBE Locator (Double Bit Error)
+-------------------------------------------
+
+When S0 weight = 2 (exactly two 1-bits), we have a double-bit error
+in different symbols.
+
+Step 1: Split S0 into two single-bit patterns
+```
+  Find first '1' bit: Ej0 = (1 << position_of_first_1)
+  Second pattern: Ej1 = S0 ^ Ej0
+```
+
+Step 2: Search for valid (i0, i1) pair
+  Type 1 (both errors in data symbols):
+    Ti0 × Ej0 ⊕ Ti1 × Ej1 ⊕ S1 = 0
+
+  Type 2 (one error in data, one in parity P0):
+    Ti0 × Ej0 ⊕ S1 = 0  (and other error is in P0)
+
+Step 3: Parallel matching
+  - Generate all (17 × 16) / 2 = 136 pair combinations
+  - Check both (Ej0, Ej1) and (Ej1, Ej0) assignments
+  - Use priority encoder to select first match
+
+7.7 Stage 4: Decision Logic
+---------------------------
+
+Priority-based error classification:
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Priority │ Condition                    │ Action                            │
+├──────────┼──────────────────────────────┼───────────────────────────────────┤
+│ 1 (High) │ S0=0 AND S1=0               │ No error, pass through            │
+│ 2        │ SSE found                    │ Correct single symbol             │
+│ 3        │ DBE w=1 found               │ Correct single bit                │
+│ 4        │ DBE w=2 found               │ Correct two bits                  │
+│ 5 (Low)  │ None of above               │ Mark as uncorrectable             │
+└──────────┴──────────────────────────────┴───────────────────────────────────┘
+
+7.8 Stage 5: Error Corrector
+----------------------------
+
+Simple XOR correction:
+```
+  For each data symbol i (0 to 16):
+    if (i == error_location)
+      data_out[i] = codeword_in[i] ^ error_pattern;
+    else
+      data_out[i] = codeword_in[i];
+```
+
+For double-bit errors:
+```
+  data_out[loc0] = codeword_in[loc0] ^ err_pattern0;
+  data_out[loc1] = codeword_in[loc1] ^ err_pattern1;
+```
+
+================================================================================
+8. ECC ENGINE TOP (ecc_engine_top.v)
+================================================================================
+
+8.1 Purpose
+-----------
+Top-level integration module that:
+- Connects encoder and decoder
+- Implements JEDEC HBM4 test mode
+- Generates JEDEC-compliant severity output
+- Provides system interface
+
+8.2 Interface
+-------------
+
+module ecc_engine_top (
+    // Clock and Reset
+    input  wire         clk,
+    input  wire         rst_n,
+    
+    // Test Mode Control
+    input  wire         test_mode_en,     // MR9 OP2
+    input  wire         cw_sel,           // MR9 OP3: 0=CW0, 1=CW1
+    
+    // Write Path
+    input  wire         wr_valid,
+    input  wire [271:0] wr_data,
+    output wire         wr_ready,
+    
+    // Read Path
+    input  wire         rd_valid,
+    input  wire [303:0] rd_codeword,
+    input  wire         burst_start,
+    output reg          rd_out_valid,
+    output reg  [271:0] rd_data_out,
+    output wire [1:0]   sev_out,
+    
+    // Encoder Output
+    output wire         enc_valid_out,
+    output wire [303:0] enc_codeword_out,
+    
+    // Status
+    output reg          error_detected,
+    output reg          error_corrected,
+    output reg          uncorrectable
+);
+
+8.3 Operating Modes
+-------------------
+
+Mode 1: NORMAL OPERATION (test_mode_en = 0)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Write Path:                                                                │
+│    wr_data[271:0] ──► ENCODER ──► enc_codeword_out[303:0] ──► Memory       │
+│                                                                             │
+│  Read Path:                                                                 │
+│    Memory ──► rd_codeword[303:0] ──► DECODER ──► rd_data_out[271:0]        │
+│                                            └──► error flags + SEV          │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Mode 2/3: TEST MODE (test_mode_en = 1)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  Write Phase (Error Injection):                                             │
+│    wr_data ──► Error Pattern ──► test_codeword register                    │
+│                    │                                                        │
+│                    └── CW0: '1' = error bit                                │
+│                        CW1: '0' = error bit                                │
+│                                                                             │
+│  Read Phase (Verification):                                                 │
+│    test_codeword ──► DECODER ──► rd_data_out + SEV                        │
+│                                                                             │
+│  Purpose: Verify decoder can detect/correct injected errors                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+8.4 Severity Encoding
+---------------------
+
+The design outputs JEDEC-compliant severity signals:
+
+┌─────────────┬──────────────────────────────────────────────────────────────┐
+│ SEV[1:0]    │ Meaning                                                      │
+├─────────────┼──────────────────────────────────────────────────────────────┤
+│ 2'b00       │ NE  - No Error                                               │
+│ 2'b01       │ CEs - Corrected Error, single-bit                            │
+│ 2'b11       │ CEm - Corrected Error, multi-bit (within symbol)             │
+│ 2'b10       │ UE  - Uncorrectable Error                                    │
+└─────────────┴──────────────────────────────────────────────────────────────┘
+
+8.5 Severity Burst Generator
+----------------------------
+
+Per JEDEC HBM4 specification, SEV signals follow BL8 burst timing:
+
+  Burst Position:  0    1    2    3    4    5    6    7
+  SEV Output:     00   00   00   00   XX   XX   XX   XX
+                  └────────────────┘   └────────────────┘
+                     Inactive               Active
+                    (always 00)        (actual severity)
+
+Implementation:
+```
+  module sev_burst_generator (
+      input  wire       clk,
+      input  wire       rst_n,
+      input  wire       burst_start,
+      input  wire [1:0] severity_in,
+      output reg  [1:0] sev_pins
+  );
+  
+  // Counter tracks burst position 0-7
+  // SEV outputs actual value only at positions 4-7
+```
+
+================================================================================
+9. COMPLETE SYSTEM TOPOLOGY
+================================================================================
+
+9.1 Full System Block Diagram
+-----------------------------
+
+┌──────────────────────────────────────────────────────────────────────────────────────┐
+│                              ECC_ENGINE_TOP                                          │
+│                                                                                      │
+│  ┌────────────────────────────────────────────────────────────────────────────────┐ │
+│  │                           CONTROL LOGIC                                        │ │
+│  │                                                                                │ │
+│  │   test_mode_en ────┬─────────────────────────────────────────────────────┐    │ │
+│  │                    │                                                     │    │ │
+│  │   cw_sel ─────────┬┼──► error_pattern = cw_sel ? ~wr_data : wr_data     │    │ │
+│  │                   ││                                                     │    │ │
+│  │                   ││    ┌─────────────────────────┐                      │    │ │
+│  │                   │└───►│  test_codeword_reg      │◄── injected_codeword │    │ │
+│  │                   │     │  (304 bits, clk gated)  │                      │    │ │
+│  │                   │     └───────────┬─────────────┘                      │    │ │
+│  │                   │                 │                                    │    │ │
+│  │                   │                 ▼                                    │    │ │
+│  │                   │     ┌─────────────────────────┐                      │    │ │
+│  │                   └────►│  dec_codeword_in MUX    │◄── rd_codeword       │    │ │
+│  │                         │  (test vs normal)       │                      │    │ │
+│  │                         └───────────┬─────────────┘                      │    │ │
+│  └─────────────────────────────────────┼────────────────────────────────────┘    │
+│                                        │                                          │
+│  ┌─────────────────────────────────────┼────────────────────────────────────────┐│
+│  │                                     │                                        ││
+│  │   wr_data ──────────────────────────┼──┐                                    ││
+│  │   [271:0]                           │  │                                    ││
+│  │                                     │  │                                    ││
+│  │  ┌──────────────────────────────┐   │  │   ┌──────────────────────────────┐ ││
+│  │  │                              │   │  │   │                              │ ││
+│  │  │       ECC_ENCODER            │   │  │   │       ECC_DECODER            │ ││
+│  │  │                              │   │  │   │                              │ ││
+│  │  │  ┌────────────────────────┐  │   │  │   │  ┌────────────────────────┐  │ ││
+│  │  │  │  17× GF Multipliers   │  │   │  │   │  │  19× GF Multipliers   │  │ ││
+│  │  │  │  (T0×D0 ... T16×D16)  │  │   │  │   │  │  (Syndrome S1)        │  │ ││
+│  │  │  └──────────┬─────────────┘  │   │  │   │  └──────────┬─────────────┘  │ ││
+│  │  │             │                │   │  │   │             │                │ ││
+│  │  │  ┌──────────▼─────────────┐  │   │  │   │  ┌──────────▼─────────────┐  │ ││
+│  │  │  │  XOR Trees (P0, P1)   │  │   │  │   │  │  19× GF Multipliers   │  │ ││
+│  │  │  └──────────┬─────────────┘  │   │  │   │  │  (SSE: Ti×S0)        │  │ ││
+│  │  │             │                │   │  │   │  └──────────┬─────────────┘  │ ││
+│  │  │             ▼                │   │  │   │             │                │ ││
+│  │  │     codeword_out[303:0]     │   │  │   │  ┌──────────▼─────────────┐  │ ││
+│  │  │                              │   │  │   │  │  34× GF Multipliers   │  │ ││
+│  │  └──────────────┬───────────────┘   │  │   │  │  (DBE: Ti×Ej0/Ej1)   │  │ ││
+│  │                 │                   │  │   │  └──────────┬─────────────┘  │ ││
+│  │                 │                   │  │   │             │                │ ││
+│  │                 │                   │  │   │  ┌──────────▼─────────────┐  │ ││
+│  │                 │                   │  └──►│  │  Decision + Correction │  │ ││
+│  │                 │                   │      │  └──────────┬─────────────┘  │ ││
+│  │                 │                   │      │             │                │ ││
+│  │                 │                   │      │             ▼                │ ││
+│  │                 │                   │      │      data_out[271:0]        │ ││
+│  │                 │                   │      │      error_detected          │ ││
+│  │                 │                   │      │      error_corrected         │ ││
+│  │                 │                   │      │      multi_bit_error         │ ││
+│  │                 │                   │      │      uncorrectable           │ ││
+│  │                 │                   │      └──────────────┬───────────────┘ ││
+│  │                 │                   │                     │                 ││
+│  │                 ▼                   │                     │                 ││
+│  │          enc_codeword_out          │                     │                 ││
+│  │                                     │                     │                 ││
+│  └─────────────────────────────────────┼─────────────────────┼─────────────────┘│
+│                                        │                     │                  │
+│  ┌─────────────────────────────────────┼─────────────────────┼─────────────────┐│
+│  │                                     │                     │                 ││
+│  │             SEVERITY ENCODER        │                     │                 ││
+│  │                                     │                     │                 ││
+│  │   error_detected ───────────────────┼─────────────────────┤                 ││
+│  │   error_corrected ──────────────────┼─────────────────────┤                 ││
+│  │   multi_bit_error ──────────────────┼─────────────────────┤                 ││
+│  │   uncorrectable ────────────────────┼─────────────────────┘                 ││
+│  │                                     │                                       ││
+│  │              ┌──────────────────────▼───────────────────────┐               ││
+│  │              │                                              │               ││
+│  │              │  if (!error_detected)      severity = 00     │               ││
+│  │              │  else if (uncorrectable)   severity = 10     │               ││
+│  │              │  else if (multi_bit)       severity = 11     │               ││
+│  │              │  else                      severity = 01     │               ││
+│  │              │                                              │               ││
+│  │              └──────────────────────┬───────────────────────┘               ││
+│  │                                     │                                       ││
+│  │              ┌──────────────────────▼───────────────────────┐               ││
+│  │              │                                              │               ││
+│  │              │         SEV_BURST_GENERATOR                  │               ││
+│  │              │                                              │               ││
+│  │              │   burst_start ──► Latch severity            │               ││
+│  │              │   burst_cnt ──► 0-7 counter                 │               ││
+│  │              │   sev_out = (cnt>=4) ? severity : 00        │               ││
+│  │              │                                              │               ││
+│  │              └──────────────────────┬───────────────────────┘               ││
+│  │                                     │                                       ││
+│  └─────────────────────────────────────┼───────────────────────────────────────┘│
+│                                        │                                        │
+│                                        ▼                                        │
+│                                   sev_out[1:0]                                  │
+│                                                                                 │
+│  ┌──────────────────────────────────────────────────────────────────────────┐  │
+│  │                        OUTPUT REGISTERS (Clock Gated)                    │  │
+│  │                                                                          │  │
+│  │   rd_out_valid ◄── dec_valid_out                                        │  │
+│  │   rd_data_out  ◄── dec_data_out (only when valid)                       │  │
+│  │   error_detected ◄── dec_error_detected (only when valid)               │  │
+│  │   error_corrected ◄── dec_error_corrected (only when valid)             │  │
+│  │   uncorrectable ◄── dec_uncorrectable (only when valid)                 │  │
+│  │                                                                          │  │
+│  └──────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+10. DATA FLOW DIAGRAMS
+================================================================================
+
+10.1 Normal Write Operation
+---------------------------
+
+Time ──────────────────────────────────────────────────────────────────────────►
+
+Cycle 0:           Cycle 1:           Cycle 2:           Cycle 3:
+┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐
+│ wr_data     │   │ GF Multiply │   │ XOR + Reg   │   │ To Memory   │
+│ arrives     │──►│ Ti × Di     │──►│ P0, P1      │──►│ codeword    │
+│             │   │ (parallel)  │   │ assemble    │   │ output      │
+└─────────────┘   └─────────────┘   └─────────────┘   └─────────────┘
+     │                  │                  │                  │
+  valid_in=1         computing          valid_out=1      enc_codeword_out
+                                                            valid
+
+10.2 Normal Read Operation
+--------------------------
+
+Time ──────────────────────────────────────────────────────────────────────────►
+
+Cycle 0:           Cycle 1:           Cycle 2:           Cycle 3+:
+┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────┐
+│ rd_codeword │   │ Syndrome    │   │ Error       │   │ Corrected   │
+│ arrives     │──►│ compute     │──►│ locate &    │──►│ data out    │
+│             │   │ S0, S1      │   │ correct     │   │ + status    │
+└─────────────┘   └─────────────┘   └─────────────┘   └─────────────┘
+     │                  │                  │                  │
+  rd_valid=1      19× GF_MUL         SSE/DBE logic      rd_out_valid=1
+                  + XOR trees        + correction       + error flags
+
+10.3 Test Mode Operation
+------------------------
+
+Phase 1: Error Injection (Write)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  wr_data (error pattern) ──► CW0/CW1 convert ──► test_codeword_reg         │
+│                                    │                                        │
+│                              (cw_sel=0: use directly)                       │
+│                              (cw_sel=1: invert)                             │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Phase 2: Verification (Read)
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  test_codeword_reg ──► DECODER ──► rd_data_out (should be corrected)       │
+│                              │                                              │
+│                              └──► sev_out (indicates error type)           │
+│                                                                             │
+│  Expected: If injected error is correctable, sev_out = 01 or 11            │
+│            If injected error is uncorrectable, sev_out = 10                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+11. OPERATING MODES
+================================================================================
+
+11.1 Mode Summary
+-----------------
+
+┌─────────────────┬───────────────┬───────────────┬────────────────────────────┐
+│ Mode            │ test_mode_en  │ cw_sel        │ Description                │
+├─────────────────┼───────────────┼───────────────┼────────────────────────────┤
+│ Normal          │ 0             │ X (don't care)│ Standard encode/decode     │
+│ Test CW0        │ 1             │ 0             │ '1' in pattern = error bit │
+│ Test CW1        │ 1             │ 1             │ '0' in pattern = error bit │
+└─────────────────┴───────────────┴───────────────┴────────────────────────────┘
+
+11.2 Normal Mode Details
+------------------------
+
+Write Path:
+  1. Memory controller provides wr_data[271:0]
+  2. Encoder computes P0, P1
+  3. enc_codeword_out[303:0] = {wr_data, P0, P1}
+  4. Codeword written to HBM
+
+Read Path:
+  1. Codeword read from HBM as rd_codeword[303:0]
+  2. Decoder computes syndromes
+  3. Decoder locates and corrects errors
+  4. rd_data_out[271:0] = corrected data
+  5. Status flags indicate error type
+
+11.3 Test Mode Details
+----------------------
+
+Purpose: Verify ECC engine functionality per JEDEC HBM4 spec
+
+CW0 (cw_sel=0):
+  - '1' bit in wr_data means "inject error at this bit"
+  - Example: wr_data = 272'h0000...0001 injects error in bit 0
+
+CW1 (cw_sel=1):
+  - '0' bit in wr_data means "inject error at this bit"
+  - Example: wr_data = 272'hFFFF...FFFE injects error in bit 0
+  - Useful for testing "all bits except these"
+
+Test Procedure:
+  1. Set test_mode_en = 1
+  2. Set cw_sel = 0 or 1
+  3. Write error pattern (wr_valid + wr_data)
+  4. Read back (rd_valid)
+  5. Check rd_data_out and sev_out
+
+================================================================================
+12. JEDEC COMPLIANCE
+================================================================================
+
+12.1 JEDEC HBM4 Specification References
+----------------------------------------
+
+- JEDEC Standard No. 270-4: High Bandwidth Memory (HBM4)
+- Section 6.9.6: ECC Engine Test Mode
+
+12.2 Mode Register Settings
+---------------------------
+
+MR9 OP2 (test_mode_en):
+  - 0 = Normal operation
+  - 1 = ECC test mode enabled
+
+MR9 OP3 (cw_sel):
+  - 0 = CW0 pattern interpretation
+  - 1 = CW1 pattern interpretation
+
+12.3 Severity Signal Timing
+---------------------------
+
+Per JEDEC BL8 burst timing:
+
+  Burst Position:   0     1     2     3     4     5     6     7
+                  ─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────
+  DQ Data:        │ D0  │ D1  │ D2  │ D3  │ D4  │ D5  │ D6  │ D7  │
+                  ─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────
+  SEV[1:0]:       │ 00  │ 00  │ 00  │ 00  │ SEV │ SEV │ SEV │ SEV │
+                  └─────────────────────┘ └─────────────────────────┘
+                       Inactive                    Active
+
+================================================================================
+13. CLOCK AND RESET ARCHITECTURE
+================================================================================
+
+13.1 Clock Domain
+-----------------
+
+Single clock domain: clk
+  - All registers clocked by same clock
+  - No clock domain crossing (CDC)
+  - Simplifies timing analysis
+
+13.2 Reset Architecture
+-----------------------
+
+Reset: rst_n (active-low, asynchronous)
+  - Asynchronous assert (immediate effect)
+  - Synchronous deassert (assumed at system level)
+  - All registers have async reset
+
+Reset Behavior:
+```
+  always @(posedge clk or negedge rst_n) begin
+      if (!rst_n) begin
+          register <= RESET_VALUE;
+      end else begin
+          register <= next_value;
+      end
+  end
+```
+
+================================================================================
+14. POWER OPTIMIZATION FEATURES
+================================================================================
+
+14.1 Clock Gating
+-----------------
+
+Implemented clock gating signals:
+
+1. test_cw_clk_en = test_mode_en & wr_valid
+   - test_codeword register only updates in test mode during write
+
+2. output_reg_clk_en = dec_valid_out
+   - Output registers only update when valid output
+
+3. burst_active (in sev_burst_generator)
+   - SEV generator only active during burst
+
+14.2 Operand Isolation
+----------------------
+
+In gf_mul_16_opt:
+  - Inputs gated to 0 when valid_in = 0
+  - Prevents unnecessary switching in multiplier logic
+
+14.3 Zero Bypass
+----------------
+
+In gf_mul_16_opt:
+  - If a=0 or b=0, result immediately 0
+  - Skips computation, saves dynamic power
+
+14.4 Reference Encoder Elimination
+----------------------------------
+
+Original design had a reference encoder for test mode.
+Optimization: Encoding of all-zeros = all-zeros (mathematically proven)
+  - Eliminated ref_encoder instance
+  - Saves ~50% encoder area and power
+
+================================================================================
+15. DESIGN STATISTICS
+================================================================================
+
+15.1 Resource Utilization (Estimated)
+-------------------------------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Resource                  │ Count           │ Notes                        │
+├───────────────────────────┼─────────────────┼──────────────────────────────┤
+│ GF(2^16) Multipliers      │ ~121            │ 89 registered + 32 comb      │
+│ 16-bit Registers          │ ~400            │ Data path + control          │
+│ 16-bit XOR Gates          │ ~200            │ Syndrome, parity, correction │
+│ Comparators (16-bit)      │ ~50             │ SSE/DBE matching             │
+│ Priority Encoders         │ 4               │ Location encoding            │
+└───────────────────────────┴─────────────────┴──────────────────────────────┘
+
+15.2 Timing Characteristics
+---------------------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Path                      │ Latency         │ Notes                        │
+├───────────────────────────┼─────────────────┼──────────────────────────────┤
+│ Encode (wr → codeword)    │ 2 cycles        │ GF mul + output reg          │
+│ Decode (rd → data_out)    │ 3-4 cycles      │ Syndrome + locate + correct  │
+│ Severity output           │ +4 beats        │ JEDEC BL8 timing             │
+└───────────────────────────┴─────────────────┴──────────────────────────────┘
+
+15.3 File Summary
+-----------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ File                      │ Lines           │ Description                  │
+├───────────────────────────┼─────────────────┼──────────────────────────────┤
+│ ecc_engine_top.v          │ 302             │ Top-level + test mode        │
+│ ecc_encoder.v             │ 142             │ RS16(19,17) encoder          │
+│ ecc_decoder.v             │ 824             │ RS16(19,17) decoder          │
+│ gf_mul_16.v               │ 249             │ GF multiplier + wrappers     │
+├───────────────────────────┼─────────────────┼──────────────────────────────┤
+│ Total                     │ 1,517           │ Complete RTL                 │
+└───────────────────────────┴─────────────────┴──────────────────────────────┘
+
+================================================================================
+END OF DESIGN EXPLANATION
+================================================================================
+
+For questions or clarifications, refer to:
+- DBB-ECC paper: "Random Double Bit and Burst Error Correction Code for HBM3"
+- JEDEC Standard No. 270-4: High Bandwidth Memory (HBM4)
+- Source code comments in individual files

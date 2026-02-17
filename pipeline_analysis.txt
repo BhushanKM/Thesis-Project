@@ -1,0 +1,929 @@
+================================================================================
+PIPELINE IMPLEMENTATION ANALYSIS FOR GF(2^16) MULTIPLIER
+================================================================================
+Author: Bhushan Kiran Munoli
+Project: ECC Implementation for HBM4
+Date: 2026
+
+================================================================================
+1. INTRODUCTION
+================================================================================
+
+Pipelining is a fundamental digital design technique that inserts register
+stages into combinational logic paths to reduce critical path delay and
+enable higher clock frequencies. This analysis examines how pipeline depth
+affects key design metrics for the GF(2^16) multiplier used in HBM ECC.
+
+GF(2^16) Multiplier Characteristics:
+- 16-bit × 16-bit multiplication in Galois Field
+- Primitive polynomial: x^16 + x^5 + x^3 + x + 1 (0x1002B)
+- Involves 16 shift-and-add iterations with modular reduction
+- Combinational depth: ~30 XOR gate levels
+
+================================================================================
+2. WHY PIPELINE IS NEEDED
+================================================================================
+
+2.1 The Fundamental Problem
+---------------------------
+
+Modern high-bandwidth memory (HBM3/HBM4) operates at frequencies of 400-800 MHz
+and beyond. The GF(2^16) multiplier, which is the core building block of the
+ECC encoder and decoder, has a combinational delay that exceeds the clock
+period at these frequencies.
+
+Problem Statement:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│   GF Multiplier Combinational Delay: ~3.6 ns (65nm technology)              │
+│   HBM4 Clock Period @ 800 MHz:       1.25 ns                                │
+│                                                                             │
+│   RESULT: Timing violation! (3.6 ns > 1.25 ns)                              │
+│                                                                             │
+│   Without pipeline, the design CANNOT meet timing closure at 800 MHz.       │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+2.2 Why Pipeline Solves This
+----------------------------
+
+Pipeline breaks the long combinational path into shorter segments, each
+completing within one clock cycle:
+
+Before Pipeline (FAILS at 800 MHz):
+┌─────────────────────────────────────────────────────────────────┐
+│ INPUT ──────────────── 3.6 ns path ──────────────────► OUTPUT   │
+│                        (TOO LONG!)                              │
+└─────────────────────────────────────────────────────────────────┘
+
+After 2-Stage Pipeline (WORKS at 800 MHz):
+┌──────────────────────────────┐    ┌──────────────────────────────┐
+│ INPUT ─── 1.2 ns path ───► REG ──► REG ─── 1.2 ns path ───► OUT │
+│           (Stage 1)          │    │           (Stage 2)          │
+└──────────────────────────────┘    └──────────────────────────────┘
+
+2.3 Key Motivations for Pipeline
+--------------------------------
+
+1. TIMING CLOSURE
+   - Meet setup time requirements at target frequency
+   - Provide timing margin for process/voltage/temperature (PVT) variations
+   - Enable synthesis tools to achieve timing closure
+
+2. FREQUENCY SCALING
+   - Support multiple frequency targets with same RTL
+   - Scale from FPGA prototyping (100 MHz) to ASIC production (800+ MHz)
+   - Future-proof design for faster memory generations
+
+3. SYSTEM INTEGRATION
+   - Match ECC engine frequency to memory controller
+   - Avoid clock domain crossings (CDC) complexity
+   - Simplify system timing budgets
+
+4. MANUFACTURING YIELD
+   - Timing margin improves yield at advanced nodes
+   - Compensate for process variations
+   - Enable voltage scaling for power optimization
+
+================================================================================
+3. ADVANTAGES OF PIPELINE
+================================================================================
+
+3.1 Performance Advantages
+--------------------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ADVANTAGE 1: Higher Operating Frequency                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Without Pipeline:  f_max = 1 / T_comb = 1 / 3.6ns = 278 MHz                │
+│ With 2-Stage:      f_max = 1 / (T_comb/3) = 1 / 1.2ns = 833 MHz            │
+│                                                                             │
+│ Result: 3× frequency improvement!                                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ADVANTAGE 2: Sustained Throughput                                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Pipeline maintains Initiation Interval (II) = 1                             │
+│ After initial fill, one result is produced every clock cycle                │
+│                                                                             │
+│ Throughput = f_clk × 1 result/cycle                                         │
+│                                                                             │
+│ Example @ 800 MHz: 800 million GF multiplications per second                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ADVANTAGE 3: Parallel Processing                                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Multiple operations execute simultaneously in different stages:             │
+│                                                                             │
+│ Cycle 1: [Op A - Stage 1] [  Empty   ] [  Empty   ]                        │
+│ Cycle 2: [Op B - Stage 1] [Op A - S2 ] [  Empty   ]                        │
+│ Cycle 3: [Op C - Stage 1] [Op B - S2 ] [Op A - S3 ] ← A completes          │
+│ Cycle 4: [Op D - Stage 1] [Op C - S2 ] [Op B - S3 ] ← B completes          │
+│                                                                             │
+│ After fill: 3 operations in flight simultaneously                           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+3.2 Design Advantages
+---------------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ADVANTAGE 4: Timing Margin                                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Shorter paths provide margin for:                                           │
+│ - Clock uncertainty (jitter, skew)                                          │
+│ - Process variations (fast/slow corners)                                    │
+│ - Voltage variations (IR drop)                                              │
+│ - Temperature variations (hot spots)                                        │
+│                                                                             │
+│ Typical margin requirement: 10-20% of clock period                          │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ADVANTAGE 5: Simplified Synthesis                                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Shorter combinational paths are easier for synthesis tools to:              │
+│ - Optimize for area/power                                                   │
+│ - Meet timing constraints                                                   │
+│ - Balance path delays                                                       │
+│ - Insert buffers efficiently                                                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ ADVANTAGE 6: Voltage Scaling                                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ With timing margin from pipelining, voltage can be reduced:                 │
+│                                                                             │
+│ Power ∝ V²  →  10% voltage reduction = 19% power reduction                  │
+│                                                                             │
+│ Pipeline enables aggressive voltage scaling while meeting timing.           │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+3.3 Summary of Advantages
+-------------------------
+
+| Category    | Advantage                  | Quantitative Benefit        |
+|-------------|----------------------------|-----------------------------|
+| Performance | Higher frequency           | 2-4× improvement            |
+| Performance | Sustained throughput       | II = 1 maintained           |
+| Performance | Parallel execution         | N operations in flight      |
+| Design      | Timing margin              | 10-20% slack available      |
+| Design      | Easier synthesis           | Faster closure, less effort |
+| Power       | Voltage scaling enabled    | Up to 20% power reduction   |
+| Yield       | Better manufacturing yield | Tolerates process variation |
+
+================================================================================
+4. DISADVANTAGES OF PIPELINE
+================================================================================
+
+4.1 Latency Increase
+--------------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ DISADVANTAGE 1: Increased Cycle Latency                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Each pipeline stage adds one cycle to the total latency:                    │
+│                                                                             │
+│ Pipeline Depth    Cycle Latency                                             │
+│ ──────────────    ─────────────                                             │
+│ 0 (none)          1 cycle                                                   │
+│ 1 (mid)           2 cycles                                                  │
+│ 2 (quarter)       3 cycles                                                  │
+│ 4 (fine)          5 cycles                                                  │
+│                                                                             │
+│ Impact: First result takes longer to appear                                 │
+│ Mitigation: Time latency stays ~constant due to faster clock                │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+4.2 Area Overhead
+-----------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ DISADVANTAGE 2: Register Area Cost                                          │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Each pipeline stage requires registers for:                                 │
+│ - Data signals (intermediate results)                                       │
+│ - Control signals (valid, ready, etc.)                                      │
+│                                                                             │
+│ For GF(2^16) multiplier per stage:                                          │
+│ - Partial product: 16 bits                                                  │
+│ - Shifted operand: 16 bits                                                  │
+│ - Valid signal: 1 bit                                                       │
+│ - Total: 33 flip-flops ≈ 130 gate equivalents                              │
+│                                                                             │
+│ Area increase per stage: ~13%                                               │
+│                                                                             │
+│ Pipeline Depth    Area Overhead                                             │
+│ ──────────────    ─────────────                                             │
+│ 1 stage           +13%                                                      │
+│ 2 stages          +25%                                                      │
+│ 4 stages          +50%                                                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+4.3 Power Overhead
+------------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ DISADVANTAGE 3: Increased Dynamic Power                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Power increases due to:                                                     │
+│ 1. Higher clock frequency (P ∝ f)                                          │
+│ 2. Additional register switching (P ∝ C)                                   │
+│ 3. Clock tree power for pipeline registers                                  │
+│                                                                             │
+│ P_dynamic = α × C × V² × f                                                 │
+│                                                                             │
+│ Pipeline Depth    Frequency    Capacitance    Power Increase                │
+│ ──────────────    ─────────    ───────────    ──────────────                │
+│ 0 (baseline)      1.0×         1.0×           1.0× (reference)              │
+│ 1 stage           2.0×         1.13×          2.3×                          │
+│ 2 stages          3.3×         1.25×          4.1×                          │
+│ 4 stages          4.0×         1.50×          6.0×                          │
+│                                                                             │
+│ Mitigation: Clock gating reduces effective power by 70-90% when idle        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+4.4 Design Complexity
+---------------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ DISADVANTAGE 4: Control Logic Complexity                                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ Pipeline introduces complexity in:                                          │
+│                                                                             │
+│ 1. Hazard handling:                                                         │
+│    - Data hazards (RAW, WAR, WAW) - less common in feed-forward pipelines  │
+│    - Control hazards (not applicable to datapath-only pipelines)            │
+│                                                                             │
+│ 2. Pipeline control:                                                        │
+│    - Valid signal propagation                                               │
+│    - Stall logic (if backpressure supported)                               │
+│    - Flush logic (if cancellation supported)                               │
+│                                                                             │
+│ 3. Verification:                                                            │
+│    - More states to verify                                                  │
+│    - Pipeline fill/drain corner cases                                       │
+│    - Timing across multiple cycles                                          │
+│                                                                             │
+│ For GF multiplier: Complexity is LOW (simple feed-forward, no hazards)     │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+4.5 Pipeline Stall Overhead
+---------------------------
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ DISADVANTAGE 5: Bubble/Stall Penalty                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ When pipeline cannot be kept full:                                          │
+│                                                                             │
+│ - Bubbles (empty stages) waste cycles                                       │
+│ - Throughput drops below theoretical maximum                                │
+│ - Efficiency = Useful_cycles / Total_cycles                                 │
+│                                                                             │
+│ For ECC application:                                                        │
+│ - Memory accesses are bursty (BL8 = 8 beats)                               │
+│ - Pipeline fill/drain occurs at burst boundaries                            │
+│ - Efficiency = 8 / (8 + 2×Depth) for each burst                            │
+│                                                                             │
+│ Example with 2-stage pipeline:                                              │
+│   Efficiency = 8 / (8 + 4) = 67% per burst                                 │
+│   But bursts are back-to-back, so overall efficiency approaches 100%        │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+4.6 Summary of Disadvantages
+----------------------------
+
+| Category    | Disadvantage               | Quantitative Impact         |
+|-------------|----------------------------|-----------------------------|
+| Latency     | Increased cycle count      | +1 cycle per stage          |
+| Area        | Register overhead          | +13% per stage              |
+| Power       | Dynamic power increase     | +100-200% per stage         |
+| Complexity  | Control logic              | Low for feed-forward        |
+| Efficiency  | Pipeline bubbles           | ~67-90% for bursty traffic  |
+| Verification| More states to test        | ~2× verification effort     |
+
+================================================================================
+5. PIPELINE TOPOLOGY FOR GF(2^16) MULTIPLIER
+================================================================================
+
+5.1 Non-Pipelined (Current Implementation)
+------------------------------------------
+
+Topology: Single combinational block
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│  INPUTS                         COMBINATIONAL LOGIC                  OUTPUT │
+│  ──────                         ──────────────────                   ────── │
+│                                                                             │
+│  a[15:0] ──┐    ┌──────────────────────────────────────────────┐            │
+│            ├───►│  Shift[0] → Shift[1] → ... → Shift[15]       │            │
+│  b[15:0] ──┘    │       ↓          ↓              ↓            │───► p[15:0]│
+│                 │  Accum[0] → Accum[1] → ... → Accum[15]       │            │
+│                 │                                    ↓          │            │
+│                 │                              Reduction        │            │
+│                 └──────────────────────────────────────────────┘            │
+│                                                                             │
+│  Latency: 1 cycle                                                           │
+│  Critical Path: ~3.6 ns (all 16 stages in series)                          │
+│  Max Frequency: ~278 MHz                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+5.2 Two-Stage Pipeline (Recommended for HBM4)
+---------------------------------------------
+
+Topology: Mid-point split at shift stage 8
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│                    STAGE 1                          STAGE 2                 │
+│  ┌────────────────────────────────┐    ┌────────────────────────────────┐  │
+│  │                                │    │                                │  │
+│  │  a ──┐   Shift[0:7]           │REG │   Shift[8:15]                  │  │
+│  │      ├─►     ↓                 │ ──►│       ↓                        │  │
+│  │  b ──┘   Accum[0:7]           │    │   Accum[8:15]                  │  │
+│  │              ↓                 │    │       ↓                        │──► p
+│  │      partial_product[15:0]    │    │   Reduction                    │  │
+│  │      shifted_a[15:0]          │    │       ↓                        │  │
+│  │      valid ─────────────────────────► valid_out                     │  │
+│  │                                │    │                                │  │
+│  └────────────────────────────────┘    └────────────────────────────────┘  │
+│                                                                             │
+│  Pipeline Registers (between stages):                                       │
+│  - partial_product[15:0]: Accumulated XOR result from stages 0-7           │
+│  - shifted_a[15:0]: Value of 'a' after 8 shifts with reduction             │
+│  - valid: Control signal propagation                                        │
+│                                                                             │
+│  Latency: 2 cycles                                                          │
+│  Critical Path: ~1.8 ns (8 stages per pipeline stage)                      │
+│  Max Frequency: ~556 MHz                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Detailed Stage 1 Logic:
+```
+    // Stage 1: Process shifts 0-7
+    wire [15:0] tmp_a_s1 [0:7];
+    wire [15:0] partial_s1 [0:7];
+    
+    assign tmp_a_s1[0] = a;
+    assign partial_s1[0] = b[0] ? a : 16'h0;
+    
+    for (i = 1; i < 8; i++) begin
+        assign tmp_a_s1[i] = tmp_a_s1[i-1][15] ? 
+                             (tmp_a_s1[i-1] << 1) ^ POLY : 
+                             (tmp_a_s1[i-1] << 1);
+        assign partial_s1[i] = b[i] ? 
+                               partial_s1[i-1] ^ tmp_a_s1[i] : 
+                               partial_s1[i-1];
+    end
+    
+    // Pipeline registers
+    always @(posedge clk) begin
+        partial_reg <= partial_s1[7];
+        shifted_a_reg <= tmp_a_s1[7];
+        b_reg <= b[15:8];
+        valid_reg <= valid_in;
+    end
+```
+
+Detailed Stage 2 Logic:
+```
+    // Stage 2: Process shifts 8-15
+    wire [15:0] tmp_a_s2 [8:15];
+    wire [15:0] partial_s2 [8:15];
+    
+    assign tmp_a_s2[8] = shifted_a_reg[15] ? 
+                         (shifted_a_reg << 1) ^ POLY : 
+                         (shifted_a_reg << 1);
+    assign partial_s2[8] = b_reg[0] ? 
+                           partial_reg ^ tmp_a_s2[8] : 
+                           partial_reg;
+    
+    for (i = 9; i < 16; i++) begin
+        assign tmp_a_s2[i] = tmp_a_s2[i-1][15] ? 
+                             (tmp_a_s2[i-1] << 1) ^ POLY : 
+                             (tmp_a_s2[i-1] << 1);
+        assign partial_s2[i] = b_reg[i-8] ? 
+                               partial_s2[i-1] ^ tmp_a_s2[i] : 
+                               partial_s2[i-1];
+    end
+    
+    assign p = partial_s2[15];
+    assign valid_out = valid_reg;
+```
+
+5.3 Four-Stage Pipeline (High Frequency)
+----------------------------------------
+
+Topology: Quarter-point splits at stages 4, 8, 12
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                                                                             │
+│   STAGE 1        STAGE 2        STAGE 3        STAGE 4                     │
+│  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐                  │
+│  │         │REG │         │REG │         │REG │         │                  │
+│  │Shift 0-3│───►│Shift 4-7│───►│Shift8-11│───►│Shft12-15│──► p             │
+│  │  ↓      │    │  ↓      │    │  ↓      │    │  ↓      │                  │
+│  │Accum0-3 │    │Accum4-7 │    │Accum8-11│    │Acc12-15 │                  │
+│  │         │    │         │    │         │    │+Reduce  │                  │
+│  └─────────┘    └─────────┘    └─────────┘    └─────────┘                  │
+│                                                                             │
+│  Pipeline Registers (per stage boundary):                                   │
+│  - partial_product[15:0]                                                    │
+│  - shifted_a[15:0]                                                          │
+│  - b_remaining[15:0] (decreases each stage)                                │
+│  - valid                                                                    │
+│                                                                             │
+│  Latency: 4 cycles                                                          │
+│  Critical Path: ~0.9 ns (4 stages per pipeline stage)                      │
+│  Max Frequency: ~1.1 GHz                                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+5.4 Pipeline Timing Diagram
+---------------------------
+
+Two-Stage Pipeline Operation:
+
+Clock:    ____╱‾‾‾‾╲____╱‾‾‾‾╲____╱‾‾‾‾╲____╱‾‾‾‾╲____╱‾‾‾‾╲____╱‾‾‾‾╲____
+Cycle:         1         2         3         4         5         6
+
+Input:    ──[A]──────[B]──────[C]──────[D]──────[E]──────[F]──────
+           valid     valid     valid     valid     valid     valid
+
+Stage 1:  ──[A:S1]───[B:S1]───[C:S1]───[D:S1]───[E:S1]───[F:S1]───
+           compute   compute   compute   compute   compute   compute
+
+Pipe Reg: ─────────[A:reg]───[B:reg]───[C:reg]───[D:reg]───[E:reg]─
+                    latch     latch     latch     latch     latch
+
+Stage 2:  ─────────[A:S2]───[B:S2]───[C:S2]───[D:S2]───[E:S2]───
+                   compute   compute   compute   compute   compute
+
+Output:   ─────────────────[A:out]───[B:out]───[C:out]───[D:out]───
+                            valid     valid     valid     valid
+
+Legend:
+  [X:S1] = Operation X in Stage 1
+  [X:S2] = Operation X in Stage 2
+  [X:reg] = Operation X data in pipeline register
+  [X:out] = Operation X result at output
+
+Observations:
+  - Input A enters at cycle 1, output appears at cycle 3 (2-cycle latency)
+  - After cycle 3, one result per cycle (throughput = 1)
+  - At any time, 2 operations are in flight (pipeline depth = 2)
+
+5.5 Pipeline Data Flow
+----------------------
+
+Two-Stage Pipeline Data Flow:
+
+                        ┌─────────────────────────────────────┐
+                        │         PIPELINE STAGE 1            │
+                        │                                     │
+   a[15:0] ────────────►│  ┌─────────────────────────────┐   │
+                        │  │   Shift-and-XOR Logic       │   │
+   b[15:0] ────────────►│  │   (iterations 0-7)          │   │
+                        │  │                             │   │
+   valid_in ───────────►│  │   tmp_a = conditional shift │   │
+                        │  │   partial = conditional XOR │   │
+                        │  └─────────────────────────────┘   │
+                        │              │                      │
+                        │              ▼                      │
+                        │  ┌─────────────────────────────┐   │
+                        │  │   Pipeline Registers        │   │
+                        │  │   - partial_reg[15:0]       │   │
+                        │  │   - shifted_a_reg[15:0]     │   │
+                        │  │   - b_upper_reg[7:0]        │   │
+                        │  │   - valid_reg               │   │
+                        │  └─────────────────────────────┘   │
+                        └─────────────────┬───────────────────┘
+                                          │
+                                          ▼
+                        ┌─────────────────────────────────────┐
+                        │         PIPELINE STAGE 2            │
+                        │                                     │
+   partial_reg ────────►│  ┌─────────────────────────────┐   │
+                        │  │   Shift-and-XOR Logic       │   │
+   shifted_a_reg ──────►│  │   (iterations 8-15)         │   │
+                        │  │                             │   │
+   b_upper_reg ────────►│  │   Continue from Stage 1     │   │
+                        │  │   Final reduction           │   │
+   valid_reg ──────────►│  └─────────────────────────────┘   │
+                        │              │                      │
+                        │              ▼                      │
+                        │  ┌─────────────────────────────┐   │
+                        │  │   Output Register           │   │────► p[15:0]
+                        │  │   (optional, for timing)    │   │────► valid_out
+                        │  └─────────────────────────────┘   │
+                        └─────────────────────────────────────┘
+
+5.6 Pipeline Control Signals
+----------------------------
+
+Signal Propagation:
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                                                                            │
+│  valid_in ─────►[REG]─────► valid_s1 ─────►[REG]─────► valid_out          │
+│                                                                            │
+│  Each pipeline register includes:                                          │
+│  - Data registers (partial product, shifted value)                        │
+│  - Control register (valid signal)                                        │
+│                                                                            │
+│  Clock gating can be applied:                                             │
+│  - Gate data registers when valid=0                                       │
+│  - Valid register always active (must propagate 0s)                       │
+│                                                                            │
+│  always @(posedge clk or negedge rst_n) begin                             │
+│      if (!rst_n) begin                                                    │
+│          valid_reg <= 1'b0;                                               │
+│          partial_reg <= 16'h0;                                            │
+│      end else begin                                                       │
+│          valid_reg <= valid_in;                                           │
+│          if (valid_in) begin  // Clock gating                             │
+│              partial_reg <= partial_s1;                                   │
+│              shifted_a_reg <= shifted_a_s1;                               │
+│          end                                                              │
+│      end                                                                  │
+│  end                                                                      │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+5.7 Pipeline Configuration Summary
+----------------------------------
+
+┌─────────────┬──────────┬──────────┬──────────┬──────────┬─────────────────┐
+│ Config      │ Stages   │ Split    │ Latency  │ Max Freq │ Use Case        │
+├─────────────┼──────────┼──────────┼──────────┼──────────┼─────────────────┤
+│ No Pipeline │ 1        │ None     │ 1 cycle  │ 278 MHz  │ FPGA, low power │
+│ 2-Stage     │ 2        │ [0-7][8-15] │ 2 cycles │ 556 MHz  │ HBM3            │
+│ 3-Stage     │ 3        │ [0-5][6-10][11-15] │ 3 cycles │ 750 MHz  │ HBM4 conservative │
+│ 4-Stage     │ 4        │ [0-3][4-7][8-11][12-15] │ 4 cycles │ 1.1 GHz  │ HBM4 aggressive │
+└─────────────┴──────────┴──────────┴──────────┴──────────┴─────────────────┘
+
+================================================================================
+6. TIMING AND FREQUENCY ANALYSIS
+================================================================================
+
+2.1 Critical Path Without Pipeline
+----------------------------------
+
+The GF multiplier performs:
+  - 16 conditional shifts (each: MUX + XOR with polynomial)
+  - 16 conditional XORs for accumulation
+  - Final reduction
+
+Combinational Path:
+  Input → Shift[0] → Shift[1] → ... → Shift[15] → Accum → Output
+          ↓           ↓                  ↓
+        [MUX+XOR]  [MUX+XOR]          [MUX+XOR]
+
+Estimated Gate Delays:
+  - Each shift stage: ~2 gate delays (MUX + XOR)
+  - Accumulation: ~4 gate delays (XOR tree)
+  - Total: ~36 gate delays
+
+Timing Calculation (65nm technology):
+  - Gate delay: ~100 ps
+  - Critical path: 36 × 100 ps = 3.6 ns
+  - Max frequency: 1 / 3.6 ns ≈ 278 MHz
+
+2.2 Critical Path With Pipeline
+-------------------------------
+
+Pipeline Stage Configuration:
+
+┌─────────────────┬─────────────────┬─────────────────┬─────────────────┐
+│ Pipeline Depth  │ Stages Split    │ Critical Path   │ Max Frequency   │
+├─────────────────┼─────────────────┼─────────────────┼─────────────────┤
+│ 0 (none)        │ All 16 in 1     │ ~3.6 ns         │ ~278 MHz        │
+│ 1 (mid)         │ 8 + 8           │ ~1.8 ns         │ ~556 MHz        │
+│ 2 (quarter)     │ 4 + 4 + 4 + 4   │ ~0.9 ns         │ ~1.1 GHz        │
+│ 4 (fine)        │ 4 × 4           │ ~0.9 ns         │ ~1.1 GHz        │
+│ 15 (maximum)    │ 1 per stage     │ ~0.24 ns        │ ~4.2 GHz        │
+└─────────────────┴─────────────────┴─────────────────┴─────────────────┘
+
+Note: Actual achievable frequency also depends on:
+  - Register setup/hold times (~50-100 ps)
+  - Clock skew and jitter
+  - Routing delays
+  - Technology node
+
+2.3 Frequency Scaling Formula
+-----------------------------
+
+  f_max = 1 / (T_comb/N + T_reg)
+
+Where:
+  T_comb = Total combinational delay
+  N      = Number of pipeline stages + 1
+  T_reg  = Register overhead (setup + clk-to-q)
+
+Example (T_comb = 3.6 ns, T_reg = 0.2 ns):
+  N=1: f_max = 1/(3.6/1 + 0.2) = 263 MHz
+  N=2: f_max = 1/(3.6/2 + 0.2) = 500 MHz
+  N=4: f_max = 1/(3.6/4 + 0.2) = 909 MHz
+  N=8: f_max = 1/(3.6/8 + 0.2) = 1.54 GHz
+
+================================================================================
+3. LATENCY ANALYSIS
+================================================================================
+
+3.1 Latency Definitions
+-----------------------
+
+Cycle Latency: Number of clock cycles from input valid to output valid
+Time Latency:  Actual time from input to output = Cycles × Clock Period
+
+3.2 Latency Comparison
+----------------------
+
+┌─────────────────┬────────────────┬────────────────┬────────────────┐
+│ Pipeline Depth  │ Cycle Latency  │ Clock Period   │ Time Latency   │
+├─────────────────┼────────────────┼────────────────┼────────────────┤
+│ 0 (none)        │ 1 cycle        │ 3.6 ns         │ 3.6 ns         │
+│ 1 (mid)         │ 2 cycles       │ 1.8 ns         │ 3.6 ns         │
+│ 2 (quarter)     │ 3 cycles       │ 1.2 ns         │ 3.6 ns         │
+│ 4 (fine)        │ 5 cycles       │ 0.72 ns        │ 3.6 ns         │
+│ 15 (maximum)    │ 16 cycles      │ 0.24 ns        │ 3.84 ns        │
+└─────────────────┴────────────────┴────────────────┴────────────────┘
+
+Key Insight: Time latency remains approximately constant!
+             Pipeline increases cycle count but decreases cycle time.
+
+3.3 Latency Impact on ECC System
+--------------------------------
+
+HBM Memory Access Timeline:
+  - Command to data: ~20-40 ns (tCL)
+  - Burst transfer: 8 beats × 1-2 ns = 8-16 ns
+  - ECC decode: 1-5 cycles × period
+
+For HBM4 @ 800 MHz (1.25 ns period):
+  - No pipeline: 1 × 4 ns = 4 ns (may not meet timing!)
+  - 2-stage: 3 × 1.25 ns = 3.75 ns ✓
+  - 4-stage: 5 × 1.25 ns = 6.25 ns ✓
+
+Pipeline latency is negligible compared to memory access latency.
+
+================================================================================
+4. THROUGHPUT ANALYSIS
+================================================================================
+
+4.1 Throughput Definition
+-------------------------
+
+Throughput = Results per unit time = f_clk / Initiation Interval (II)
+
+For fully pipelined design: II = 1 (new input every cycle)
+
+4.2 Throughput Comparison
+-------------------------
+
+┌─────────────────┬────────────────┬────────────────┬────────────────┐
+│ Pipeline Depth  │ Clock Freq     │ Init Interval  │ Throughput     │
+├─────────────────┼────────────────┼────────────────┼────────────────┤
+│ 0 (none)        │ 278 MHz        │ 1              │ 278 M ops/s    │
+│ 1 (mid)         │ 556 MHz        │ 1              │ 556 M ops/s    │
+│ 2 (quarter)     │ 1.1 GHz        │ 1              │ 1.1 G ops/s    │
+│ 4 (fine)        │ 1.1 GHz        │ 1              │ 1.1 G ops/s    │
+└─────────────────┴────────────────┴────────────────┴────────────────┘
+
+Result: Throughput scales linearly with frequency!
+        Pipeline maintains II=1 (one result per cycle after fill).
+
+4.3 Pipeline Fill/Drain Overhead
+--------------------------------
+
+Initial fill time = (Pipeline Depth) cycles
+Final drain time  = (Pipeline Depth) cycles
+
+For continuous operation (N >> Pipeline Depth):
+  Efficiency = N / (N + 2 × Depth) ≈ 100%
+
+Example with 1000 operations, 4-stage pipeline:
+  Efficiency = 1000 / (1000 + 8) = 99.2%
+
+================================================================================
+5. AREA ANALYSIS
+================================================================================
+
+5.1 Area Components
+-------------------
+
+Non-pipelined GF Multiplier:
+  - Shift logic: 16 × (16-bit MUX + 16-bit XOR) = 512 gates
+  - Accumulation: 16 × 16-bit XOR = 256 gates
+  - Total: ~800-1000 gates
+
+Pipeline Registers (per stage):
+  - Data registers: 16 bits × 2 (partial result + shifted value) = 32 FFs
+  - Control: valid signal = 1 FF
+  - Total per stage: ~33 FFs ≈ 130 gates equivalent
+
+5.2 Area Scaling
+----------------
+
+┌─────────────────┬────────────────┬────────────────┬────────────────┐
+│ Pipeline Depth  │ Logic Gates    │ Register Gates │ Total Area     │
+├─────────────────┼────────────────┼────────────────┼────────────────┤
+│ 0 (none)        │ 1000           │ 32 (output)    │ 1032 gates     │
+│ 1 (mid)         │ 1000           │ 162            │ 1162 gates     │
+│ 2 (quarter)     │ 1000           │ 292            │ 1292 gates     │
+│ 4 (fine)        │ 1000           │ 552            │ 1552 gates     │
+│ 15 (maximum)    │ 1000           │ 1982           │ 2982 gates     │
+└─────────────────┴────────────────┴────────────────┴────────────────┘
+
+Area Increase Formula:
+  Area_pipelined = Area_base + (Depth × Reg_per_stage)
+  
+Percentage Increase:
+  0-stage: baseline
+  1-stage: +13%
+  2-stage: +25%
+  4-stage: +50%
+  15-stage: +189%
+
+5.3 Area Efficiency Metric
+--------------------------
+
+Area Efficiency = Throughput / Area
+
+┌─────────────────┬────────────────┬────────────────┬────────────────┐
+│ Pipeline Depth  │ Throughput     │ Area (gates)   │ Efficiency     │
+├─────────────────┼────────────────┼────────────────┼────────────────┤
+│ 0 (none)        │ 278 M ops/s    │ 1032           │ 269 K ops/gate │
+│ 1 (mid)         │ 556 M ops/s    │ 1162           │ 478 K ops/gate │
+│ 2 (quarter)     │ 909 M ops/s    │ 1292           │ 703 K ops/gate │
+│ 4 (fine)        │ 1.1 G ops/s    │ 1552           │ 709 K ops/gate │
+└─────────────────┴────────────────┴────────────────┴────────────────┘
+
+Optimal: 2-4 stage pipeline provides best area efficiency!
+
+================================================================================
+6. POWER ANALYSIS
+================================================================================
+
+6.1 Power Components
+--------------------
+
+Total Power = Dynamic Power + Static Power
+
+Dynamic Power = α × C × V² × f
+  Where:
+    α = Activity factor (switching probability)
+    C = Load capacitance
+    V = Supply voltage
+    f = Clock frequency
+
+Static Power = I_leak × V (technology dependent)
+
+6.2 Power Scaling with Pipeline
+-------------------------------
+
+Without Pipeline (f = 278 MHz):
+  P_dyn = α × C_comb × V² × 278 MHz
+
+With N-stage Pipeline (f = N × 278 MHz, simplified):
+  P_dyn = α × (C_comb + N × C_reg) × V² × (N × 278 MHz)
+
+6.3 Power Comparison (Normalized)
+---------------------------------
+
+┌─────────────────┬────────────────┬────────────────┬────────────────┐
+│ Pipeline Depth  │ Frequency      │ Capacitance    │ Dynamic Power  │
+├─────────────────┼────────────────┼────────────────┼────────────────┤
+│ 0 (none)        │ 1.0×           │ 1.0×           │ 1.0× (baseline)│
+│ 1 (mid)         │ 2.0×           │ 1.13×          │ 2.26×          │
+│ 2 (quarter)     │ 3.3×           │ 1.25×          │ 4.1×           │
+│ 4 (fine)        │ 4.0×           │ 1.50×          │ 6.0×           │
+└─────────────────┴────────────────┴────────────────┴────────────────┘
+
+6.4 Power Efficiency (Performance per Watt)
+-------------------------------------------
+
+Power Efficiency = Throughput / Power
+
+┌─────────────────┬────────────────┬────────────────┬────────────────┐
+│ Pipeline Depth  │ Throughput     │ Power          │ Efficiency     │
+├─────────────────┼────────────────┼────────────────┼────────────────┤
+│ 0 (none)        │ 1.0×           │ 1.0×           │ 1.0× (baseline)│
+│ 1 (mid)         │ 2.0×           │ 2.26×          │ 0.88×          │
+│ 2 (quarter)     │ 3.3×           │ 4.1×           │ 0.80×          │
+│ 4 (fine)        │ 4.0×           │ 6.0×           │ 0.67×          │
+└─────────────────┴────────────────┴────────────────┴────────────────┘
+
+Key Insight: Power efficiency DECREASES with more pipeline stages!
+             Use minimum pipeline needed to meet frequency target.
+
+6.5 Clock Gating Impact
+-----------------------
+
+With clock gating (current implementation):
+  - Idle stages consume near-zero dynamic power
+  - Only active stages switch
+  - Effective power ≈ (Utilization × Full Power)
+
+For bursty workloads (typical in ECC):
+  - Utilization ~10-30%
+  - Effective power reduction: 70-90%
+
+================================================================================
+7. DESIGN TRADE-OFF SUMMARY
+================================================================================
+
+7.1 Metric Comparison Table
+---------------------------
+
+┌──────────────────┬────────┬────────┬────────┬────────┬────────────────┐
+│ Metric           │ 0-stg  │ 1-stg  │ 2-stg  │ 4-stg  │ Trend          │
+├──────────────────┼────────┼────────┼────────┼────────┼────────────────┤
+│ Max Frequency    │ LOW    │ MED    │ HIGH   │ V.HIGH │ ↑ Increases    │
+│ Cycle Latency    │ 1      │ 2      │ 3      │ 5      │ ↑ Increases    │
+│ Time Latency     │ BASE   │ ≈BASE  │ ≈BASE  │ ≈BASE  │ ≈ Constant     │
+│ Throughput       │ LOW    │ MED    │ HIGH   │ V.HIGH │ ↑ Increases    │
+│ Area             │ MIN    │ +13%   │ +25%   │ +50%   │ ↑ Increases    │
+│ Power            │ MIN    │ +126%  │ +310%  │ +500%  │ ↑ Increases    │
+│ Area Efficiency  │ LOW    │ MED    │ HIGH   │ HIGH   │ ↑ then plateau │
+│ Power Efficiency │ HIGH   │ MED    │ LOW    │ V.LOW  │ ↓ Decreases    │
+└──────────────────┴────────┴────────┴────────┴────────┴────────────────┘
+
+7.2 Recommended Configuration by Application
+--------------------------------------------
+
+┌─────────────────────────┬─────────────────┬─────────────────────────┐
+│ Application             │ Pipeline Depth  │ Reasoning               │
+├─────────────────────────┼─────────────────┼─────────────────────────┤
+│ FPGA Prototyping        │ 0 (none)        │ Low freq, minimize area │
+│ HBM3 ASIC (400 MHz)     │ 1 (mid)         │ Balance freq/power      │
+│ HBM4 ASIC (800 MHz)     │ 2 (quarter)     │ Meet timing, good eff.  │
+│ High-perf compute       │ 2-4             │ Max throughput          │
+│ Low-power mobile        │ 0-1             │ Minimize power          │
+└─────────────────────────┴─────────────────┴─────────────────────────┘
+
+================================================================================
+8. IMPLEMENTATION RECOMMENDATION FOR HBM4 ECC
+================================================================================
+
+Target: HBM4 @ 800 MHz (1.25 ns clock period)
+
+Recommended: 2-STAGE PIPELINE
+
+Justification:
+  1. Frequency: Achieves ~900 MHz (margin for timing closure)
+  2. Latency: 3 cycles × 1.25 ns = 3.75 ns (acceptable)
+  3. Area: +25% (moderate increase)
+  4. Power: +310% at full utilization, but clock gating reduces effective power
+  5. Complexity: Manageable design effort
+
+Pipeline Split Point:
+  Stage 1: Shifts 0-7 + partial accumulation
+  Stage 2: Shifts 8-15 + final accumulation + reduction
+
+================================================================================
+9. CONCLUSION
+================================================================================
+
+Pipeline implementation is a critical design decision that affects all major
+metrics. The key insights are:
+
+1. FREQUENCY scales linearly with pipeline depth (up to a point)
+2. TIME LATENCY remains approximately constant
+3. THROUGHPUT scales with frequency (maintains II=1)
+4. AREA increases linearly with pipeline depth
+5. POWER increases super-linearly (frequency × capacitance)
+6. OPTIMAL DEPTH depends on target frequency and power budget
+
+For HBM4 ECC application, a 2-stage pipeline provides the best balance of
+performance, area, and power efficiency while meeting the 800 MHz target.
+
+================================================================================
+END OF ANALYSIS
+================================================================================
