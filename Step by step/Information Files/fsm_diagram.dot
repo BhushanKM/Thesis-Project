@@ -1,0 +1,59 @@
+digraph DBB_ECC_FSM {
+    rankdir=TB;
+    node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+
+    // Title
+    labelloc="t";
+    label="DBB-ECC Decoder FSM (Moore Model)\n\n";
+    fontsize=14;
+    fontname="Arial Bold";
+
+    // States with Moore outputs (State / Output)
+    IDLE [label="IDLE\n─────\nready=1\nvalid=0", fillcolor=lightgreen];
+    SYNDROME_GEN [label="SYNDROME_GEN\n─────\ncomputing=1\nS0,S1 gen"];
+    COUNT_ONES [label="COUNT_ONES\n─────\ncounting=1\ncount_s0"];
+    BRANCH [label="BRANCH\n─────\nbranch_sel\ncount_valid=1", shape=diamond, fillcolor=lightyellow];
+    EST_PAT_2 [label="EST_PATTERN\n(count=2)\n─────\nsplit_s0=1"];
+    EST_PAT_1 [label="EST_PATTERN\n(count=1)\n─────\ne0=S0"];
+    EST_PAT_0 [label="EST_PATTERN\n(count=0)\n─────\nlut_en=1"];
+    LOCATE_SSE [label="LOCATE_SSE\n─────\nsse_search=1"];
+    LOCATE_DBE [label="LOCATE_DBE\n─────\ndbe_search=1"];
+    DECIDE [label="DECIDE\n─────\nsel_valid=1\nerr_type"];
+    CORRECT [label="CORRECT\n─────\nxor_en=1\ncorrecting=1"];
+    DONE [label="DONE\n─────\nvalid=1\ndata_out", fillcolor=lightgreen];
+
+    // Transitions
+    IDLE -> SYNDROME_GEN [label="start"];
+    SYNDROME_GEN -> COUNT_ONES [label="syndrome_done"];
+    COUNT_ONES -> BRANCH [label="count_done"];
+    
+    // Parallel paths for SSE and DBE
+    BRANCH -> LOCATE_SSE [label="sse_path"];
+    BRANCH -> EST_PAT_2 [label="count=2"];
+    BRANCH -> EST_PAT_1 [label="count=1"];
+    BRANCH -> EST_PAT_0 [label="count=0"];
+    
+    EST_PAT_2 -> LOCATE_DBE [label="pattern_ready"];
+    EST_PAT_1 -> LOCATE_DBE [label="pattern_ready"];
+    EST_PAT_0 -> LOCATE_DBE [label="lut_match"];
+    
+    LOCATE_SSE -> DECIDE [label="sse_found"];
+    LOCATE_DBE -> DECIDE [label="dbe_found"];
+    
+    DECIDE -> CORRECT [label="error_detected"];
+    DECIDE -> DONE [label="no_error"];
+    
+    CORRECT -> DONE [label="correction_done"];
+    DONE -> IDLE [label="ack"];
+
+    // Legend
+    subgraph cluster_legend {
+        label="Legend";
+        fontsize=10;
+        style=dashed;
+        node [shape=box, fillcolor=white];
+        leg1 [label="State Name\n─────\nMoore Outputs", fillcolor=lightblue];
+        leg2 [label="Branch/Decision", shape=diamond, fillcolor=lightyellow];
+    }
+}

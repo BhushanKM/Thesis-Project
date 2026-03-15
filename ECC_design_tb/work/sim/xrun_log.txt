@@ -1,0 +1,625 @@
+TOOL:	xrun	22.03-s012: Started on Dec 04, 2025 at 10:42:29 CST
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE      basic                   $CDK_DIR/lib/basic
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,7): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,8): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,9): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,10): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,11): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,12): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,13): cds.lib Invalid environment variable ''.
+xrun: 22.03-s012: (c) Copyright 1995-2023 Cadence Design Systems, Inc.
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE      basic                   $CDK_DIR/lib/basic
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,7): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,8): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,9): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,10): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,11): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,12): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,13): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE      basic                   $CDK_DIR/lib/basic
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,7): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,8): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,9): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,10): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,11): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,12): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,13): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE      basic                   $CDK_DIR/lib/basic
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,7): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,8): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,9): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,10): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,11): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,12): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,13): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE      basic                   $CDK_DIR/lib/basic
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,7): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,8): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,9): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,10): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,11): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,12): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,13): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE      basic                   $CDK_DIR/lib/basic
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,7): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,8): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,9): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,10): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,11): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,12): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,13): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE      basic                   $CDK_DIR/lib/basic
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,7): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,8): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,9): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,10): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,11): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,12): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+|
+xrun: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,13): cds.lib Invalid environment variable ''.
+SOFTINCLUDE $SYSTEM_CDS_LIB_DIR/cds.lib
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,1): cds.lib Invalid environment variable ''.
+DEFINE      basic                   $CDK_DIR/lib/basic
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,2): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Analog_Parts 	    $CDK_DIR/lib/NCSU_Analog_Parts
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,3): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_Digital_Parts 	    $CDK_DIR/lib/NCSU_Digital_Parts
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,4): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami06      $CDK_DIR/lib/NCSU_TechLib_ami06
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,6): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_ami16      $CDK_DIR/lib/NCSU_TechLib_ami16
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,7): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_hp06       $CDK_DIR/lib/NCSU_TechLib_hp06
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,8): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02     $CDK_DIR/lib/NCSU_TechLib_tsmc02
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,9): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc02d    $CDK_DIR/lib/NCSU_TechLib_tsmc02d
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,10): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03     $CDK_DIR/lib/NCSU_TechLib_tsmc03
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,11): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc03d    $CDK_DIR/lib/NCSU_TechLib_tsmc03d
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,12): cds.lib Invalid environment variable ''.
+DEFINE      NCSU_TechLib_tsmc04_4M2P    $CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P
+|
+xmsim: *W,DLCVAR (/home/grads/b/bhushan_123/cds.lib,13): cds.lib Invalid environment variable ''.
+xmsim: *E,CNDIR: Could not create/open directory /cov_work. (Permission denied).
+Loading snapshot worklib.top:sv .................... Done
+SVSEED set randomly from command line: 530280161
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /opt/coe/cadence/XCELIUM/tools/xcelium/files/xmsimrc
+xcelium> source /opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv/files/tcl/uvm_sim.tcl
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create top -all -memories -depth all -tasks -functions -all -database waves -waveform
+xmsim: *W,PRFRTNEV: (-FUNCTION) Database must be opened in -EVENT mode to capture calling scope data.
+Created probe 1
+xcelium> 
+xcelium> run
+----------------------------------------------------------------
+CDNS-UVM-1.1d (22.03-s012)
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO ../tb/htax_top.sv(101) @ 0: reporter [TOP] Starting simple random test
+UVM_INFO @ 0: reporter [RNTST] Running test htax_parallel_fixed_port_test...
+UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+---------------------------------------------------------------------------
+Name                       Type                           Size  Value      
+---------------------------------------------------------------------------
+uvm_test_top               htax_parallel_fixed_port_test  -     @2769      
+  tb                       htax_env                       -     @2839      
+    htax_sb                htax_scoreboard_c              -     @3164      
+      rx0_export           uvm_analysis_imp_rx0_export    -     @3415      
+      rx1_export           uvm_analysis_imp_rx1_export    -     @3466      
+      rx2_export           uvm_analysis_imp_rx2_export    -     @3515      
+      rx3_export           uvm_analysis_imp_rx3_export    -     @3564      
+      tx0_export           uvm_analysis_imp_tx0_export    -     @3217      
+      tx1_export           uvm_analysis_imp_tx1_export    -     @3268      
+      tx2_export           uvm_analysis_imp_tx2_export    -     @3317      
+      tx3_export           uvm_analysis_imp_tx3_export    -     @3366      
+    rx_port[0]             htax_rx_agent_c                -     @3044      
+      rx_monitor           htax_rx_monitor_c              -     @4248      
+        rx_collect_port    uvm_analysis_port              -     @4301      
+      is_active            uvm_active_passive_enum        1     UVM_PASSIVE
+    rx_port[1]             htax_rx_agent_c                -     @3074      
+      rx_monitor           htax_rx_monitor_c              -     @4348      
+        rx_collect_port    uvm_analysis_port              -     @4396      
+      is_active            uvm_active_passive_enum        1     UVM_PASSIVE
+    rx_port[2]             htax_rx_agent_c                -     @3104      
+      rx_monitor           htax_rx_monitor_c              -     @4441      
+        rx_collect_port    uvm_analysis_port              -     @4489      
+      is_active            uvm_active_passive_enum        1     UVM_PASSIVE
+    rx_port[3]             htax_rx_agent_c                -     @3134      
+      rx_monitor           htax_rx_monitor_c              -     @4534      
+        rx_collect_port    uvm_analysis_port              -     @4582      
+      is_active            uvm_active_passive_enum        1     UVM_PASSIVE
+    tx_port[0]             htax_tx_agent_c                -     @2924      
+      sequencer            htax_sequencer_c               -     @4854      
+        rsp_export         uvm_analysis_export            -     @4912      
+        seq_item_export    uvm_seq_item_pull_imp          -     @5460      
+        arbitration_queue  array                          0     -          
+        lock_queue         array                          0     -          
+        num_last_reqs      integral                       32    'd1        
+        num_last_rsps      integral                       32    'd1        
+      tx_driver            htax_tx_driver_c               -     @4723      
+        rsp_port           uvm_analysis_port              -     @4823      
+        seq_item_port      uvm_seq_item_pull_port         -     @4772      
+      tx_monitor           htax_tx_monitor_c              -     @4632      
+        tx_collect_port    uvm_analysis_port              -     @4679      
+      is_active            uvm_active_passive_enum        1     UVM_ACTIVE 
+    tx_port[1]             htax_tx_agent_c                -     @2954      
+      sequencer            htax_sequencer_c               -     @5732      
+        rsp_export         uvm_analysis_export            -     @5787      
+        seq_item_export    uvm_seq_item_pull_imp          -     @6327      
+        arbitration_queue  array                          0     -          
+        lock_queue         array                          0     -          
+        num_last_reqs      integral                       32    'd1        
+        num_last_rsps      integral                       32    'd1        
+      tx_driver            htax_tx_driver_c               -     @5606      
+        rsp_port           uvm_analysis_port              -     @5702      
+        seq_item_port      uvm_seq_item_pull_port         -     @5654      
+      tx_monitor           htax_tx_monitor_c              -     @5516      
+        tx_collect_port    uvm_analysis_port              -     @5564      
+      is_active            uvm_active_passive_enum        1     UVM_ACTIVE 
+    tx_port[2]             htax_tx_agent_c                -     @2984      
+      sequencer            htax_sequencer_c               -     @6592      
+        rsp_export         uvm_analysis_export            -     @6647      
+        seq_item_export    uvm_seq_item_pull_imp          -     @7187      
+        arbitration_queue  array                          0     -          
+        lock_queue         array                          0     -          
+        num_last_reqs      integral                       32    'd1        
+        num_last_rsps      integral                       32    'd1        
+      tx_driver            htax_tx_driver_c               -     @6466      
+        rsp_port           uvm_analysis_port              -     @6562      
+        seq_item_port      uvm_seq_item_pull_port         -     @6514      
+      tx_monitor           htax_tx_monitor_c              -     @6376      
+        tx_collect_port    uvm_analysis_port              -     @6424      
+      is_active            uvm_active_passive_enum        1     UVM_ACTIVE 
+    tx_port[3]             htax_tx_agent_c                -     @3014      
+      sequencer            htax_sequencer_c               -     @7452      
+        rsp_export         uvm_analysis_export            -     @7507      
+        seq_item_export    uvm_seq_item_pull_imp          -     @8047      
+        arbitration_queue  array                          0     -          
+        lock_queue         array                          0     -          
+        num_last_reqs      integral                       32    'd1        
+        num_last_rsps      integral                       32    'd1        
+      tx_driver            htax_tx_driver_c               -     @7326      
+        rsp_port           uvm_analysis_port              -     @7422      
+        seq_item_port      uvm_seq_item_pull_port         -     @7374      
+      tx_monitor           htax_tx_monitor_c              -     @7236      
+        tx_collect_port    uvm_analysis_port              -     @7284      
+      is_active            uvm_active_passive_enum        1     UVM_ACTIVE 
+    vsequencer             htax_virtual_sequencer_c       -     @3544      
+      rsp_export           uvm_analysis_export            -     @3652      
+      seq_item_export      uvm_seq_item_pull_imp          -     @4202      
+      arbitration_queue    array                          0     -          
+      lock_queue           array                          0     -          
+      num_last_reqs        integral                       32    'd1        
+      num_last_rsps        integral                       32    'd1        
+---------------------------------------------------------------------------
+
+UVM_INFO ../test/htax_parallel_fixed_port_test.sv(23) @ 0: uvm_test_top [htax_parallel_fixed_port_test] Starting multiport random test
+UVM_INFO ../tb/htax_vseqs.sv(19) @ 0: uvm_test_top.tb.vsequencer@@parallel_fixed_port_vseq [parallel_fixed_port_vseq] raise objection
+xmsim: *W,OLDURR: The default algorithm for $urandom_range and randcase is used. It can have distribution problems..
+UVM_INFO ../tb/htax_tx_driver_c.sv(42) @ 5: uvm_test_top.tb.tx_port[3].tx_driver [TOP] Resetting the DUT synchronously
+UVM_INFO ../tb/htax_tx_driver_c.sv(42) @ 5: uvm_test_top.tb.tx_port[2].tx_driver [TOP] Resetting the DUT synchronously
+UVM_INFO ../tb/htax_tx_driver_c.sv(42) @ 5: uvm_test_top.tb.tx_port[1].tx_driver [TOP] Resetting the DUT synchronously
+UVM_INFO ../tb/htax_tx_driver_c.sv(42) @ 5: uvm_test_top.tb.tx_port[0].tx_driver [TOP] Resetting the DUT synchronously
+UVM_INFO ../tb/htax_tx_driver_c.sv(59) @ 10: uvm_test_top.tb.tx_port[3].tx_driver [htax_tx_driver_c] Input Data Packet to DUT : 
+-------------------------------------------------------------------------------------------------------
+Name                           Type           Size  Value                                              
+-------------------------------------------------------------------------------------------------------
+req3                           htax_packet_c  -     @8318                                              
+  delay                        integral       32    'h1                                                
+  dest_port                    integral       32    'h3                                                
+  vc                           integral       2     'h1                                                
+  length                       integral       32    'h5                                                
+  data                         da(integral)   5     -                                                  
+    [0]                        integral       64    'h734ac32681d4f8e6                                 
+    [1]                        integral       64    'he6f02861855b903                                  
+    [2]                        integral       64    'h443d108a5aac2a5c                                 
+    [3]                        integral       64    'h5d5485f9cf6943ae                                 
+    [4]                        integral       64    'hcb37c563a5798f5a                                 
+  begin_time                   time           64    10                                                 
+  depth                        int            32    'd2                                                
+  parent sequence (name)       string         24    parallel_fixed_port_vseq                           
+  parent sequence (full name)  string         51    uvm_test_top.tb.vsequencer.parallel_fixed_port_vseq
+  sequencer                    string         36    uvm_test_top.tb.tx_port[3].sequencer               
+-------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../tb/htax_tx_driver_c.sv(59) @ 10: uvm_test_top.tb.tx_port[2].tx_driver [htax_tx_driver_c] Input Data Packet to DUT : 
+-------------------------------------------------------------------------------------------------------
+Name                           Type           Size  Value                                              
+-------------------------------------------------------------------------------------------------------
+req2                           htax_packet_c  -     @8345                                              
+  delay                        integral       32    'h1                                                
+  dest_port                    integral       32    'h2                                                
+  vc                           integral       2     'h2                                                
+  length                       integral       32    'h5                                                
+  data                         da(integral)   5     -                                                  
+    [0]                        integral       64    'h517512e278390129                                 
+    [1]                        integral       64    'h25d2d30fc500a3c                                  
+    [2]                        integral       64    'hc498392b743c10b9                                 
+    [3]                        integral       64    'hf4297fc4b3348d7b                                 
+    [4]                        integral       64    'hfd5b74367aa10d83                                 
+  begin_time                   time           64    10                                                 
+  depth                        int            32    'd2                                                
+  parent sequence (name)       string         24    parallel_fixed_port_vseq                           
+  parent sequence (full name)  string         51    uvm_test_top.tb.vsequencer.parallel_fixed_port_vseq
+  sequencer                    string         36    uvm_test_top.tb.tx_port[2].sequencer               
+-------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../tb/htax_tx_driver_c.sv(59) @ 10: uvm_test_top.tb.tx_port[1].tx_driver [htax_tx_driver_c] Input Data Packet to DUT : 
+-------------------------------------------------------------------------------------------------------
+Name                           Type           Size  Value                                              
+-------------------------------------------------------------------------------------------------------
+req1                           htax_packet_c  -     @8365                                              
+  delay                        integral       32    'h1                                                
+  dest_port                    integral       32    'h1                                                
+  vc                           integral       2     'h1                                                
+  length                       integral       32    'h5                                                
+  data                         da(integral)   5     -                                                  
+    [0]                        integral       64    'h55f077d1ae4bfc90                                 
+    [1]                        integral       64    'h65c0ca3978364a2                                  
+    [2]                        integral       64    'h886a10116f911288                                 
+    [3]                        integral       64    'hf1fc8979045fd794                                 
+    [4]                        integral       64    'h3d57c42f06ccc4af                                 
+  begin_time                   time           64    10                                                 
+  depth                        int            32    'd2                                                
+  parent sequence (name)       string         24    parallel_fixed_port_vseq                           
+  parent sequence (full name)  string         51    uvm_test_top.tb.vsequencer.parallel_fixed_port_vseq
+  sequencer                    string         36    uvm_test_top.tb.tx_port[1].sequencer               
+-------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../tb/htax_tx_driver_c.sv(59) @ 10: uvm_test_top.tb.tx_port[0].tx_driver [htax_tx_driver_c] Input Data Packet to DUT : 
+-------------------------------------------------------------------------------------------------------
+Name                           Type           Size  Value                                              
+-------------------------------------------------------------------------------------------------------
+req0                           htax_packet_c  -     @8386                                              
+  delay                        integral       32    'h1                                                
+  dest_port                    integral       32    'h0                                                
+  vc                           integral       2     'h2                                                
+  length                       integral       32    'h5                                                
+  data                         da(integral)   5     -                                                  
+    [0]                        integral       64    'h504b6cda8f64e78d                                 
+    [1]                        integral       64    'h6fe6687aa996a939                                 
+    [2]                        integral       64    'h6e64eee2b7f37f6b                                 
+    [3]                        integral       64    'h3d917bc2845cb09d                                 
+    [4]                        integral       64    'h803554c8bb6683d5                                 
+  begin_time                   time           64    10                                                 
+  depth                        int            32    'd2                                                
+  parent sequence (name)       string         24    parallel_fixed_port_vseq                           
+  parent sequence (full name)  string         51    uvm_test_top.tb.vsequencer.parallel_fixed_port_vseq
+  sequencer                    string         36    uvm_test_top.tb.tx_port[0].sequencer               
+-------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------
+Name                  Type                  Size  Value             
+--------------------------------------------------------------------
+htax_tx_mon_packet_c  htax_tx_mon_packet_c  -     @7314             
+  dest_port           integral              32    'h3               
+  vc                  integral              2     'h1               
+  length              integral              32    'h5               
+  data                da(integral)          5     -                 
+    [0]               integral              64    'h734ac32681d4f8e6
+    [1]               integral              64    'he6f02861855b903 
+    [2]               integral              64    'h443d108a5aac2a5c
+    [3]               integral              64    'h5d5485f9cf6943ae
+    [4]               integral              64    'hcb37c563a5798f5a
+--------------------------------------------------------------------
+UVM_INFO ../tb/htax_scoreboard_c.sv(91) @ 210: uvm_test_top.tb.htax_sb [SCOREBOARD] Adding pkt in queue 3:
+UVM_INFO ../tb/htax_tx_driver_c.sv(118) @ 210: uvm_test_top.tb.tx_port[3].tx_driver [htax_tx_driver_c] Ended Driving Data Packet to DUT
+--------------------------------------------------------------------
+Name                  Type                  Size  Value             
+--------------------------------------------------------------------
+htax_tx_mon_packet_c  htax_tx_mon_packet_c  -     @6454             
+  dest_port           integral              32    'h2               
+  vc                  integral              2     'h2               
+  length              integral              32    'h5               
+  data                da(integral)          5     -                 
+    [0]               integral              64    'h517512e278390129
+    [1]               integral              64    'h25d2d30fc500a3c 
+    [2]               integral              64    'hc498392b743c10b9
+    [3]               integral              64    'hf4297fc4b3348d7b
+    [4]               integral              64    'hfd5b74367aa10d83
+--------------------------------------------------------------------
+UVM_INFO ../tb/htax_scoreboard_c.sv(87) @ 210: uvm_test_top.tb.htax_sb [SCOREBOARD] Adding pkt in queue 2:
+UVM_INFO ../tb/htax_tx_driver_c.sv(118) @ 210: uvm_test_top.tb.tx_port[2].tx_driver [htax_tx_driver_c] Ended Driving Data Packet to DUT
+--------------------------------------------------------------------
+Name                  Type                  Size  Value             
+--------------------------------------------------------------------
+htax_tx_mon_packet_c  htax_tx_mon_packet_c  -     @5594             
+  dest_port           integral              32    'h1               
+  vc                  integral              2     'h1               
+  length              integral              32    'h5               
+  data                da(integral)          5     -                 
+    [0]               integral              64    'h55f077d1ae4bfc90
+    [1]               integral              64    'h65c0ca3978364a2 
+    [2]               integral              64    'h886a10116f911288
+    [3]               integral              64    'hf1fc8979045fd794
+    [4]               integral              64    'h3d57c42f06ccc4af
+--------------------------------------------------------------------
+UVM_INFO ../tb/htax_scoreboard_c.sv(83) @ 210: uvm_test_top.tb.htax_sb [SCOREBOARD] Adding pkt in queue 1:
+UVM_INFO ../tb/htax_tx_driver_c.sv(118) @ 210: uvm_test_top.tb.tx_port[1].tx_driver [htax_tx_driver_c] Ended Driving Data Packet to DUT
+--------------------------------------------------------------------
+Name                  Type                  Size  Value             
+--------------------------------------------------------------------
+htax_tx_mon_packet_c  htax_tx_mon_packet_c  -     @4709             
+  dest_port           integral              32    'h0               
+  vc                  integral              2     'h2               
+  length              integral              32    'h5               
+  data                da(integral)          5     -                 
+    [0]               integral              64    'h504b6cda8f64e78d
+    [1]               integral              64    'h6fe6687aa996a939
+    [2]               integral              64    'h6e64eee2b7f37f6b
+    [3]               integral              64    'h3d917bc2845cb09d
+    [4]               integral              64    'h803554c8bb6683d5
+--------------------------------------------------------------------
+UVM_INFO ../tb/htax_scoreboard_c.sv(79) @ 210: uvm_test_top.tb.htax_sb [SCOREBOARD] Adding pkt in queue 0:
+UVM_INFO ../tb/htax_tx_driver_c.sv(118) @ 210: uvm_test_top.tb.tx_port[0].tx_driver [htax_tx_driver_c] Ended Driving Data Packet to DUT
+UVM_INFO ../tb/htax_tx_driver_c.sv(59) @ 210: uvm_test_top.tb.tx_port[1].tx_driver [htax_tx_driver_c] Input Data Packet to DUT : 
+-------------------------------------------------------------------------------------------------------
+Name                           Type           Size  Value                                              
+-------------------------------------------------------------------------------------------------------
+req4                           htax_packet_c  -     @8294                                              
+  delay                        integral       32    'h1                                                
+  dest_port                    integral       32    'h3                                                
+  vc                           integral       2     'h1                                                
+  length                       integral       32    'h3c                                               
+  data                         da(integral)   60    -                                                  
+    [0]                        integral       64    'h73a9c0ca432927d7                                 
+    [1]                        integral       64    'ha0179f218134d08d                                 
+    [2]                        integral       64    'hdc30f8c8eedcc0f1                                 
+    [3]                        integral       64    'hfeec5df48b17f205                                 
+    [4]                        integral       64    'h1c088366525bb46b                                 
+    ...                        ...            ...   ...                                                
+    [55]                       integral       64    'h671c709586818417                                 
+    [56]                       integral       64    'hf430249bbc49bef5                                 
+    [57]                       integral       64    'h953ba9a14aed5815                                 
+    [58]                       integral       64    'hf75b1a8a0bb8931d                                 
+    [59]                       integral       64    'h8264f5a03fea6fee                                 
+  begin_time                   time           64    210                                                
+  depth                        int            32    'd2                                                
+  parent sequence (name)       string         24    parallel_fixed_port_vseq                           
+  parent sequence (full name)  string         51    uvm_test_top.tb.vsequencer.parallel_fixed_port_vseq
+  sequencer                    string         36    uvm_test_top.tb.tx_port[1].sequencer               
+-------------------------------------------------------------------------------------------------------
+
+xmsim: *F,ASRTST (../tb/htax_rx_interface.sv,56): (time 20150 NS) Assertion top.inst_htax_rx_intf[3].assert_eot_timeout_check has failed
+Memory Usage - Current physical: 114.5M, Current virtual: 162.2M
+CPU Usage - 0.1s system + 0.1s user = 0.1s total (20.3% cpu)
+Simulation terminated via $fatal(2) at time 20150 NS + 2
+../tb/htax_rx_interface.sv:56       $fatal("HTAX_RX_INF ERROR : TIMEOUT rx_eot did not occur within 1000 cycles after rx_sot");
+xcelium> exit
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  top(top)
+  scope    :  scope
+  testname :  test_sv530280161
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_4e8e3c4e_636b2083.ucm (reused)
+  data               :  ./cov_work/scope/test_sv530280161/icc_4e8e3c4e_636b2083.ucd
+TOOL:	xrun	22.03-s012: Exiting on Dec 04, 2025 at 10:42:32 CST  (total: 00:00:03)

@@ -1,0 +1,634 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2022 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v22.17-s086_1, built Tue Sep 24 10:51:50 PDT 2024
+Options:	
+Date:		Mon Mar  2 12:04:35 2026
+Host:		n01-zeus.olympus.ece.tamu.edu (x86_64 w/Linux 4.18.0-553.89.1.el8_10.x86_64) (24cores*48cpus*AMD EPYC 7F72 24-Core Processor 512KB)
+OS:		Red Hat Enterprise Linux 8.10 (Ootpa)
+
+License:
+		[12:04:35.373626] Configured Lic search path (22.01-s003): 5280@coe-vtls2.engr.tamu.edu:27070@coe-vtls3.engr.tamu.edu
+
+		invs	Innovus Implementation System	22.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (2063 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> win
+<CMD> set enc_check_rename_command_name 1
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library basic at path /home/grads/b/bhushan_123/$CDK_DIR/lib/basic: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_Analog_Parts at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_Analog_Parts: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_Digital_Parts at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_Digital_Parts: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_ami06 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_ami06: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_ami16 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_ami16: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_hp06 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_hp06: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc02 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc02: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc02d at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc02d: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc03 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc03: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc03d at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc03d: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc04_4M2P at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library basic at path /home/grads/b/bhushan_123/$CDK_DIR/lib/basic: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_Analog_Parts at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_Analog_Parts: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_Digital_Parts at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_Digital_Parts: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_ami06 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_ami06: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_ami16 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_ami16: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_hp06 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_hp06: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc02 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc02: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc02d at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc02d: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc03 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc03: Invalid Lib Path..
+**WARN: (EMS-27):	Message (IMPOAX-793) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+**ERROR: (TCLCMD-992):	Mixed usage of library_set (MMMC-1) and timing_condition (MMMC-2) in delay_corner is not allowed. You should use either MMMC-1 or MMMC-2 to configure the MMMC specification.
+
+**ERROR: (IMPSYT-16095):	**INFO (INTERRUPT): One more Ctrl-C to exit Innovus ...
+<CMD> set init_lef_file {Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef}
+<CMD> set init_verilog outputs/ecc_engine_top_mapped.v
+<CMD> set init_mmmc_file Git_hub_repo/nangate/mmmc/mmmc.view
+<CMD> init_design
+#% Begin Load MMMC data ... (date=03/02 12:28:52, mem=1596.6M)
+
+Usage: create_op_cond [-help] -P <processValue> -T <temperatureValue>
+                      -V <voltageValue> -library_file <libraryFileName>
+                      -name <virtualOpcondName>
+
+**ERROR: (IMPTCM-46):	Argument "-P" is required for command "create_op_cond", either this option is not specified or an option prior to it is not specified correctly.
+<CMD> set init_lef_file {Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef}
+<CMD> set init_verilog outputs/ecc_engine_top_mapped.v
+<CMD> set init_mmmc_file Git_hub_repo/nangate/mmmc/mmmc.view
+<CMD> init_design
+% Begin Load MMMC data ... (date=03/02 12:28:54, mem=1596.6M)
+
+Usage: create_op_cond [-help] -P <processValue> -T <temperatureValue>
+                      -V <voltageValue> -library_file <libraryFileName>
+                      -name <virtualOpcondName>
+
+**ERROR: (IMPTCM-46):	Argument "-P" is required for command "create_op_cond", either this option is not specified or an option prior to it is not specified correctly.
+**INFO (INTERRUPT): The current script will stop before next command.
+**INFO (INTERRUPT): One more Ctrl-C to exit Innovus ...
+<CMD> set init_lef_file {Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef}
+<CMD> set init_verilog outputs/ecc_engine_top_mapped.v
+<CMD> set init_mmmc_file Git_hub_repo/nangate/mmmc/mmmc.view
+<CMD> init_design
+% Begin Load MMMC data ... (date=03/02 12:31:28, mem=1596.9M)
+
+Usage: create_delay_corner [-help] [-early_estimated_worst_irdrop_factor <percent>]
+                           [-early_irdrop_data <files_or_directories>]
+                           [-early_irdrop_file <libSetObj>]
+                           [-early_library_set <libSetObj>]
+                           [-early_opcond <opCondName>]
+                           [-early_opcond_library <libName>]
+                           [-early_rc_corner <rcCornerObj>]
+                           [-early_temp_file <tempName>]
+                           [-irdrop_data <files_or_directories>]
+                           [-irdrop_file <list_of_files>]
+                           [-late_estimated_worst_irdrop_factor <percent>]
+                           [-late_irdrop_data <files_or_directories>]
+                           [-late_irdrop_file <list_of_files>]
+                           [-late_library_set <libSetObj>] [-late_opcond <opCondName>]
+                           [-late_opcond_library <libName>]
+                           [-late_rc_corner <rcCornerObj>]
+                           [-late_temp_file <tempName>] [-library_set <libSetObj>]
+                           -name <delayCornerName> [-opcond <opcondName>]
+                           [-opcond_library <libName>]
+                           [-pg_net_voltages <voltage_pairs>]
+                           [-rc_corner <rcCornerObj>] [-si_enabled <true|false>]
+                           [-temp_file <tempName>]
+
+**ERROR: (IMPTCM-48):	"-library_sets" is not a legal option for command "create_delay_corner". Either the current option or an option prior to it is not specified correctly.
+<CMD> set init_lef_file {Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef}
+<CMD> set init_verilog outputs/ecc_engine_top_mapped.v
+<CMD> set init_mmmc_file Git_hub_repo/nangate/mmmc/mmmc.view
+<CMD> init_design
+% Begin Load MMMC data ... (date=03/02 12:31:37, mem=1597.1M)
+Extraction setup Started 
+
+Usage: create_delay_corner [-help] [-early_estimated_worst_irdrop_factor <percent>]
+                           [-early_irdrop_data <files_or_directories>]
+                           [-early_irdrop_file <libSetObj>]
+                           [-early_library_set <libSetObj>]
+                           [-early_opcond <opCondName>]
+                           [-early_opcond_library <libName>]
+                           [-early_rc_corner <rcCornerObj>]
+                           [-early_temp_file <tempName>]
+                           [-irdrop_data <files_or_directories>]
+                           [-irdrop_file <list_of_files>]
+                           [-late_estimated_worst_irdrop_factor <percent>]
+                           [-late_irdrop_data <files_or_directories>]
+                           [-late_irdrop_file <list_of_files>]
+                           [-late_library_set <libSetObj>] [-late_opcond <opCondName>]
+                           [-late_opcond_library <libName>]
+                           [-late_rc_corner <rcCornerObj>]
+                           [-late_temp_file <tempName>] [-library_set <libSetObj>]
+                           -name <delayCornerName> [-opcond <opcondName>]
+                           [-opcond_library <libName>]
+                           [-pg_net_voltages <voltage_pairs>]
+                           [-rc_corner <rcCornerObj>] [-si_enabled <true|false>]
+                           [-temp_file <tempName>]
+
+**ERROR: (IMPTCM-48):	"-library_sets" is not a legal option for command "create_delay_corner". Either the current option or an option prior to it is not specified correctly.
+**INFO (INTERRUPT): The current script will stop before next command.
+**INFO (INTERRUPT): One more Ctrl-C to exit Innovus ...
+child process exited abnormally
+<CMD> set init_lef_file {Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef}
+<CMD> set init_verilog outputs/ecc_engine_top_mapped.v
+<CMD> set init_mmmc_file Git_hub_repo/nangate/mmmc/mmmc.view
+<CMD> init_design
+% Begin Load MMMC data ... (date=03/02 12:33:07, mem=1601.2M)
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file '/home/grads/b/bhushan_123/thesis_project/outputs/ecc_engine_top.sdc' for mode 'constraints'
+<CMD> set init_lef_file {Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef}
+<CMD> set init_verilog outputs/ecc_engine_top_mapped.v
+<CMD> set init_mmmc_file Git_hub_repo/nangate/mmmc/mmmc.view
+<CMD> init_design
+% Begin Load MMMC data ... (date=03/02 12:33:09, mem=1601.2M)
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file '/home/grads/b/bhushan_123/thesis_project/outputs/ecc_engine_top.sdc' for mode 'constraints'
+<CMD> set init_lef_file {Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef}
+<CMD> set init_verilog outputs/ecc_engine_top_mapped.v
+<CMD> set init_mmmc_file Git_hub_repo/nangate/mmmc/mmmc.view
+<CMD> init_design
+% Begin Load MMMC data ... (date=03/02 12:33:54, mem=1601.4M)
+Extraction setup Started 
+Extraction setup Started 
+% End Load MMMC data ... (date=03/02 12:33:54, total cpu=0:00:00.0, real=0:00:00.0, peak res=1601.6M, current mem=1601.6M)
+rc_typical
+
+Loading LEF file Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef ...
+
+Loading LEF file Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef ...
+Set DBUPerIGU to M2 pitch 380.
+
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+Loading view definition file from Git_hub_repo/nangate/mmmc/mmmc.view
+Reading libs_typical timing library '/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/NangateOpenCellLibrary_typical.lib' ...
+Read 135 cells in library 'NangateOpenCellLibrary' 
+*** End library_loading (cpu=0.01min, real=0.02min, mem=33.0M, fe_cpu=11.69min, fe_real=29.33min, fe_mem=1627.5M) ***
+**ERROR: (IMPSYT-16038):	The specified file 'outputs/ecc_engine_top_mapped.v' could not be found. Check your file system, correct the file name.
+**ERROR: (IMPIMEX-7008):	No netlist files are found.
+<CMD> set init_lef_file {Git_hub_repo/nangate/lef/NangateOpenCellLibrary.tech.lef Git_hub_repo/nangate/lef/NangateOpenCellLibrary.macro.mod.lef}
+<CMD> set init_design_settop 0
+<CMD> set init_verilog outputs/ecc_engine_top_mapped.v
+<CMD> set init_mmmc_file Git_hub_repo/nangate/mmmc/mmmc.view
+<CMD> init_design
+% Begin Load MMMC data ... (date=03/02 12:34:10, mem=1615.7M)
+**WARN: (IMPOPT-3000):	Buffer footprint is not defined or is an invalid buffer footprint.
+Type 'man IMPOPT-3000' for more detail.
+**WARN: (IMPOPT-3001):	Inverter footprint is not defined or is an invalid inverter footprint.
+Type 'man IMPOPT-3001' for more detail.
+Extraction setup Started 
+Innovus terminated by internal (SEGV) error/signal.
+Crashing Thread ID: 0
+------------------------------------------------------------
+*** Stack trace:
+*** Stack trace:
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x1fd91fb6]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(syStackTrace+0xad)[0x1fd924f1]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0xbf94921]
+/lib64/libpthread.so.0(+0x1298f)[0x7fac7c90f98f]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN8pesTrack8getPitchEi+0xa)[0x175a87ba]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN14peEngineClient16getLayerInfoByIdERSt6vectorI11eeLayerInfoSaIS1_EE+0x5ce)[0x175a230e]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN14peEngineClient12getLayerInfoERSt6vectorI11eeLayerInfoSaIS1_EE+0x5ea)[0x175a2e4a]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN21eeExtEngineDesignData12setLayerInfoEv+0x37)[0xc7bdff7]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x1745954d]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_Z10dbMCRCInitv+0x5e)[0x174646fe]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_Z28peiInitializeExtractionSetUpb+0x2d)[0x17464bdd]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x1b80db05]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN6TAMmmc14updateRcCornerEP14TAMmmcRcCornerPKcf9tabooleanR18TAMmmcTripleFactorS4_fS4_S6_S4_S6_S4_fS4_fS4_S6_S4_S6_S4_S6_S4_S3_S3_S3_fS4_S3_S3_+0x416)[0x201dd086]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_Z30TaCmd_createOrUpdate_rc_cornerPvP10Tcl_InterpiPPc9tabooleanP6tcmCmd+0x1190)[0x22175140]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN10tcmBaseCmd7executeEP10Tcl_InterpiPPc+0x22f)[0x233fc32f]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN6tcmMgr9cmdParserEPvP10Tcl_InterpiPPc+0xaae)[0x233ef0de]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(TclInvokeStringCommand+0x7a)[0x322df65a]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(TclNRRunCallbacks+0x71)[0x322e4151]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x322e6375]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(Tcl_EvalEx+0x12)[0x322e6ea2]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(TclNREvalObjEx+0x71)[0x322e6f51]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x3239cb4f]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x322fa5f4]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(TclNRRunCallbacks+0x71)[0x322e4151]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x322e6375]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x323af460]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0x322e61fc]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(Tcl_EvalEx+0x12)[0x322e6ea2]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(Tcl_Eval+0x15)[0x322e6ec5]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_Z10qtfTclEvalPcbb+0xf2)[0x1dfee002]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN8qtfsItem10fUpdateVarEv+0x229)[0x1df8f709]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5(_ZN11QMetaObject8activateEP7QObjectiiPPv+0x714)[0x7fac808fbc54]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(_ZN15QAbstractButton7clickedEb+0x31)[0x7fac802eae41]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(+0x336029)[0x7fac802eb029]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(+0x33730e)[0x7fac802ec30e]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(_ZN15QAbstractButton17mouseReleaseEventEP11QMouseEvent+0xba)[0x7fac802ec4aa]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(_ZN7QWidget5eventEP6QEvent+0x225)[0x7fac80171bc5]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(_ZN19QApplicationPrivate13notify_helperEP7QObjectP6QEvent+0x81)[0x7fac801315f1]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(_ZN12QApplication6notifyEP7QObjectP6QEvent+0x115f)[0x7fac8013b8cf]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5(_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent+0x179)[0x7fac808d3029]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(_ZN19QApplicationPrivate14sendMouseEventEP7QWidgetP11QMouseEventS1_S1_PS1_R8QPointerIS0_Eb+0x196)[0x7fac80139e96]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(+0x1d7fca)[0x7fac8018cfca]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(+0x1da89b)[0x7fac8018f89b]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(_ZN19QApplicationPrivate13notify_helperEP7QObjectP6QEvent+0x81)[0x7fac801315f1]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5(_ZN12QApplication6notifyEP7QObjectP6QEvent+0x2a9)[0x7fac8013aa19]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5(_ZN16QCoreApplication15notifyInternal2EP7QObjectP6QEvent+0x179)[0x7fac808d3029]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Gui.so.5(_ZN22QGuiApplicationPrivate17processMouseEventEPN29QWindowSystemInterfacePrivate10MouseEventE+0x9c7)[0x7fac80d42907]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Gui.so.5(_ZN22QGuiApplicationPrivate24processWindowSystemEventEPN29QWindowSystemInterfacePrivate17WindowSystemEventE+0x21a)[0x7fac80d4484a]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Gui.so.5(_ZN22QWindowSystemInterface22sendWindowSystemEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE+0xab)[0x7fac80d1d6bb]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_ZN23QUnixEventDispatcherQPA13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE+0x15)[0x31f27e25]
+/opt/coe/cadence/DDI221/INNOVUS221/tools.lnx86/innovus/bin/64bit/../../../lib/64bit/libtq.so(_ZN17TqEventDispatcher13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE+0x119)[0x7fac816fe2e9]
+/opt/coe/cadence/DDI221/INNOVUS221/tools.lnx86/innovus/bin/64bit/../../../lib/64bit/libtq.so(+0x180ed)[0x7fac816fb0ed]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(Tcl_DoOneEvent+0xe0)[0x323a8fe0]
+/opt/coe/cadence/DDI221/INNOVUS221/tools.lnx86/innovus/bin/64bit/../../../lib/64bit/libtq.so(_ZN17TqEventDispatcher13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE+0x69)[0x7fac816fe239]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5(_ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE+0x11a)[0x7fac808d1aba]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5(_ZN16QCoreApplication4execEv+0x7d)[0x7fac808d927d]
+/opt/coe/cadence/DDI221/INNOVUS221/tools.lnx86/innovus/bin/64bit/../../../lib/64bit/libtq.so(_ZN13TqApplication4execEv+0x176)[0x7fac816fd896]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(_Z12edi_app_initP10Tcl_Interp+0x2cb)[0xc06fbbb]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(Tcl_MainEx+0x1bb)[0x323a378b]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus(main+0x800)[0x70d0f10]
+/lib64/libc.so.6(__libc_start_main+0xe4)[0x7fac7bd4b864]
+/opt/coe/cadence/DDI221/INNOVUS221/tools/innovus/bin/64bit/innovus[0xbf913c0]
+========================================
+               pstack
+========================================
+========================================
+                gdb
+========================================
+Using: gdb
+[New LWP 661177]
+[New LWP 661178]
+[New LWP 661187]
+[New LWP 661189]
+[New LWP 661257]
+[New LWP 661262]
+[New LWP 661330]
+[New LWP 661331]
+[New LWP 661847]
+
+warning: Unable to open "librpm.so.8" (/lib64/librpm.so.8: undefined symbol: sqlite3_errstr), missing debuginfos notifications will not be displayed
+Missing separate debuginfo for /opt/coe/cadence/DDI221/INNOVUS221/tools/OrbitIO/jre/lib/server/libjvm.so
+Missing separate debuginfo for /lib64/libXm.so.4
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/22/d44487756841cae67928d00b6d88f6702127ca.debug
+Missing separate debuginfo for /lib64/libpng12.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/fe/cf4ae2ded89282f16038c9e54cb47c0570c4c9.debug
+Missing separate debuginfo for /lib64/libjpeg.so.62
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/69/5cedf4b6c50b867f0ea5e07a1e24e1c9a307b1.debug
+Missing separate debuginfo for /lib64/libXft.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/04/e9d7974df28a7d22cb19c3728713c18f3f5449.debug
+Missing separate debuginfo for /lib64/libXp.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/0a/60251c3021a666729452dc10870ed35b24794e.debug
+Missing separate debuginfo for /lib64/libXmu.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/93/9853c47a49393af2ab3509b430af6f537ed77a.debug
+Missing separate debuginfo for /lib64/libXt.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/45/185348cfed1ae41a5ef4f18db7a7ed22871aa7.debug
+Missing separate debuginfo for /lib64/libfreetype.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/bf/e25b1e6c2e21ef7c8c51d75dc480016cd29f70.debug
+Missing separate debuginfo for /lib64/libGLU.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/a1/f562766c9646eb89e48a52cd293dc2e338a852.debug
+Missing separate debuginfo for /lib64/libGL.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/c4/45828b333cedbe3ca1bc77e9de58843a306507.debug
+Missing separate debuginfo for /lib64/libssl.so.10
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/14/08c059084d3b6bc1e465f9ee381350f17cf03e.debug
+Missing separate debuginfo for /lib64/libcrypto.so.10
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/8f/fa39c7381576a719e73893051bc97d18c606ca.debug
+Missing separate debuginfo for /lib64/libelf.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/36/8d14e88991a2d0022c1f119fe4c36760c7ebac.debug
+Missing separate debuginfo for /lib64/libuuid.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/01/04a987d09b30469e8bdddd2ef668a6d87de535.debug
+Missing separate debuginfo for /lib64/libcurl.so.4
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/7d/e91dba7cb3e0d8ad24bc1b673d308847d02e5b.debug
+Missing separate debuginfo for /lib64/libz.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/62/ece8438c1f4533f1b5574038ab614100d3627b.debug
+Missing separate debuginfo for /lib64/libXext.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/d0/d3fed59aedaa7b98cf7c4cfdb9a571abcc8430.debug
+Missing separate debuginfo for /lib64/libXss.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/c6/d0e6f8430fc20e2b8937b8190c99acee1c88b4.debug
+Missing separate debuginfo for /lib64/libX11.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/b6/292d756bb41eca677d4bd44449244222fb4094.debug
+Missing separate debuginfo for /lib64/libX11-xcb.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/34/c85147eb1f7be7ee0a5b4ada2f0952ddb6d14e.debug
+Missing separate debuginfo for /lib64/libxcb.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/8c/031c407fb15b9838ba7971cbf02009a1b608e3.debug
+Missing separate debuginfo for /lib64/libxcb-render.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/58/0b101a7f1ad16e1b4d73530fe6c902cfd95bfa.debug
+Missing separate debuginfo for /lib64/libfontconfig.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/15/166e0d08b9459da063c39a062c87248eea788b.debug
+Missing separate debuginfo for /lib64/libutil.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/c5/9f51802b54d54f9f18b0ebfc24a8cfe62682a2.debug
+Missing separate debuginfo for /lib64/libcrypt.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/af/5b9011636532935d5a5992ce7db0adab49ac2a.debug
+Missing separate debuginfo for /lib64/libncurses.so.5
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/a6/4b5f4ede7ab54a9607864b94e4d1364a4da3c6.debug
+Missing separate debuginfo for /lib64/libtinfo.so.5
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/67/02632ac72ecd6773ee7f92d4794d2642792e25.debug
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+Missing separate debuginfo for /lib64/libm.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/e4/0affcd1a6ee85ec29322f4ca4ecc95252bc140.debug
+Missing separate debuginfo for /lib64/libc.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/1f/aac7cdefc71ce73027e33a84650684eecd1635.debug
+Missing separate debuginfo for /lib64/libXinerama.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/bc/b7e87b515f8da9d747671acbc521bfb62a96f1.debug
+Missing separate debuginfo for /lib64/libpng16.so.16
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/4f/f2524311f93403af8498b64ebba52f5e610385.debug
+Missing separate debuginfo for /lib64/libXrender.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/6e/de5108603b3a5d0aa46149c5447e6b3be2feb1.debug
+Missing separate debuginfo for /lib64/libXau.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/3b/12ac62afc7e358d64dc651d03cedd23cc430ef.debug
+Missing separate debuginfo for /lib64/libSM.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/63/ba411e6d16f21d54a1891636a3fb82f2a40870.debug
+Missing separate debuginfo for /lib64/libICE.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/42/7cfcb4073c093fc09919fe2eeccabea55ee3f8.debug
+Missing separate debuginfo for /lib64/libbz2.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/79/7ea195980d94b1980629484223c7311ba001c7.debug
+Missing separate debuginfo for /lib64/libGLX.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/02/768c6a8e1ae4d113152802b20c93f5376d42f9.debug
+Missing separate debuginfo for /lib64/libGLdispatch.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/68/60ffd93150d1ace9a559ac80acbad0e8f30bc9.debug
+Missing separate debuginfo for /lib64/libgthread-2.0.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/df/2dbaf9a9e91d5cee5162ddc3baddcac34c8a70.debug
+Missing separate debuginfo for /lib64/libglib-2.0.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/c0/d4205ce50367ea7b3265c5d5bd0c88a818b754.debug
+Missing separate debuginfo for /lib64/libzstd.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/fd/cb787a51c046cefb6d6c745834bff93ba6c359.debug
+Missing separate debuginfo for /lib64/liblzma.so.5
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/c5/8c4ba116cedc45f221eec1fe99f6686a564939.debug
+Missing separate debuginfo for /lib64/libnghttp2.so.14
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/e5/a9835a43669b1511acab68660bc4076f82deb8.debug
+Missing separate debuginfo for /lib64/libidn2.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/cd/2be2a29abcaa745909b9b11785436d6878e8b0.debug
+Missing separate debuginfo for /lib64/libssh.so.4
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/18/8c3236c8cf91181de83c05140417d177253527.debug
+Missing separate debuginfo for /lib64/libpsl.so.5
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/d0/abe1222470d02b381f28fcde0c7ed64da268a4.debug
+Missing separate debuginfo for /lib64/libssl.so.1.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/bf/654335dfa8fb60b15a8dd0d315dc393d7fc014.debug
+Missing separate debuginfo for /lib64/libcrypto.so.1.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/ac/ff20031ead3710f464cc6a1d4efb7ec865c671.debug
+Missing separate debuginfo for /lib64/libgssapi_krb5.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/00/b07541bcdff3ea4657a6233b76475e4c6132c9.debug
+Missing separate debuginfo for /lib64/libkrb5.so.3
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/96/feb1e2459b835d6bbb15ee6cb653445317e27b.debug
+Missing separate debuginfo for /lib64/libk5crypto.so.3
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/36/cb58588c86ecb68689badafab8641ee79f12d5.debug
+Missing separate debuginfo for /lib64/libcom_err.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/ff/5e49ae36f468178f9ea4be45a03ebe93027b9a.debug
+Missing separate debuginfo for /lib64/libldap-2.4.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/58/025c5fa8080acf1545eae9b33188927765c96a.debug
+Missing separate debuginfo for /lib64/liblber-2.4.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/d5/f6dcd306ecaf67a6984d7923058c1866456b2f.debug
+Missing separate debuginfo for /lib64/libbrotlidec.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/19/434491f284ce4975d3cd45e89c622a98347f0b.debug
+Missing separate debuginfo for /lib64/libexpat.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/45/3da1f64eb396981936225a7ebdbbec9a260631.debug
+Missing separate debuginfo for /lib64/libgnutls.so.30
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/84/201113cad43f41b1464e83880f84a5902ba8e7.debug
+Missing separate debuginfo for /lib64/libpcre.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/d1/f307500852d88a0fba64fd70b7ade980694521.debug
+Missing separate debuginfo for /lib64/libunistring.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/37/450941f8cf3e3f079f9bf718f4c3cea43df555.debug
+Missing separate debuginfo for /lib64/libkrb5support.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/bc/9a8b1c1357ac79b5951200fdf95cd5d8005d72.debug
+Missing separate debuginfo for /lib64/libkeyutils.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/62/6187ac0349a9cb5b116ca0b660692705aadfe5.debug
+Missing separate debuginfo for /lib64/libresolv.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/15/48f1348e368ec4c8b3dc409c45de21a921374f.debug
+Missing separate debuginfo for /lib64/libsasl2.so.3
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/57/d7f694ff1bff339da151ca41399c5c94a6933a.debug
+Missing separate debuginfo for /lib64/libbrotlicommon.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/8d/344a3218787f6441b96e15ed9f93a909470bfe.debug
+Missing separate debuginfo for /lib64/libp11-kit.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/a7/29febd23b69f7061fbe8f154202b6ac6679e64.debug
+Missing separate debuginfo for /lib64/libtasn1.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/07/f514eea073363fcf10eae78764adc086b67703.debug
+Missing separate debuginfo for /lib64/libnettle.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/e8/f9ba27207e07c467101077920ba81ce896251d.debug
+Missing separate debuginfo for /lib64/libhogweed.so.4
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/71/b9b13c5b7c8736bde0df6e7412a38ed637468f.debug
+Missing separate debuginfo for /lib64/libgmp.so.10
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/7e/9351d4283603a4044d64fa429d2f6abd61a56b.debug
+Missing separate debuginfo for /lib64/libselinux.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/15/763d8687966986f307661ffff58e3469de4d00.debug
+Missing separate debuginfo for /lib64/libffi.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/f7/5387f2d27805f833650f5ece14535ab8792134.debug
+Missing separate debuginfo for /lib64/libpcre2-8.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/fb/6f8c4e86e8c48432f60eb77b33905491b2c5bf.debug
+Missing separate debuginfo for /lib64/libnss_files.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/46/b28fc6bf2051d91d25a38737be1f26bdc88b7c.debug
+Missing separate debuginfo for /lib64/libnss_dns.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/a2/dca62e0d4c833cc846021d1b0c4d9af6a15b15.debug
+Missing separate debuginfo for /lib64/libnss_myhostname.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/a8/242049c2dd7b5ddce8cb2a2bc605dd61f9a3ef.debug
+Missing separate debuginfo for /lib64/libmount.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/2a/7a6b5404c56a47bf5b942ef67be14c3d745ba2.debug
+Missing separate debuginfo for /lib64/libblkid.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/03/c8df1a8ba061f3acbae0726da7c79f013fa00a.debug
+Missing separate debuginfo for /usr/lib64/gconv/UTF-16.so
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/70/4f777a2c3ddd7d57bf71b4cdf0147b13638494.debug
+Missing separate debuginfo for /lib64/libdbus-1.so.3
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/de/48800b12e4d399611c3618108b066f6a176338.debug
+Missing separate debuginfo for /lib64/libsystemd.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/7d/55011feb97e1430583fa4356e8ab8839150b79.debug
+Missing separate debuginfo for /lib64/libcap.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/ce/ad2c393d24cbe335121c18623f47a49f6bfc69.debug
+Missing separate debuginfo for /lib64/libgcrypt.so.20
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/b4/14a61a983376dce2d482c943e2e0c0d0eb74f8.debug
+Missing separate debuginfo for /lib64/libgpg-error.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/31/055d02dc73c4a23a83a0696f44d9a0f0ca0aff.debug
+Missing separate debuginfo for /lib64/libXcursor.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/e5/342139ca152eb301009c096fa55d5cfbf1cfa8.debug
+Missing separate debuginfo for /lib64/libXfixes.so.3
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/c0/73c4934337020302da586f701e1428b4b0cd73.debug
+Missing separate debuginfo for /lib64/libxcb-glx.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/e0/8d3d1309e317aab99b071f5108068c04565568.debug
+Missing separate debuginfo for /lib64/libGLX_system.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/60/de90a11cf299826b25464dabeced6340370430.debug
+Missing separate debuginfo for /lib64/libglapi.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/67/3317571168d3e35499698ea61665192b64fc89.debug
+Missing separate debuginfo for /lib64/libdrm.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/8f/6aa6a2bee102ddebd7d218f4fe8b84a9fe7b2f.debug
+Missing separate debuginfo for /lib64/libxcb-dri2.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/8d/a81f03c38b01e47a75dc0615e81ba6efedddda.debug
+Missing separate debuginfo for /lib64/libXxf86vm.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/31/5ce5c59822e8bc033f7b651b72cdbef41d0911.debug
+Missing separate debuginfo for /lib64/libxcb-shm.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/60/9a0da45128999fd69a40f32b1535dd16e3f82e.debug
+Missing separate debuginfo for /lib64/libxshmfence.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/a3/02f0af598866c5a85c9e77ba2b6b0536d0da84.debug
+Missing separate debuginfo for /lib64/libxcb-randr.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/31/aa08b2aed39d033d452ccad5e03f51c9882fba.debug
+Missing separate debuginfo for /lib64/libxcb-dri3.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/3c/94f1c5b90bb748a6e51a4bf3464cc5e03066df.debug
+Missing separate debuginfo for /lib64/libxcb-present.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/9c/036119fe158b0481d0204f274611e89cbd5430.debug
+Missing separate debuginfo for /lib64/libxcb-sync.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/98/21a701dc2abb1a65eec963492b098d5d9e47a2.debug
+Missing separate debuginfo for /lib64/libxcb-xfixes.so.0
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/22/5832f9effc8c7f4cb542868a10b3a4961874d2.debug
+Missing separate debuginfo for /usr/lib64/dri/swrast_dri.so
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/ea/462f4b1c806eda81e456f5046bdd8e158cfaf3.debug
+Missing separate debuginfo for /usr/lib64/llvm17/lib/libLLVM-17.so
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/72/c2ab6b12c129323eb382009b6d5e797c650814.debug
+Missing separate debuginfo for /lib64/libdrm_radeon.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/de/e5b7873715c14b6e7e99b0a24f492015696578.debug
+Missing separate debuginfo for /lib64/libdrm_amdgpu.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/ea/cb68c3394f07800fd9dd1fc5d1c02e0423ff63.debug
+Missing separate debuginfo for /lib64/libdrm_nouveau.so.2
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/a6/7d51fbaab391fd6fa36a3c0c7b1a12cdb1d7ef.debug
+Missing separate debuginfo for /lib64/libtinfo.so.6
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/ac/8ca34595aa69d3dcb5a3151b34a1bef09cc071.debug
+Missing separate debuginfo for /lib64/libtiff.so.5
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/71/61856696cca53d856ff3d9e1ff506205df1716.debug
+Missing separate debuginfo for /lib64/libjbig.so.2.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/c9/38c035421898b749fd79107743c310649b18ed.debug
+Missing separate debuginfo for /lib64/libnsl.so.1
+Try: yum --enablerepo='*debug*' install /usr/lib/debug/.build-id/be/c6b15653c49170d68125168e10283295778e66.debug
+0x00007fac7be18e52 in waitpid () from /lib64/libc.so.6
+
+Thread 10 (Thread 0x7fac284bf700 (LWP 661847)):
+#0  0x00007fac7c90b371 in pthread_cond_wait@@GLIBC_2.3.2 () from /lib64/libpthread.so.0
+#1  0x00007fac806fedfb in QWaitCondition::wait(QMutex*, unsigned long) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#2  0x00007fac8034a4f5 in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#3  0x00007fac806fe65b in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#4  0x000000000c38ef15 in create_head(void*) ()
+#5  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#6  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 9 (Thread 0x7fac577dd700 (LWP 661331)):
+#0  0x00007fac7be43bd6 in ppoll () from /lib64/libc.so.6
+#1  0x00007fac8091fa99 in qt_safe_poll(pollfd*, unsigned long, timespec const*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#2  0x00007fac80920f94 in QEventDispatcherUNIX::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#3  0x00007fac808d1abb in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#4  0x00007fac806fa551 in QThread::exec() () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#5  0x00007fac69b27e26 in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5DBus.so.5
+#6  0x00007fac806fe65b in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#7  0x000000000c38ef15 in create_head(void*) ()
+#8  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#9  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 8 (Thread 0x7fac58771700 (LWP 661330)):
+#0  0x00007fac7bd6038c in sigtimedwait () from /lib64/libc.so.6
+#1  0x00007fac7c90f51c in sigwait () from /lib64/libpthread.so.0
+#2  0x000000000bf92190 in ctrlCHandle(void*) ()
+#3  0x000000000c38ef15 in create_head(void*) ()
+#4  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 7 (Thread 0x7fac59793700 (LWP 661262)):
+#0  0x00007fac7be4621f in select () from /lib64/libc.so.6
+#1  0x00000000323e82c8 in NotifierThreadProc ()
+#2  0x000000000c38ef15 in create_head(void*) ()
+#3  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#4  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 6 (Thread 0x7fac68e01700 (LWP 661257)):
+#0  0x00007fac7be43ae1 in poll () from /lib64/libc.so.6
+#1  0x00007fac7d7fb6cf in _xcb_conn_wait () from /lib64/libxcb.so.1
+#2  0x00007fac7d7fd35a in xcb_wait_for_event () from /lib64/libxcb.so.1
+#3  0x00007fac69c1c709 in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5XcbQpa.so.5
+#4  0x00007fac806fe65b in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#5  0x000000000c38ef15 in create_head(void*) ()
+#6  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#7  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 5 (Thread 0x7fac6a753700 (LWP 661189)):
+#0  0x00007fac7be190a8 in nanosleep () from /lib64/libc.so.6
+#1  0x00007fac7be18fae in sleep () from /lib64/libc.so.6
+#2  0x000000001fdaf5a0 in syiPeakMem(void*) ()
+#3  0x000000000c38ef15 in create_head(void*) ()
+#4  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#5  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 4 (Thread 0x7fac6c0b5700 (LWP 661187)):
+#0  0x00007fac7c90ee20 in nanosleep () from /lib64/libpthread.so.0
+#1  0x000000000e1ec8cd in rdaiLicRecheck(void*) ()
+#2  0x000000000c38ef15 in create_head(void*) ()
+#3  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#4  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 3 (Thread 0x7fac6cbcc700 (LWP 661178)):
+#0  0x00007fac7be4621f in select () from /lib64/libc.so.6
+#1  0x0000000030aceacb in ProcessInfo::sampleUsage(void*) ()
+#2  0x000000000c38ef15 in create_head(void*) ()
+#3  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#4  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 2 (Thread 0x7fac6d3cd700 (LWP 661177)):
+#0  0x00007fac7c90e877 in accept () from /lib64/libpthread.so.0
+#1  0x0000000030ad6e67 in ProcessInfo::handleConnection(void*) ()
+#2  0x000000000c38ef15 in create_head(void*) ()
+#3  0x00007fac7c9051ca in start_thread () from /lib64/libpthread.so.0
+#4  0x00007fac7bd4a953 in clone () from /lib64/libc.so.6
+
+Thread 1 (Thread 0x7fac74d02140 (LWP 661136)):
+#0  0x00007fac7be18e52 in waitpid () from /lib64/libc.so.6
+#1  0x00007fac7bd6c7c7 in do_system () from /lib64/libc.so.6
+#2  0x000000001fd920e2 in syStackTraceDump(_IO_FILE*, bool) ()
+#3  0x000000001fd924f2 in syStackTrace ()
+#4  0x000000000bf94922 in rdaiErrorHandler1(int) ()
+#5  <signal handler called>
+#6  0x00000000175a87ba in pesTrack::getPitch(int) ()
+#7  0x00000000175a230f in peEngineClient::getLayerInfoById(std::vector<eeLayerInfo, std::allocator<eeLayerInfo> >&) ()
+#8  0x00000000175a2e4b in peEngineClient::getLayerInfo(std::vector<eeLayerInfo, std::allocator<eeLayerInfo> >&) ()
+#9  0x000000000c7bdff8 in eeExtEngineDesignData::setLayerInfo() ()
+#10 0x000000001745954e in eeExtEngineDesignData::resetDesignData ()
+#11 0x00000000174646ff in dbMCRCInit() ()
+#12 0x0000000017464bde in peiInitializeExtractionSetUp(bool) ()
+#13 0x000000001b80db06 in toiCteUpdateRcCornerPostCallback(TAMmmcRcCorner*, TAMmmcUpdateRcCornerCbkInfo*) ()
+#14 0x00000000201dd087 in TAMmmc::updateRcCorner(TAMmmcRcCorner*, char const*, float, taboolean, TAMmmcTripleFactor&, taboolean, float, taboolean, TAMmmcTripleFactor&, taboolean, TAMmmcTripleFactor&, taboolean, float, taboolean, float, taboolean, TAMmmcTripleFactor&, taboolean, TAMmmcTripleFactor&, taboolean, TAMmmcTripleFactor&, taboolean, char const*, char const*, char const*, float, taboolean, char const*, char const*) ()
+#15 0x0000000022175141 in TaCmd_createOrUpdate_rc_corner(void*, Tcl_Interp*, int, char**, taboolean, tcmCmd*) ()
+#16 0x00000000233fc330 in tcmBaseCmd::execute(Tcl_Interp*, int, char**) ()
+#17 0x00000000233ef0df in tcmMgr::cmdParser(void*, Tcl_Interp*, int, char**) ()
+#18 0x00000000322df65b in TclInvokeStringCommand ()
+#19 0x00000000322e4152 in TclNRRunCallbacks ()
+#20 0x00000000322e6376 in TclEvalEx ()
+#21 0x00000000322e6ea3 in Tcl_EvalEx ()
+#22 0x00000000322e6f52 in TclNREvalObjEx ()
+#23 0x000000003239cb50 in TclNREvalFile ()
+#24 0x00000000322fa5f5 in TclNRSourceObjCmd ()
+#25 0x00000000322e4152 in TclNRRunCallbacks ()
+#26 0x00000000322e6376 in TclEvalEx ()
+#27 0x00000000323af461 in TclSubstTokens ()
+#28 0x00000000322e61fd in TclEvalEx ()
+#29 0x00000000322e6ea3 in Tcl_EvalEx ()
+#30 0x00000000322e6ec6 in Tcl_Eval ()
+#31 0x000000001dfee003 in qtfTclEval(char*, bool, bool) ()
+#32 0x000000001df8f70a in qtfsItem::fUpdateVar() ()
+#33 0x00007fac808fbc55 in QMetaObject::activate(QObject*, int, int, void**) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#34 0x00007fac802eae42 in QAbstractButton::clicked(bool) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#35 0x00007fac802eb02a in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#36 0x00007fac802ec30f in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#37 0x00007fac802ec4ab in QAbstractButton::mouseReleaseEvent(QMouseEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#38 0x00007fac80171bc6 in QWidget::event(QEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#39 0x00007fac801315f2 in QApplicationPrivate::notify_helper(QObject*, QEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#40 0x00007fac8013b8d0 in QApplication::notify(QObject*, QEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#41 0x00007fac808d302a in QCoreApplication::notifyInternal2(QObject*, QEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#42 0x00007fac80139e97 in QApplicationPrivate::sendMouseEvent(QWidget*, QMouseEvent*, QWidget*, QWidget*, QWidget**, QPointer<QWidget>&, bool) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#43 0x00007fac8018cfcb in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#44 0x00007fac8018f89c in ?? () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#45 0x00007fac801315f2 in QApplicationPrivate::notify_helper(QObject*, QEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#46 0x00007fac8013aa1a in QApplication::notify(QObject*, QEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Widgets.so.5
+#47 0x00007fac808d302a in QCoreApplication::notifyInternal2(QObject*, QEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#48 0x00007fac80d42908 in QGuiApplicationPrivate::processMouseEvent(QWindowSystemInterfacePrivate::MouseEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Gui.so.5
+#49 0x00007fac80d4484b in QGuiApplicationPrivate::processWindowSystemEvent(QWindowSystemInterfacePrivate::WindowSystemEvent*) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Gui.so.5
+#50 0x00007fac80d1d6bc in QWindowSystemInterface::sendWindowSystemEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Gui.so.5
+#51 0x0000000031f27e26 in QUnixEventDispatcherQPA::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) ()
+#52 0x00007fac816fe2ea in TqEventDispatcher::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /opt/coe/cadence/DDI221/INNOVUS221/tools.lnx86/innovus/bin/64bit/../../../lib/64bit/libtq.so
+#53 0x00007fac816fb0ee in tcl_dispatch_qt () from /opt/coe/cadence/DDI221/INNOVUS221/tools.lnx86/innovus/bin/64bit/../../../lib/64bit/libtq.so
+#54 0x00000000323a8fe1 in Tcl_DoOneEvent ()
+#55 0x00007fac816fe23a in TqEventDispatcher::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /opt/coe/cadence/DDI221/INNOVUS221/tools.lnx86/innovus/bin/64bit/../../../lib/64bit/libtq.so
+#56 0x00007fac808d1abb in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#57 0x00007fac808d927e in QCoreApplication::exec() () from /opt/coe/cadence/DDI221/INNOVUS221/tools/Qt/v5//64bit/lib/libcdsQt5Core.so.5
+#58 0x00007fac816fd897 in TqApplication::exec() () from /opt/coe/cadence/DDI221/INNOVUS221/tools.lnx86/innovus/bin/64bit/../../../lib/64bit/libtq.so
+#59 0x000000000c06fbbc in edi_app_init(Tcl_Interp*) ()
+#60 0x00000000323a378c in Tcl_MainEx ()
+#61 0x00000000070d0f11 in main ()
+A debugging session is active.
+
+	Inferior 1 [process 661136] will be detached.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]
+[Inferior 1 (process 661136) detached]

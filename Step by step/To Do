@@ -1,0 +1,41 @@
+
+LOAD COMMAND
+load-ecen-714
+
+FOR SYNTHESIS
+Use design Compiler
+source /opt/coe/synopsys/syn/V-2023.12-SP1/setup.syn.sh
+
+Use library compiler
+source /opt/coe/synopsys/lc/W-2024.09-SP5-3/setup.lc.sh
+
+Use design Compiler
+source /opt/coe/synopsys/syn/V-2023.12-SP1/setup.syn.sh
+
+use cadence innovus
+source /opt/coe/cadence/DDI221/setup.DDI221.linux.bash
+
+Use prime time
+source /opt/coe/synopsys/prime/V-2023.12-SP5-4/setup.prime.sh
+
+Use Pedasus software for LVS
+source /opt/coe/cadence/PEGASUS232/setup.PEGASUS232.linux.bash
+
+Use Cadence software for ECEN 714 lab
+source /opt/coe/cadence/QUANTUS241/setup.QUANTUS241.linux.bash
+
+Use NCSU pdk files
+source /opt/coe/ncsu/ncsu-cdk-1.6.0.beta/ncsu.sh
+
+
+dc_shell
+gui_start
+
+
+to convert the .lib files to .db files - this step is done to because the .lib files are not executable in synopsys. synopsys only needs .db for synthesis. hence i had to do this . a tcl file was written - lib2db.tcl and necessary changes were made in the merged file.
+
+lc_shell -f lib2db.tcl
+
+this command was executed to convert the files from .lib to .db
+
+now  i  m going to start with the synthesis process

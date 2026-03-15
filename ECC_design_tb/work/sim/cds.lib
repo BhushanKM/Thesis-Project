@@ -1,0 +1,2 @@
+# Local cds.lib - overrides home directory cds.lib
+DEFINE worklib ./worklib

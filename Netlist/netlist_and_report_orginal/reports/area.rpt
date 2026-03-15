@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : ecc_engine_top
+Version: V-2023.12-SP1
+Date   : Mon Mar  2 11:37:45 2026
+****************************************
+
+Library(s) Used:
+
+    nangate45_merged (File: /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db_files/merged.db)
+
+Number of ports:                         1167
+Number of nets:                         28338
+Number of cells:                        26791
+Number of combinational cells:          24229
+Number of sequential cells:              2561
+Number of macros/black boxes:               0
+Number of buf/inv:                       2961
+Number of references:                      64
+
+Combinational area:              30071.831784
+Buf/Inv area:                     1669.682013
+Noncombinational area:           13625.318439
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                 43697.150224
+Total area:                 undefined
+1

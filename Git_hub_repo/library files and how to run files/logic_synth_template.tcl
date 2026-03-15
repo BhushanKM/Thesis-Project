@@ -2,14 +2,24 @@
 
 
 # Set target library and linked libraries
-set target_library [glob /{your_PDK_path}/db/NLDM/*.db]
-set link_library "* [glob /{your_PDK_path}/db/NLDM/*.db]"
-set search_path ". /{your_PDK_path}/db/NLDM"
+# set target_library [glob /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db/NLDM/*.db]
+# set link_library "* [glob /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db/NLDM/*.db]"
+# set search_path ". /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db/NLDM"
+
+set target_library "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/NangateOpenCellLibrary_typical.lib"
+set link_library "* /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/NangateOpenCellLibrary_typical.lib"
+set search_path ". /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib"
+
 
 # Read the design file and set the current design.
-read_verilog "{design_path}"
-current_design {design_name}
-elaborate {design_name}
+# read_verilog "{design_path}"
+read_verilog [glob /home/grads/b/bhushan_123/thesis_project/Design/*.v]
+
+# current_design {design_name}
+# elaborate {design_name}
+
+current_design dbb_ecc
+elaborate dbb_ecc
 
 # Set up design libraries and constraints
 set auto_wire_load_selection true
@@ -32,13 +42,19 @@ set_app_var auto_wire_load_selection true
 compile_ultra
 
 # Generate gate-level netlist
-write -format verilog -hierarchy -output "{output_dir}/{design_name}_{index}_netlist.v"
+# write -format verilog -hierarchy -output "{output_dir}/{design_name}_{index}_netlist.v"
+write -format verilog -hierarchy -output "/home/grads/b/bhushan_123/thesis_project/Netlist/netlist_file/ecc_engine_top_netlist.v"
+
 
 # Generate report
 #report_timing > {output_dir}/{design_name}_{index}_timing.rpt
-report_qor  > {output_dir}/{design_name}_{index}_qor.rpt
-report_power > {output_dir}/{design_name}_{index}_power.rpt
-report_area > {output_dir}/{design_name}_{index}_area.rpt
+# report_qor  > {output_dir}/{design_name}_{index}_qor.rpt
+# report_power > {output_dir}/{design_name}_{index}_power.rpt
+# report_area > {output_dir}/{design_name}_{index}_area.rpt
+
+report_qor   > /home/grads/b/bhushan_123/thesis_project/report_files/ecc_engine_top_qor.rpt
+report_power > /home/grads/b/bhushan_123/thesis_project/report_files/ecc_engine_top_power.rpt
+report_area  > /home/grads/b/bhushan_123/thesis_project/report_files/ecc_engine_top_area.rpt
 
 # Exit dc_shell
 quit

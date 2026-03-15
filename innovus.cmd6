@@ -1,0 +1,79 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Sat Mar 14 01:59:19 2026                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v22.17-s086_1 (64bit) 09/24/2024 10:51 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: NanoRoute 22.17-s086_1 NR240905-1647/22_17-UB (database version 18.20.629) {superthreading v2.20}
+#@(#)CDS: AAE 22.17-s013 (64bit) 09/24/2024 (Linux 3.10.0-693.el7.x86_64)
+#@(#)CDS: CTE 22.17-s017_1 () Sep 12 2024 04:53:54 ( )
+#@(#)CDS: SYNTECH 22.17-s006_1 () Aug 12 2024 03:52:27 ( )
+#@(#)CDS: CPE v22.17-s051
+#@(#)CDS: IQuantus/TQuantus 21.2.2-s369 (64bit) Tue May 7 14:30:42 PDT 2024 (Linux 3.10.0-693.el7.x86_64)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+win
+set enc_check_rename_command_name 1
+init_design
+init_design
+init_design
+init_design
+save_global Default.globals
+init_design
+init_design
+init_design
+init_design
+init_design
+init_design
+set init_design_settop 1
+init_design
+set init_design_settop 1
+init_design
+set init_design_settop 1
+init_design
+set init_design_settop 1
+init_design
+set init_design_settop 1
+init_design
+set init_design_settop 1
+init_design
+set init_design_settop 1
+init_design
+gui_select -rect {-6.05100 1.88250 8.33750 -3.22750}
+gui_select -rect {-3.76500 2.82400 0.80700 -2.28600}
+deselectAll
+deselectAll
+setLayerPreference node_module -isVisible 0
+setLayerPreference node_module -isVisible 1
+setLayerPreference node_module -isVisible 0
+setLayerPreference node_module -isVisible 1
+gui_select -rect {-7.26150 8.20300 9.81700 -2.01700}
+zoomIn
+fit
+gui_select -rect {-9.68200 3.89950 5.78250 -5.24450}
+deselectAll
+zoomIn
+zoomBox -97.84600 -23.39750 347.61300 200.53750
+zoomBox -71.97900 -16.45100 249.86600 145.34250
+zoomBox -61.35450 -14.30300 212.21400 123.22150
+zoomBox -11.63500 -3.46650 34.14600 19.54800
+zoomBox -7.77950 -2.61700 20.33650 11.51700
+zoomBox -5.02700 -1.79550 12.24050 6.88500
+zoomBox -1.86400 -0.83800 3.67200 1.94500
+zoomBox -1.04700 -0.51850 1.84350 0.93450
+zoomBox -1.23100 -0.60250 2.17050 1.10750
+zoomBox -1.70050 -0.81750 3.00800 1.54950
+zoomBox -2.76400 -1.30350 4.90450 2.55150
+zoomBox -20.56350 -8.03450 33.35300 19.06950
+zoomBox -36.25350 -16.07700 51.54150 28.05800
+fit
+checkDesign
+place_design -concurrent_macros
+deselectAll
+getIoFlowFlag
+floorPlan -coreMarginsBy die -site core -r 1.0 0.7 0.7 0.7 0.7
+init_design
+floorPlan -site coreSite -r 1.0 0.70 20 20 20 20

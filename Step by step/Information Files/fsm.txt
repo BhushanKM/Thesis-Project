@@ -1,0 +1,253 @@
+## DBB-ECC Decoder Architecture
+
+**Important Note:** This paper does **not** describe a traditional Finite State Machine (FSM) with explicit states. Instead, it presents a **combinational/dataflow decoder architecture** with a multi-step decoding process. The decoder operates through parallel and sequential logic stages rather than clock-driven state transitions.
+
+---
+
+### Decoder Block Diagram (Figure 4a)
+
+The DBB-ECC decoder consists of 5 main functional blocks:
+
+| Block | Function |
+|-------|----------|
+| **Syndrome Generator** | Computes S₀ and S₁ syndromes from received codeword (272-bit data + 32-bit parity) |
+| **SSE Locator** | Locates Single Symbol Errors using RS16(19,17) decoding |
+| **DBE Locator** | Locates Double Bit Errors using syndrome patterns |
+| **Decision Logic** | Selects valid error information from SSE or DBE locator |
+| **Error Corrector** | Corrects errors using XOR of data symbols and identified error patterns |
+
+---
+
+### DBE Locator Structure (Figure 4b)
+
+The DBE Locator contains:
+
+| Component | Function |
+|-----------|----------|
+| **Syndrome Splitter** | Splits S₀ into two SBE symbols (Eⱼ₀, Eⱼ₁) |
+| **Sublocator 1** | Handles errors when count of "1"s in S₀ = 2 (Type 1 & 2 with Eᵢ₀ ≠ Eᵢ₁) |
+| **Sublocator 2** | Handles errors when count of "1"s in S₀ = 1 (Type 3) |
+| **Sublocator 3** | Handles errors when count of "1"s in S₀ = 0 (Type 1 & 2 with Eᵢ₀ = Eᵢ₁) |
+| **DBE Info Generator** | Determines final decoding result based on count of "1"s in S₀ |
+
+---
+
+### Decoding Process (3 Steps)
+
+The decoder follows a **3-step decoding flow** based on the count of "1"s in S₀ symbol:
+
+#### **Step 1: Count "1"s in S₀ Symbol**
+- Count can only be **2, 1, or 0** for random 2-bit errors
+- This determines which sublocator path is activated
+
+#### **Step 2: Estimate Error Patterns (Eⱼ₀, Eⱼ₁)**
+
+| Count of "1"s | Error Pattern Estimation |
+|---------------|--------------------------|
+| **2** | Split S₀ into two SBE symbols: Eⱼ₀ = first "1" position, Eⱼ₁ = S₀ ⊕ Eⱼ₀ |
+| **1** | Eⱼ₀ = S₀ (data symbol error), Eⱼ₁ = one of 16 SBE symbols (parity P₁) |
+| **0** | Both error patterns are identical SBE symbols |
+
+#### **Step 3: Find Error Locations (j₀, j₁)**
+
+| Count | Location Type | Relationship Used |
+|-------|---------------|-------------------|
+| **2** | Type 1 (two data symbols) | Tⱼ₀Eⱼ₀ ⊕ Tⱼ₁Eⱼ₁ ⊕ S₁ = 0 |
+| **2** | Type 2 (data + parity P₀) | Tⱼ₀Eⱼ₀ ⊕ S₁ = 0 |
+| **1** | Type 3 (data + parity P₁) | Tⱼ₀Eⱼ₀ ⊕ Eⱼ₁ ⊕ S₁ = 0 |
+| **0** | Type 1 & 2 | Compare S₁ with stored syndromes in lookup table |
+
+---
+
+### Inputs and Outputs
+
+#### **Inputs:**
+| Signal | Width | Description |
+|--------|-------|-------------|
+| Codeword | 304 bits | 272-bit data + 32-bit parity (17 data symbols + 2 parity symbols) |
+
+#### **Outputs:**
+| Signal | Width | Description |
+|--------|-------|-------------|
+| Error Location | 17-bit | One-hot vector indicating error position in data symbols |
+| Error Pattern (SSE) | 16-bit | Error pattern for single symbol error |
+| Error Pattern (DBE) | 32-bit | Two 16-bit error patterns for double bit error |
+| Corrected Data | 272 bits | Data after XOR with identified error patterns |
+
+#### **Internal Signals:**
+| Signal | Width | Description |
+|--------|-------|-------------|
+| S₀ | 16-bit | First syndrome symbol |
+| S₁ | 16-bit | Second syndrome symbol |
+| Count | 2-bit | Number of "1"s in S₀ (0, 1, or 2) |
+| Eⱼ₀, Eⱼ₁ | 16-bit each | Estimated error patterns |
+
+---
+
+### Error Location Types (Figure 2)
+
+| Type | Error Location | Possible Cases | S₀ Pattern |
+|------|----------------|----------------|------------|
+| **Type 1** | Two data symbols (Dᵢ₀, Dᵢ₁) | ¹⁷C₂ = 136 | S₀ = Eᵢ₀ ⊕ Eᵢ₁ |
+| **Type 2** | Data symbol (Dᵢ₀) + Parity P₀ | ¹⁷C₁ = 17 | S₀ = Eᵢ₀ ⊕ Eᵢ₁ |
+| **Type 3** | Data symbol (Dᵢ₀) + Parity P₁ | ¹⁷C₁ = 17 | S₀ = Eᵢ₀ |
+
+---
+
+### Summary
+
+The DBB-ECC decoder is a **parallel dataflow architecture** rather than a traditional FSM. The SSE and DBE locators operate **concurrently**, and the decision logic selects the appropriate correction based on syndrome analysis. The key innovation is exploiting syndrome patterns to reduce the lookup table to only **5.6%** of all DBE syndromes (2448 out of 43776 cases).
+
+---
+
+## RTL Implementation Details
+
+### Module: gf_inv_16 (Sequential GF Inverse FSM)
+
+The GF(2^16) inverse module uses a traditional FSM for Fermat's theorem computation:
+
+```
+        +------+
+        | IDLE |<-----------------+
+        +------+                  |
+           | start && a≠0         |
+           v                      |
+        +--------+                |
+        | SQUARE |                |
+        +--------+                |
+           |                      |
+           v                      |
+        +------+                  |
+        | MULT |--step_cnt<14-----+
+        +------+                  |
+           | step_cnt==14         |
+           v                      |
+        +---------+               |
+        | DONE_ST |--> done=1 ----+
+        +---------+
+```
+
+| State    | Operation                              | Next State      |
+|----------|----------------------------------------|-----------------|
+| IDLE     | Wait for start, handle a=0 special case| SQUARE (if a≠0) |
+| SQUARE   | sq = acc², prepare multiply            | MULT            |
+| MULT     | acc = acc × sq, sq = sq²               | SQUARE or DONE  |
+| DONE_ST  | Output result, signal done             | IDLE            |
+
+**Latency:** 31 cycles for non-zero input (15 square + 15 multiply + 1 done)
+
+---
+
+### Module: gf_inv_16_pipelined (Pipelined GF Inverse)
+
+15-stage pipeline for high-throughput inverse computation:
+
+```
+Stage 0: acc=a, sq=a²
+Stage 1: acc=acc×sq, sq=sq²
+Stage 2: acc=acc×sq, sq=sq²
+  ...
+Stage 14: acc=acc×sq → output inv_a
+```
+
+**Latency:** 15 cycles initial, **1 result/cycle** throughput after pipeline fill
+
+---
+
+### Module: t_sum_search (Sequential T-Sum Search FSM)
+
+Searches for (i,j) pairs where T[i] ⊕ T[j] = t_sum_in:
+
+```
+        +------+
+        | IDLE |<-----------------+
+        +------+                  |
+           | start                |
+           v                      |
+        +--------+                |
+        | SEARCH |--not found-----+
+        +--------+    & more pairs|
+           | found or exhausted   |
+           v                      |
+        +--------+                |
+        | DONE_S |--> done=1 -----+
+        +--------+
+```
+
+| State  | Operation                                    | Next State |
+|--------|----------------------------------------------|------------|
+| IDLE   | Wait for start, initialize idx_i=0, idx_j=1 | SEARCH     |
+| SEARCH | Compare T[i]⊕T[j] with target, advance (i,j)| DONE_S     |
+| DONE_S | Output found flag and locations             | IDLE       |
+
+**Latency:** 1-136 cycles (worst case: all 17C2=136 pairs checked)
+
+---
+
+### Galois Field Arithmetic Summary
+
+| Module               | Type          | Latency        | Use Case                    |
+|----------------------|---------------|----------------|-----------------------------|
+| gf_mul_16            | Registered    | 1 cycle        | Default multiplier          |
+| gf_mul_16_pipelined  | Pipelined     | 4 cyc (1/cyc)  | High-frequency paths        |
+| gf_mul_param         | Registered    | 1 cycle        | Configurable (8/16/32-bit)  |
+| gf_mul_param_comb    | Combinational | 0 cycles       | Internal use, low-latency   |
+| gf_mul_16_comb       | Combinational | 0 cycles       | Legacy (in gf_inv_16.v)     |
+| gf_inv_16            | Sequential    | 31 cycles      | General inverse             |
+| gf_inv_16_pipelined  | Pipelined     | 15 cyc (1/cyc) | High-throughput paths       |
+| gf_inv_16_sbe_lut    | LUT           | 0 cycles       | Single-bit pattern inverse  |
+| t_sum_search         | Sequential    | 1-136 cycles   | Weight=0 DBE location       |
+| t_sum_lut_parallel   | Combinational | 1 cycle        | Fast weight=0 DBE location  |
+
+---
+
+### GF Multiplier Variants (gf_mul_16.v) - NEW
+
+| Module                 | Latency  | Throughput | Symbol Size | Architecture           |
+|------------------------|----------|------------|-------------|------------------------|
+| gf_mul_16              | 1 cycle  | 1/cycle    | 16-bit      | Comb + output reg      |
+| gf_mul_16_pipelined    | 4 cycles | 1/cycle    | 16-bit      | 4-stage pipeline       |
+| gf_mul_param           | 1 cycle  | 1/cycle    | 8/16/32-bit | Parameterized + reg    |
+| gf_mul_param_comb      | 0 cycles | N/A        | 8/16/32-bit | Pure combinational     |
+
+**Supported Primitive Polynomials:**
+- M=8:  x^8 + x^4 + x^3 + x^2 + 1 (POLY = 0x1D)
+- M=16: x^16 + x^5 + x^3 + x + 1 (POLY = 0x002B)
+- M=32: x^32 + x^7 + x^5 + x^3 + x^2 + x + 1 (POLY = 0x000000AF)
+
+---
+
+### Formal Verification Properties (gf_mul_16.v) - NEW
+
+Enabled with `ifdef FORMAL:
+
+| Property | Description                          | Assertion Type |
+|----------|--------------------------------------|----------------|
+| P1       | Multiplicative identity (a*1 = a)    | assert         |
+| P2       | Multiplicative zero (a*0 = 0)        | assert         |
+| P3       | Commutativity (a*b = b*a)            | tracking       |
+| P4       | Output validity (valid_out timing)   | assert         |
+| P5       | Result bounded (≤16-bit)             | assert         |
+| P6       | Deterministic (same in → same out)   | assert         |
+
+**Cover Properties:**
+- Edge case: a=0xFFFF, b=0xFFFF
+- Identity: a=0x0001, b=0x0001
+- MSB overflow: a=0x8000, b=0x0002
+
+---
+
+### Bug Fixes Applied
+
+1. **gf_inv_16_sbe_lut**: Corrected all 16 inverse values
+   - Previous bug: bit 15 returned 0x002B (primitive polynomial, incorrect)
+   - Fixed: bit 15 now returns 0xAF9E (verified inv(0x8000))
+
+2. **Latency optimization**: Added `gf_inv_16_pipelined` module
+   - Reduces inverse latency from 31 to 15 cycles
+   - Enables 1 result/cycle throughput for decoder critical paths
+
+3. **NEW - GF Multiplier Enhancements**:
+   - Added 4-stage pipelined multiplier for high-frequency designs
+   - Added parameterized multiplier supporting 8/16/32-bit symbols
+   - Added formal verification properties for correctness validation

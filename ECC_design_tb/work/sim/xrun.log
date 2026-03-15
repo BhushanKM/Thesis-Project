@@ -1,0 +1,192 @@
+xrun: 22.03-s012: (c) Copyright 1995-2023 Cadence Design Systems, Inc.
+TOOL:	xrun	22.03-s012: Started on Feb 18, 2026 at 17:10:09 CST
+xrun
+	-f run.f
+		+access+rwc
+		-timescale 1ns/1ps
+		-input waves.tcl
+		-coverage A
+		-covoverwrite
+		-covfile ./cov_conf.ccf
+		-uvmhome /opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv
+		+UVM_VERBOSITY=UVM_LOW
+		-f file_list.f
+			-incdir ../tb
+			-incdir ../test
+			-incdir ../design
+			../design/gf_mul_16.v
+			../design/ecc_encoder.v
+			../design/ecc_decoder.v
+			../design/ecc_engine_top.v
+			../tb/ecc_pkg.sv
+			../tb/ecc_top.sv
+	+UVM_TESTNAME=ecc_simple_random_test
+
+   User defined plus("+") options:
+	+UVM_VERBOSITY=UVM_LOW
+
+DEFINE worklib ./worklib
+|
+xrun: *W,DLCPTH (./cds.lib,2): cds.lib Invalid path '/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/work/sim/worklib' (cds.lib command ignored).
+DEFINE worklib ./worklib
+|
+xrun: *W,DLCPTH (./cds.lib,2): cds.lib Invalid path '/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/work/sim/worklib' (cds.lib command ignored).
+DEFINE worklib ./worklib
+|
+xrun: *W,DLCPTH (./cds.lib,2): cds.lib Invalid path '/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/work/sim/worklib' (cds.lib command ignored).
+DEFINE worklib ./worklib
+|
+xrun: *W,DLCPTH (./cds.lib,2): cds.lib Invalid path '/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/work/sim/worklib' (cds.lib command ignored).
+DEFINE worklib ./worklib
+|
+xrun: *W,DLCPTH (./cds.lib,2): cds.lib Invalid path '/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/work/sim/worklib' (cds.lib command ignored).
+DEFINE worklib ./worklib
+|
+xrun: *W,DLCPTH (./cds.lib,2): cds.lib Invalid path '/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/work/sim/worklib' (cds.lib command ignored).
+DEFINE worklib ./worklib
+|
+xmsim: *W,DLCPTH (./cds.lib,2): cds.lib Invalid path '/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/work/sim/worklib' (cds.lib command ignored).
+Loading snapshot worklib.ecc_top:sv .................... Done
+SVSEED default: 1
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /opt/coe/cadence/XCELIUM/tools/xcelium/files/xmsimrc
+xcelium> source /opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv/files/tcl/uvm_sim.tcl
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create top -all -memories -depth all -tasks -functions -all -database waves -waveform
+xmsim: *SE,PNOOBJ: Path element could not be found: top.
+xmsim: *SE,PRNFND: No items are probed because no objects were found that match any specified name.
+xcelium> 
+xcelium> run
+----------------------------------------------------------------
+CDNS-UVM-1.1d (22.03-s012)
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test ecc_simple_random_test...
+UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+--------------------------------------------------------------
+Name                       Type                    Size  Value
+--------------------------------------------------------------
+uvm_test_top               ecc_simple_random_test  -     @2768
+  env                      ecc_env                 -     @2827
+    agent                  ecc_agent_c             -     @2858
+      dec_ap               uvm_analysis_port       -     @3983
+      driver               ecc_driver_c            -     @3150
+        drv_ap             uvm_analysis_port       -     @3299
+        rsp_port           uvm_analysis_port       -     @3250
+        seq_item_port      uvm_seq_item_pull_port  -     @3199
+      monitor              ecc_monitor_c           -     @3021
+        dec_ap             uvm_analysis_port       -     @3119
+        enc_ap             uvm_analysis_port       -     @3070
+      sequencer            ecc_sequencer_c         -     @3279
+        rsp_export         uvm_analysis_export     -     @3387
+        seq_item_export    uvm_seq_item_pull_imp   -     @3935
+        arbitration_queue  array                   0     -    
+        lock_queue         array                   0     -    
+        num_last_reqs      integral                32    'd1  
+        num_last_rsps      integral                32    'd1  
+    scoreboard             ecc_scoreboard_c        -     @2888
+      dec_export           uvm_analysis_imp_dec    -     @2989
+      drv_export           uvm_analysis_imp_drv    -     @2938
+--------------------------------------------------------------
+
+UVM_INFO ../test/ecc_simple_random_test.sv(18) @ 0: uvm_test_top [ecc_simple_random_test] Starting Simple Random Test with 50 mixed transactions
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 255000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [1]: error_type=DBE
+  Expected: data=0x3e8e7af4ec9bd07e90a3604755ac12c0a9bf2c25bf7254bd7fd646738d4ee88392f2, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0x3eae7ad4ec9bd07e92a3624755ac12c0a9bf2c25bf7254bd7fd646738d4ee88392f2, err_det=1, err_corr=1, uncorr=0
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 1775000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [9]: error_type=DBE
+  Expected: data=0x9392177ed6788d850c0fe75c59a9b2e3e5a988734bfd6ce97360e2fc978978becdb5, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0x9392177ed6788d850c0fe75c59a9a2e3e5a988734bfd6ce97360e2fc978978becdb5, err_det=1, err_corr=0, uncorr=1
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 2745000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [14]: error_type=DBE
+  Expected: data=0x42c57611822a2e25eccfaef1149ff0dbc64827afb0670f3208acd3db8744d4b924de, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0x52c55611822a2e25eccfaef1149ff0dbd64807afb0670f3208acd3db8744d4b924de, err_det=1, err_corr=1, uncorr=0
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 4515000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [24]: error_type=DBE
+  Expected: data=0xf037847e4ec9fb764830e3641626e00afb173b3d31c62c249153b4798d14ed883fdb, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0xf035847e4ec9fb764830e3241626e00afb173b3d31c62c249153b47b8d14ed883fdb, err_det=1, err_corr=1, uncorr=0
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 5045000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [27]: error_type=DBE
+  Expected: data=0xc85750e63aea8e63f679e36d9f8aaff7ea5d3001671b800c86ac0142fbaadadb62ae, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0xc85650e63aea8e63f669e36d9f8aaff7ea5c3001671b800c86bc0142fbaadadb62ae, err_det=1, err_corr=1, uncorr=0
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 5625000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [30]: error_type=DBE
+  Expected: data=0x744e0edb96069cd643531ce2f34ab0021aad296cf69c6469d945cfe117d0d133e43c, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0x744e0edb96069cd643539ce2f34ab0021aad296cf69c6469d945cfe117d0d133e43c, err_det=1, err_corr=0, uncorr=1
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 6675000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [35]: error_type=DBE
+  Expected: data=0xc17cd47ce5154f651bce81b91a98b06639b3f9c435972b6b513ce62d80be11220a84, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0xc174d47ce5154f651b4e81b91a98b06639bbf9c435972b6b51bce62d80be11220a84, err_det=1, err_corr=1, uncorr=0
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 6825000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [36]: error_type=DBE
+  Expected: data=0x53bdb7819920ac167a9409cda2b1188eb364d6661d6a1eb57ba25139c5cd202e0a3d, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0x53bdb7819920ac167a9409cda2b1188eb344d6261d6a1eb57b825179c5cd202e0a3d, err_det=1, err_corr=1, uncorr=0
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(113) @ 7215000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] FAIL [38]: error_type=DBE
+  Expected: data=0x3fac6696e275f8fcf86c97ee8bb9cf943986318e074a601057df69c32d125f16493d, err_det=1, err_corr=1, uncorr=0
+  Actual:   data=0x3fac6696e275f0fce86c97ee8bb9cf943986398e174a601057df69c32d125f16493d, err_det=1, err_corr=1, uncorr=0
+UVM_INFO /opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 9475000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO ../tb/ecc_monitor_c.sv(137) @ 9475000: uvm_test_top.env.agent.monitor [ecc_monitor_c] ECC Coverage: 11.73%
+UVM_INFO ../tb/ecc_scoreboard_c.sv(154) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] ========== ECC SCOREBOARD SUMMARY ==========
+UVM_INFO ../tb/ecc_scoreboard_c.sv(155) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] Total Transactions: 50
+UVM_INFO ../tb/ecc_scoreboard_c.sv(156) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] Passed:             41
+UVM_INFO ../tb/ecc_scoreboard_c.sv(157) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] Failed:             9
+UVM_INFO ../tb/ecc_scoreboard_c.sv(158) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] ---------- Error Type Breakdown ----------
+UVM_INFO ../tb/ecc_scoreboard_c.sv(159) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] No Error:           9
+UVM_INFO ../tb/ecc_scoreboard_c.sv(160) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] SBE:                12
+UVM_INFO ../tb/ecc_scoreboard_c.sv(161) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] DBE:                12
+UVM_INFO ../tb/ecc_scoreboard_c.sv(162) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] SSE:                10
+UVM_INFO ../tb/ecc_scoreboard_c.sv(163) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] DASE:               7
+UVM_INFO ../tb/ecc_scoreboard_c.sv(164) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] Uncorrectable:      7
+UVM_INFO ../tb/ecc_scoreboard_c.sv(165) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] ============================================
+UVM_ERROR ../tb/ecc_scoreboard_c.sv(168) @ 9475000: uvm_test_top.env.scoreboard [ecc_scoreboard_c] TEST FAILED: 9 transactions failed
+UVM_INFO ../tb/ecc_test.sv(40) @ 9475000: uvm_test_top [ecc_simple_random_test] ********** TEST FAILED **********
+
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   18
+UVM_WARNING :    0
+UVM_ERROR :   10
+UVM_FATAL :    0
+** Report counts by id
+[RNTST]     1
+[TEST_DONE]     1
+[UVMTOP]     1
+[ecc_monitor_c]     1
+[ecc_scoreboard_c]    22
+[ecc_simple_random_test]     2
+Simulation complete via $finish(1) at time 9475 NS + 45
+/opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
+xcelium> exit
+xmsim: *W,CGDEFN: Default name "uvm_pkg.uvm_test_top.env.agent.monitor.ecc_coverage" will be generated for covergroup instance "worklib.ecc_pkg::ecc_monitor_c::ecc_coverage@3149_5" as the name of the covergroup instance is not specified explicitly: ../tb/ecc_monitor_c.sv, 19.
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  ecc_top(ecc_top)
+  scope    :  scope
+  testname :  test
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_1aabd4c0_0a75878d.ucm (reused)
+  data               :  ./cov_work/scope/test/icc_1aabd4c0_0a75878d.ucd
+TOOL:	xrun	22.03-s012: Exiting on Feb 18, 2026 at 17:10:12 CST  (total: 00:00:03)

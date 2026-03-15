@@ -1,0 +1,54 @@
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : ecc_engine_top
+Version: V-2023.12-SP1
+Date   : Mon Mar  2 11:38:35 2026
+****************************************
+
+
+Library(s) Used:
+
+    nangate45_merged (File: /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db_files/merged.db)
+
+
+Operating Conditions: tt_1.0_25.0   Library: nangate45_merged
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.1  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  =  12.0951 mW   (82%)
+  Net Switching Power  =   2.5931 mW   (18%)
+                         ---------
+Total Dynamic Power    =  14.6882 mW  (100%)
+
+Cell Leakage Power     = 954.5712 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network  8.4229e+03            0.0000            0.0000        8.4229e+03  (  53.85%)  i
+register       1.0455e+03          367.5944        2.1145e+05        1.6245e+03  (  10.39%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational  2.6267e+03        2.2255e+03        7.4312e+05        5.5953e+03  (  35.77%)
+--------------------------------------------------------------------------------------------------
+Total          1.2095e+04 uW     2.5931e+03 uW     9.5457e+05 nW     1.5643e+04 uW
+1

@@ -1,9 +1,0 @@
-1763668413 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/tb/htax_rx_interface.sv
-1763668413 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/design/htax_outport_arbiter.v
-1765335070 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/design/htax_outport_data_mux.v
-1763668413 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/tb/htax_pkg.sv
-1763668413 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/tb/htax_defines.sv
-1763668413 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/tb/htax_tx_interface.sv
-1763668413 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/design/htax_combinatoric_arbiter.v
-1763668413 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/design/htax_top.v
-1763668413 /home/grads/b/bhushan_123/lab-10-BhushanKM/work/tb/htax_top.sv

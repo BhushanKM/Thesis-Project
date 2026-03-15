@@ -1,0 +1,365 @@
+ 
+                             Library Compiler (TM)
+                                 DesignWare (R)
+
+               Version W-2024.09-SP5-3 for linux64 - Aug 28, 2025
+                             Base Build 08/10/2025
+
+                    Copyright (c) 1988 - 2025 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Initializing...
+# ================================================================
+# lib2db.tcl
+# Run:
+#   lc_shell -f lib2db.tcl
+# ================================================================
+suppress_message LBDB-1054
+suppress_message LBDB-607
+suppress_message LIBG-10
+suppress_message LIBG-205
+suppress_message LIBG-265
+suppress_message LIBG-275
+suppress_message UIL-3
+set_app_var sh_enable_page_mode false
+false
+# ---- Hardcoded paths ----
+# set lib_file "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/NangateOpenCellLibrary_typical.lib"
+# set lib_file_a "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_32x64.lib"
+# set lib_file_b "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_64x7.lib"
+# set lib_file_c "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_64x15.lib"
+# set lib_file_d "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_64x21.lib"
+# set lib_file_e "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_64x32.lib"
+# set lib_file_f "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_64x96.lib"
+# set lib_file_g "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_256x34.lib"
+# set lib_file_h "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_256x95.lib"
+# set lib_file_i "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_256x96.lib"
+# set lib_file_j "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_512x64.lib"
+# set lib_file_k "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_1024x32.lib"
+# set lib_file_l "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/fakeram45_2048x39.lib"
+set lib_file_m "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/merged.lib"
+/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/merged.lib
+set out_dir  "/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db_files"
+/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db_files
+# ---- Create output directory ----
+file mkdir $out_dir
+# ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_a"
+# read_lib $lib_file_a
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_b"
+# read_lib $lib_file_b
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_c"
+# read_lib $lib_file_c
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_d"
+# read_lib $lib_file_d
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_e"
+# read_lib $lib_file_e
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_f"
+# read_lib $lib_file_f
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_g"
+# read_lib $lib_file_g
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_h"
+# read_lib $lib_file_h
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_i"
+# read_lib $lib_file_i
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_j"
+# read_lib $lib_file_j
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_k"
+# read_lib $lib_file_k
+# # ---- Read Liberty file ----
+# puts "INFO: Reading Liberty file: $lib_file_l"
+# read_lib $lib_file_l
+# ---- Read Liberty file ----
+puts "INFO: Reading Liberty file: $lib_file_m"
+INFO: Reading Liberty file: /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/merged.lib
+read_lib $lib_file_m
+Reading '/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/lib/merged.lib' ...
+Warning: Line 31, The attribute 'default_input_pin_cap' has already been specified for 'library' at line 29. Using the last definition encountered. (LBDB-261w)
+Warning: Line 1, The 'internal_power_calculation' attribute in char_config group is required for NLPM library. 
+        No default can be applied to this attribute. (LBDB-366)
+Warning: Line 383, Cell 'fakeram45_1024x32', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 627, Cell 'fakeram45_2048x39', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 871, Cell 'fakeram45_256x34', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 1115, Cell 'fakeram45_256x95', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 1359, Cell 'fakeram45_256x96', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 1603, Cell 'fakeram45_32x64', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 1847, Cell 'fakeram45_512x64', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 2091, Cell 'fakeram45_64x15', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 2335, Cell 'fakeram45_64x21', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 2579, Cell 'fakeram45_64x32', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 2823, Cell 'fakeram45_64x7', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Warning: Line 3067, Cell 'fakeram45_64x96', The cell skips partial PG requirement checking. It's being marked as dont_use, dont_touch. (LBDB-910)
+Information: Line 50974, Cell 'FILLCELL_X2', No internal_power information for the 'FILLCELL_X2' cell. (LBDB-301)
+Information: Line 50993, Cell 'FILLCELL_X4', No internal_power information for the 'FILLCELL_X4' cell. (LBDB-301)
+Information: Line 51012, Cell 'FILLCELL_X8', No internal_power information for the 'FILLCELL_X8' cell. (LBDB-301)
+Information: Line 51032, Cell 'FILLCELL_X32', No internal_power information for the 'FILLCELL_X32' cell. (LBDB-301)
+Warning: Line 51665, Cell 'INV_X1', pin 'ZN', The 'values' attribute has a '-0.002759' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 51665, Cell 'INV_X1', pin 'ZN', The 'values' attribute has a '-0.010264' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 51789, Cell 'INV_X2', pin 'ZN', The 'values' attribute has a '-0.003547' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 51789, Cell 'INV_X2', pin 'ZN', The 'values' attribute has a '-0.011182' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 51913, Cell 'INV_X4', pin 'ZN', The 'values' attribute has a '-0.004046' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 51913, Cell 'INV_X4', pin 'ZN', The 'values' attribute has a '-0.011779' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 52037, Cell 'INV_X8', pin 'ZN', The 'values' attribute has a '-0.003188' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 52037, Cell 'INV_X8', pin 'ZN', The 'values' attribute has a '-0.010876' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 52161, Cell 'INV_X16', pin 'ZN', The 'values' attribute has a '-0.004544' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 52161, Cell 'INV_X16', pin 'ZN', The 'values' attribute has a '-0.012370' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 52285, Cell 'INV_X32', pin 'ZN', The 'values' attribute has a '-0.004342' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 52285, Cell 'INV_X32', pin 'ZN', The 'values' attribute has a '-0.012208' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Information: Line 52352, Cell 'LOGIC0_X1', No internal_power information for the 'LOGIC0_X1' cell. (LBDB-301)
+Information: Line 52379, Cell 'LOGIC1_X1', No internal_power information for the 'LOGIC1_X1' cell. (LBDB-301)
+Warning: Line 56609, Cell 'NOR2_X1', pin 'ZN', The 'values' attribute has a '-0.003799' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56609, Cell 'NOR2_X1', pin 'ZN', The 'values' attribute has a '-0.000611' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56609, Cell 'NOR2_X1', pin 'ZN', The 'values' attribute has a '-0.014025' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56609, Cell 'NOR2_X1', pin 'ZN', The 'values' attribute has a '-0.010211' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56609, Cell 'NOR2_X1', pin 'ZN', The 'values' attribute has a '-0.004160' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56660, Cell 'NOR2_X1', pin 'ZN', The 'values' attribute has a '-0.003045' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56829, Cell 'NOR2_X2', pin 'ZN', The 'values' attribute has a '-0.005028' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56829, Cell 'NOR2_X2', pin 'ZN', The 'values' attribute has a '-0.000509' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56829, Cell 'NOR2_X2', pin 'ZN', The 'values' attribute has a '-0.015519' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56829, Cell 'NOR2_X2', pin 'ZN', The 'values' attribute has a '-0.010118' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56829, Cell 'NOR2_X2', pin 'ZN', The 'values' attribute has a '-0.004081' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 56880, Cell 'NOR2_X2', pin 'ZN', The 'values' attribute has a '-0.004320' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57049, Cell 'NOR2_X4', pin 'ZN', The 'values' attribute has a '-0.005929' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57049, Cell 'NOR2_X4', pin 'ZN', The 'values' attribute has a '-0.000685' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57049, Cell 'NOR2_X4', pin 'ZN', The 'values' attribute has a '-0.016598' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57049, Cell 'NOR2_X4', pin 'ZN', The 'values' attribute has a '-0.010337' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57049, Cell 'NOR2_X4', pin 'ZN', The 'values' attribute has a '-0.004259' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57100, Cell 'NOR2_X4', pin 'ZN', The 'values' attribute has a '-0.005187' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57100, Cell 'NOR2_X4', pin 'ZN', The 'values' attribute has a '-0.000031' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57295, Cell 'NOR3_X1', pin 'ZN', The 'values' attribute has a '-0.003864' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57295, Cell 'NOR3_X1', pin 'ZN', The 'values' attribute has a '-0.001648' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57295, Cell 'NOR3_X1', pin 'ZN', The 'values' attribute has a '-0.015642' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57295, Cell 'NOR3_X1', pin 'ZN', The 'values' attribute has a '-0.012945' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57295, Cell 'NOR3_X1', pin 'ZN', The 'values' attribute has a '-0.008272' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57295, Cell 'NOR3_X1', pin 'ZN', The 'values' attribute has a '-0.000574' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57346, Cell 'NOR3_X1', pin 'ZN', The 'values' attribute has a '-0.005512' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57346, Cell 'NOR3_X1', pin 'ZN', The 'values' attribute has a '-0.003257' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57619, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.004080' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57619, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.001892' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57619, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.015939' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57619, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.013258' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57619, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.009360' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57619, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.002394' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57670, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.005827' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57670, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.003590' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57670, Cell 'NOR3_X2', pin 'ZN', The 'values' attribute has a '-0.000251' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57943, Cell 'NOR3_X4', pin 'ZN', The 'values' attribute has a '-0.004492' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57943, Cell 'NOR3_X4', pin 'ZN', The 'values' attribute has a '-0.001651' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57943, Cell 'NOR3_X4', pin 'ZN', The 'values' attribute has a '-0.016508' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57943, Cell 'NOR3_X4', pin 'ZN', The 'values' attribute has a '-0.013037' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57943, Cell 'NOR3_X4', pin 'ZN', The 'values' attribute has a '-0.009147' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57943, Cell 'NOR3_X4', pin 'ZN', The 'values' attribute has a '-0.002196' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57994, Cell 'NOR3_X4', pin 'ZN', The 'values' attribute has a '-0.005510' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 57994, Cell 'NOR3_X4', pin 'ZN', The 'values' attribute has a '-0.002611' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58309, Cell 'NOR4_X1', pin 'ZN', The 'values' attribute has a '-0.001269' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58309, Cell 'NOR4_X1', pin 'ZN', The 'values' attribute has a '-0.013473' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58309, Cell 'NOR4_X1', pin 'ZN', The 'values' attribute has a '-0.011297' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58309, Cell 'NOR4_X1', pin 'ZN', The 'values' attribute has a '-0.007659' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58309, Cell 'NOR4_X1', pin 'ZN', The 'values' attribute has a '-0.001923' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58360, Cell 'NOR4_X1', pin 'ZN', The 'values' attribute has a '-0.004225' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58360, Cell 'NOR4_X1', pin 'ZN', The 'values' attribute has a '-0.002355' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58753, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.002286' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58753, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.001105' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58753, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.014780' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58753, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.013305' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58753, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.010568' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58753, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.005607' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58804, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.005370' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58804, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.004135' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 58804, Cell 'NOR4_X2', pin 'ZN', The 'values' attribute has a '-0.001763' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59197, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.002518' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59197, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.000921' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59197, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.015110' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59197, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.013152' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59197, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.010577' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59197, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.005800' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59248, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.004955' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59248, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.003293' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 59248, Cell 'NOR4_X4', pin 'ZN', The 'values' attribute has a '-0.001073' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 61225, Cell 'OAI22_X1', pin 'ZN', The 'values' attribute has a '-0.002480' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 62341, Cell 'OAI22_X2', pin 'ZN', The 'values' attribute has a '-0.003134' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 63457, Cell 'OAI22_X4', pin 'ZN', The 'values' attribute has a '-0.003332' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 64891, Cell 'OAI33_X1', pin 'ZN', The 'values' attribute has a '-0.003162' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 64891, Cell 'OAI33_X1', pin 'ZN', The 'values' attribute has a '-0.000808' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 64944, Cell 'OAI33_X1', pin 'ZN', The 'values' attribute has a '-0.003162' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 64944, Cell 'OAI33_X1', pin 'ZN', The 'values' attribute has a '-0.000808' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 64997, Cell 'OAI33_X1', pin 'ZN', The 'values' attribute has a '-0.005313' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 64997, Cell 'OAI33_X1', pin 'ZN', The 'values' attribute has a '-0.003024' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 131439, Cell 'TINV_X1', pin 'ZN', The 'values' attribute has a '-0.014469' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 131439, Cell 'TINV_X1', pin 'ZN', The 'values' attribute has a '-0.003021' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.005880' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.001522' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.022434' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.016204' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.006425' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.048325' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.039662' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.026390' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Warning: Line 132076, Cell 'TLAT_X1', pin 'Q', The 'values' attribute has a '-0.007088' value,
+        which is less than '0.000000' the minimum recommended value of this attribute. (LBDB-272)
+Information: Line 383, Cell 'fakeram45_1024x32', The cell 'fakeram45_1024x32' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 627, Cell 'fakeram45_2048x39', The cell 'fakeram45_2048x39' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 871, Cell 'fakeram45_256x34', The cell 'fakeram45_256x34' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 1115, Cell 'fakeram45_256x95', The cell 'fakeram45_256x95' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 1359, Cell 'fakeram45_256x96', The cell 'fakeram45_256x96' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 1603, Cell 'fakeram45_32x64', The cell 'fakeram45_32x64' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 1847, Cell 'fakeram45_512x64', The cell 'fakeram45_512x64' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 2091, Cell 'fakeram45_64x15', The cell 'fakeram45_64x15' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 2335, Cell 'fakeram45_64x21', The cell 'fakeram45_64x21' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 2579, Cell 'fakeram45_64x32', The cell 'fakeram45_64x32' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 2823, Cell 'fakeram45_64x7', The cell 'fakeram45_64x7' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Information: Line 3067, Cell 'fakeram45_64x96', The cell 'fakeram45_64x96' contains memory/memory_read/memory_write groups which are deprecated, use the is_memory_cell attribute instead. (LIBG-280)
+Technology library 'nangate45_merged' read successfully
+1
+# ---- Write .db file ----
+puts "INFO: Writing DB file..."
+INFO: Writing DB file...
+# write_lib NangateOpenCellLibrary -format db -output "$out_dir/NangateOpenCellLibrary.db"
+# write_lib fakeram45_32x64 -format db -output "$out_dir/fakeram45_32x64.db"
+# write_lib fakeram45_64x7 -format db -output "$out_dir/fakeram45_64x7.db"
+# write_lib fakeram45_64x15 -format db -output "$out_dir/fakeram45_64x15.db"
+# write_lib fakeram45_64x21 -format db -output "$out_dir/fakeram45_64x21.db"
+# write_lib fakeram45_64x32 -format db -output "$out_dir/fakeram45_64x32.db"
+# write_lib fakeram45_64x96 -format db -output "$out_dir/fakeram45_64x96.db"
+# write_lib fakeram45_256x34 -format db -output "$out_dir/fakeram45_256x34.db"
+# write_lib fakeram45_256x95 -format db -output "$out_dir/fakeram45_256x95.db"
+# write_lib fakeram45_256x96 -format db -output "$out_dir/fakeram45_256x96.db"
+# write_lib fakeram45_512x64 -format db -output "$out_dir/fakeram45_512x64.db"
+# write_lib fakeram45_1024x32 -format db -output "$out_dir/fakeram45_1024x32.db"
+# write_lib fakeram45_2048x39 -format db -output "$out_dir/fakeram45_2048x39.db"
+write_lib nangate45_merged -format db -output "$out_dir/merged.db"
+Wrote the 'nangate45_merged' library to '/home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db_files/merged.db' successfully
+1
+puts "\nSUCCESS: DB written to: $out_dir/NangateOpenCellLibrary.db\n"
+
+SUCCESS: DB written to: /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db_files/NangateOpenCellLibrary.db
+
+exit 0
+Maximum memory usage for this session: 167.53 MB
+CPU usage for this session:      2 seconds (  0.00 hours)
+Elapsed time for this session:      2 seconds (  0.00 hours)
+Thank you for using Library Compiler.
+

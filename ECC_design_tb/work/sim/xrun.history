@@ -1,0 +1,5 @@
+s1(18Feb2026:17:07:52):  xrun -f run.f +UVM_TESTNAME=ecc_simple_random_test 
+s2(18Feb2026:17:08:51):  xrun -f run.f +UVM_TESTNAME=ecc_simple_random_test 
+s3(18Feb2026:17:09:19):  xrun -f run.f +UVM_TESTNAME=ecc_no_error_test 
+s4(18Feb2026:17:09:34):  xrun -f run.f +UVM_TESTNAME=ecc_sbe_random_test 
+s5(18Feb2026:17:10:09):  xrun -f run.f +UVM_TESTNAME=ecc_simple_random_test 

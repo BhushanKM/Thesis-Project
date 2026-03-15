@@ -1,0 +1,45 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2022 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v22.17-s086_1, built Tue Sep 24 10:51:50 PDT 2024
+Options:	
+Date:		Sun Mar 15 15:55:55 2026
+Host:		n01-zeus.olympus.ece.tamu.edu (x86_64 w/Linux 4.18.0-553.89.1.el8_10.x86_64) (24cores*48cpus*AMD EPYC 7F72 24-Core Processor 512KB)
+OS:		Red Hat Enterprise Linux 8.10 (Ootpa)
+
+License:
+		[15:55:55.373714] Configured Lic search path (22.01-s003): 5280@coe-vtls2.engr.tamu.edu:27070@coe-vtls3.engr.tamu.edu
+
+		invs	Innovus Implementation System	22.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (2063 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> win
+<CMD> set enc_check_rename_command_name 1
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library basic at path /home/grads/b/bhushan_123/$CDK_DIR/lib/basic: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_Analog_Parts at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_Analog_Parts: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_Digital_Parts at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_Digital_Parts: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_ami06 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_ami06: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_ami16 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_ami16: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_hp06 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_hp06: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc02 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc02: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc02d at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc02d: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc03 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc03: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc03d at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc03d: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc04_4M2P at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc04_4M2P: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library basic at path /home/grads/b/bhushan_123/$CDK_DIR/lib/basic: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_Analog_Parts at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_Analog_Parts: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_Digital_Parts at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_Digital_Parts: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_ami06 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_ami06: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_ami16 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_ami16: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_hp06 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_hp06: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc02 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc02: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc02d at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc02d: Invalid Lib Path..
+**WARN: (IMPOAX-793):	Problem in processing library definition file /home/grads/b/bhushan_123/cds.lib - Unable to open library NCSU_TechLib_tsmc03 at path /home/grads/b/bhushan_123/$CDK_DIR/lib/NCSU_TechLib_tsmc03: Invalid Lib Path..
+**WARN: (EMS-27):	Message (IMPOAX-793) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.

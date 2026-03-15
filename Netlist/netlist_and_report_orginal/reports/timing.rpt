@@ -1,0 +1,1552 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 20
+Design : ecc_engine_top
+Version: V-2023.12-SP1
+Date   : Mon Mar  2 11:37:45 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: tt_1.0_25.0   Library: nangate45_merged
+Wire Load Model Mode: top
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[126]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U5031/ZN (NOR2_X2)                                      0.04       1.63 r
+  U5028/ZN (INV_X2)                                       0.02       1.64 f
+  U3937/ZN (NOR2_X2)                                      0.07       1.72 r
+  U15096/ZN (NAND2_X1)                                    0.02       1.73 f
+  U15097/ZN (AND2_X1)                                     0.03       1.76 f
+  U5448/ZN (AND3_X1)                                      0.03       1.80 f
+  U4416/ZN (NAND4_X1)                                     0.02       1.82 r
+  U4489/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U4381/Z (BUF_X2)                                        0.04       1.90 r
+  U17450/ZN (INV_X1)                                      0.02       1.92 f
+  U18431/ZN (NAND2_X1)                                    0.02       1.94 r
+  U18440/ZN (NAND3_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[126]/D (DFFR_X1)              0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[126]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[206]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U5031/ZN (NOR2_X2)                                      0.04       1.63 r
+  U5028/ZN (INV_X2)                                       0.02       1.64 f
+  U3937/ZN (NOR2_X2)                                      0.07       1.72 r
+  U15096/ZN (NAND2_X1)                                    0.02       1.73 f
+  U15097/ZN (AND2_X1)                                     0.03       1.76 f
+  U5448/ZN (AND3_X1)                                      0.03       1.80 f
+  U4416/ZN (NAND4_X1)                                     0.02       1.82 r
+  U4489/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U4381/Z (BUF_X2)                                        0.04       1.90 r
+  U17450/ZN (INV_X1)                                      0.02       1.92 f
+  U18398/ZN (NAND2_X1)                                    0.02       1.94 r
+  U18414/ZN (NAND3_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[206]/D (DFFR_X1)              0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[206]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[78]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U5031/ZN (NOR2_X2)                                      0.04       1.63 r
+  U5028/ZN (INV_X2)                                       0.02       1.64 f
+  U3937/ZN (NOR2_X2)                                      0.07       1.72 r
+  U15096/ZN (NAND2_X1)                                    0.02       1.73 f
+  U15097/ZN (AND2_X1)                                     0.03       1.76 f
+  U5448/ZN (AND3_X1)                                      0.03       1.80 f
+  U4416/ZN (NAND4_X1)                                     0.02       1.82 r
+  U4489/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U4381/Z (BUF_X2)                                        0.04       1.90 r
+  U17450/ZN (INV_X1)                                      0.02       1.92 f
+  U18442/ZN (NAND2_X1)                                    0.02       1.94 r
+  U18459/ZN (NAND3_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[78]/D (DFFR_X1)               0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[78]/CK (DFFR_X1)              0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[50]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6642/S (FA_X1)                                         0.09       0.20 f
+  U6643/S (FA_X1)                                         0.12       0.32 r
+  U6644/S (FA_X1)                                         0.11       0.42 f
+  U6645/ZN (INV_X4)                                       0.03       0.45 r
+  U5130/ZN (INV_X8)                                       0.03       0.48 f
+  U15265/ZN (OR2_X1)                                      0.05       0.53 f
+  U3992/ZN (NOR2_X1)                                      0.07       0.60 r
+  U15318/ZN (AND2_X1)                                     0.07       0.67 r
+  U15319/ZN (AND2_X1)                                     0.07       0.74 r
+  U15850/ZN (INV_X1)                                      0.02       0.76 f
+  U15851/ZN (NOR4_X1)                                     0.10       0.86 r
+  U15875/ZN (NOR4_X1)                                     0.02       0.88 f
+  U15876/ZN (AND2_X1)                                     0.04       0.91 f
+  U4713/ZN (AND4_X1)                                      0.03       0.94 f
+  U3977/ZN (AND4_X1)                                      0.04       0.98 f
+  U16278/ZN (INV_X1)                                      0.02       1.00 r
+  U16282/ZN (NOR2_X1)                                     0.01       1.01 f
+  U16283/ZN (OR4_X1)                                      0.12       1.12 f
+  U16284/ZN (OR2_X1)                                      0.06       1.19 f
+  U16285/ZN (INV_X1)                                      0.01       1.20 r
+  U16286/ZN (NAND2_X1)                                    0.02       1.22 f
+  U16287/ZN (INV_X1)                                      0.01       1.23 r
+  U16290/ZN (OR2_X1)                                      0.03       1.26 r
+  U16292/ZN (NOR4_X1)                                     0.01       1.27 f
+  U16293/ZN (OR4_X1)                                      0.13       1.40 f
+  U16611/ZN (INV_X1)                                      0.02       1.41 r
+  U4351/ZN (AND4_X1)                                      0.07       1.48 r
+  U16632/ZN (AND2_X1)                                     0.04       1.53 r
+  U16633/ZN (INV_X2)                                      0.04       1.57 f
+  U17734/ZN (OR2_X1)                                      0.06       1.63 f
+  U4313/ZN (AND4_X1)                                      0.04       1.66 f
+  U17742/ZN (NAND4_X1)                                    0.02       1.69 r
+  U17743/ZN (XNOR2_X1)                                    0.04       1.72 r
+  U4254/ZN (OR2_X1)                                       0.11       1.83 r
+  U23974/ZN (INV_X2)                                      0.02       1.85 f
+  U24932/ZN (NAND2_X1)                                    0.02       1.87 r
+  U4380/ZN (AND2_X1)                                      0.03       1.90 r
+  U24934/ZN (AND2_X1)                                     0.03       1.93 r
+  U24935/ZN (OAI211_X2)                                   0.02       1.96 f
+  main_decoder/data_out_reg[50]/D (DFFR_X1)               0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[50]/CK (DFFR_X1)              0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[222]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U5031/ZN (NOR2_X2)                                      0.04       1.63 r
+  U5028/ZN (INV_X2)                                       0.02       1.64 f
+  U3937/ZN (NOR2_X2)                                      0.07       1.72 r
+  U15096/ZN (NAND2_X1)                                    0.02       1.73 f
+  U15097/ZN (AND2_X1)                                     0.03       1.76 f
+  U5448/ZN (AND3_X1)                                      0.03       1.80 f
+  U4416/ZN (NAND4_X1)                                     0.02       1.82 r
+  U4489/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U4381/Z (BUF_X2)                                        0.04       1.90 r
+  U17450/ZN (INV_X1)                                      0.02       1.92 f
+  U17451/ZN (NAND2_X1)                                    0.02       1.94 r
+  U17469/ZN (NAND3_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[222]/D (DFFR_X1)              0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[222]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[190]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U5031/ZN (NOR2_X2)                                      0.04       1.63 r
+  U5028/ZN (INV_X2)                                       0.02       1.64 f
+  U3937/ZN (NOR2_X2)                                      0.07       1.72 r
+  U15096/ZN (NAND2_X1)                                    0.02       1.73 f
+  U15097/ZN (AND2_X1)                                     0.03       1.76 f
+  U5448/ZN (AND3_X1)                                      0.03       1.80 f
+  U4416/ZN (NAND4_X1)                                     0.02       1.82 r
+  U4489/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U4381/Z (BUF_X2)                                        0.04       1.90 r
+  U17450/ZN (INV_X1)                                      0.02       1.92 f
+  U17496/ZN (NAND2_X1)                                    0.02       1.94 r
+  U17515/ZN (NAND3_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[190]/D (DFFR_X1)              0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[190]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[110]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U5031/ZN (NOR2_X2)                                      0.04       1.63 r
+  U5028/ZN (INV_X2)                                       0.02       1.64 f
+  U3937/ZN (NOR2_X2)                                      0.07       1.72 r
+  U15096/ZN (NAND2_X1)                                    0.02       1.73 f
+  U15097/ZN (AND2_X1)                                     0.03       1.76 f
+  U5448/ZN (AND3_X1)                                      0.03       1.80 f
+  U4416/ZN (NAND4_X1)                                     0.02       1.82 r
+  U4489/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U4381/Z (BUF_X2)                                        0.04       1.90 r
+  U17450/ZN (INV_X1)                                      0.02       1.92 f
+  U17517/ZN (NAND2_X1)                                    0.02       1.94 r
+  U17538/ZN (NAND3_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[110]/D (DFFR_X1)              0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[110]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[62]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U5031/ZN (NOR2_X2)                                      0.04       1.63 r
+  U5028/ZN (INV_X2)                                       0.02       1.64 f
+  U3937/ZN (NOR2_X2)                                      0.07       1.72 r
+  U15096/ZN (NAND2_X1)                                    0.02       1.73 f
+  U15097/ZN (AND2_X1)                                     0.03       1.76 f
+  U5448/ZN (AND3_X1)                                      0.03       1.80 f
+  U4416/ZN (NAND4_X1)                                     0.02       1.82 r
+  U4489/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U4381/Z (BUF_X2)                                        0.04       1.90 r
+  U17450/ZN (INV_X1)                                      0.02       1.92 f
+  U17540/ZN (NAND2_X1)                                    0.02       1.94 r
+  U17560/ZN (NAND3_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[62]/D (DFFR_X1)               0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[62]/CK (DFFR_X1)              0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[111]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/Q (DFFR_X1)
+                                                          0.09       0.09 f
+  U6642/S (FA_X1)                                         0.11       0.20 r
+  U6643/S (FA_X1)                                         0.10       0.30 f
+  U6644/S (FA_X1)                                         0.13       0.43 r
+  U6645/ZN (INV_X4)                                       0.02       0.44 f
+  U5130/ZN (INV_X8)                                       0.04       0.49 r
+  U4081/ZN (XNOR2_X1)                                     0.05       0.54 r
+  U7362/ZN (INV_X2)                                       0.04       0.57 f
+  U8004/ZN (XNOR2_X1)                                     0.04       0.62 f
+  U8005/ZN (AND4_X1)                                      0.04       0.66 f
+  U8018/ZN (NAND4_X1)                                     0.02       0.68 r
+  U8064/ZN (AND4_X1)                                      0.06       0.74 r
+  U4746/ZN (AND4_X1)                                      0.06       0.80 r
+  U4922/ZN (AND4_X2)                                      0.05       0.85 r
+  U9527/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5154/ZN (INV_X2)                                       0.02       0.88 r
+  U4909/ZN (NAND4_X2)                                     0.03       0.91 f
+  U4696/ZN (INV_X1)                                       0.02       0.93 r
+  U4943/ZN (AND2_X2)                                      0.03       0.96 r
+  U4938/ZN (AND2_X2)                                      0.03       0.99 r
+  U4929/ZN (AND3_X2)                                      0.04       1.03 r
+  U4930/ZN (NAND2_X1)                                     0.02       1.05 f
+  U4687/ZN (INV_X2)                                       0.02       1.07 r
+  U4927/ZN (AND2_X2)                                      0.03       1.09 r
+  U4926/ZN (AND4_X2)                                      0.05       1.14 r
+  U4925/ZN (NAND2_X1)                                     0.02       1.16 f
+  U4440/ZN (INV_X2)                                       0.02       1.18 r
+  U4657/ZN (NAND4_X2)                                     0.02       1.20 f
+  U4185/ZN (INV_X1)                                       0.02       1.22 r
+  U4649/ZN (NAND4_X2)                                     0.03       1.25 f
+  U5241/ZN (INV_X2)                                       0.02       1.27 r
+  U13251/ZN (NAND4_X4)                                    0.03       1.30 f
+  U5273/ZN (NOR2_X1)                                      0.04       1.33 r
+  U4403/ZN (OR2_X1)                                       0.04       1.37 r
+  U4190/ZN (NOR2_X1)                                      0.01       1.39 f
+  U4622/ZN (OR2_X2)                                       0.05       1.43 f
+  U4611/ZN (NOR2_X2)                                      0.02       1.46 r
+  U4605/ZN (NAND3_X1)                                     0.02       1.48 f
+  U15192/ZN (INV_X2)                                      0.02       1.50 r
+  U15193/ZN (NAND4_X2)                                    0.03       1.53 f
+  U15236/ZN (OR2_X2)                                      0.06       1.59 f
+  U4582/ZN (INV_X2)                                       0.02       1.61 r
+  U4253/ZN (AND2_X2)                                      0.05       1.65 r
+  U17518/ZN (AND2_X4)                                     0.05       1.70 r
+  U3933/ZN (INV_X2)                                       0.02       1.72 f
+  U4544/ZN (NAND3_X1)                                     0.02       1.75 r
+  U4530/ZN (NAND4_X1)                                     0.03       1.77 f
+  U17535/ZN (AND2_X2)                                     0.05       1.82 f
+  U24608/ZN (INV_X1)                                      0.02       1.84 r
+  U4418/ZN (NOR2_X1)                                      0.01       1.85 f
+  U4490/ZN (NOR4_X2)                                      0.08       1.93 r
+  U24609/ZN (OAI211_X2)                                   0.03       1.96 f
+  main_decoder/data_out_reg[111]/D (DFFR_X1)              0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[111]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[178]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6642/S (FA_X1)                                         0.09       0.20 f
+  U6643/S (FA_X1)                                         0.12       0.32 r
+  U6644/S (FA_X1)                                         0.11       0.42 f
+  U6645/ZN (INV_X4)                                       0.03       0.45 r
+  U5130/ZN (INV_X8)                                       0.03       0.48 f
+  U15265/ZN (OR2_X1)                                      0.05       0.53 f
+  U3992/ZN (NOR2_X1)                                      0.07       0.60 r
+  U15318/ZN (AND2_X1)                                     0.07       0.67 r
+  U15319/ZN (AND2_X1)                                     0.07       0.74 r
+  U15850/ZN (INV_X1)                                      0.02       0.76 f
+  U15851/ZN (NOR4_X1)                                     0.10       0.86 r
+  U15875/ZN (NOR4_X1)                                     0.02       0.88 f
+  U15876/ZN (AND2_X1)                                     0.04       0.91 f
+  U4713/ZN (AND4_X1)                                      0.03       0.94 f
+  U3977/ZN (AND4_X1)                                      0.04       0.98 f
+  U16278/ZN (INV_X1)                                      0.02       1.00 r
+  U16282/ZN (NOR2_X1)                                     0.01       1.01 f
+  U16283/ZN (OR4_X1)                                      0.12       1.12 f
+  U16284/ZN (OR2_X1)                                      0.06       1.19 f
+  U16285/ZN (INV_X1)                                      0.01       1.20 r
+  U16286/ZN (NAND2_X1)                                    0.02       1.22 f
+  U16287/ZN (INV_X1)                                      0.01       1.23 r
+  U16290/ZN (OR2_X1)                                      0.03       1.26 r
+  U16292/ZN (NOR4_X1)                                     0.01       1.27 f
+  U16293/ZN (OR4_X1)                                      0.13       1.40 f
+  U16611/ZN (INV_X1)                                      0.02       1.41 r
+  U4351/ZN (AND4_X1)                                      0.07       1.48 r
+  U16632/ZN (AND2_X1)                                     0.04       1.53 r
+  U16633/ZN (INV_X2)                                      0.04       1.57 f
+  U17734/ZN (OR2_X1)                                      0.06       1.63 f
+  U4313/ZN (AND4_X1)                                      0.04       1.66 f
+  U17742/ZN (NAND4_X1)                                    0.02       1.69 r
+  U17743/ZN (XNOR2_X1)                                    0.04       1.72 r
+  U4254/ZN (OR2_X1)                                       0.11       1.83 r
+  U23974/ZN (INV_X2)                                      0.02       1.85 f
+  U24218/ZN (NAND2_X1)                                    0.02       1.87 r
+  U24219/ZN (AND2_X1)                                     0.03       1.90 r
+  U24221/ZN (AND2_X1)                                     0.03       1.93 r
+  U24222/ZN (OAI211_X2)                                   0.02       1.96 f
+  main_decoder/data_out_reg[178]/D (DFFR_X1)              0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[178]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[253]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/Q (DFFR_X1)
+                                                          0.09       0.09 f
+  U6642/S (FA_X1)                                         0.11       0.20 r
+  U6643/S (FA_X1)                                         0.10       0.30 f
+  U6644/S (FA_X1)                                         0.13       0.43 r
+  U6645/ZN (INV_X4)                                       0.02       0.44 f
+  U5130/ZN (INV_X8)                                       0.04       0.49 r
+  U4081/ZN (XNOR2_X1)                                     0.05       0.54 r
+  U7362/ZN (INV_X2)                                       0.04       0.57 f
+  U8004/ZN (XNOR2_X1)                                     0.04       0.62 f
+  U8005/ZN (AND4_X1)                                      0.04       0.66 f
+  U8018/ZN (NAND4_X1)                                     0.02       0.68 r
+  U8064/ZN (AND4_X1)                                      0.06       0.74 r
+  U4746/ZN (AND4_X1)                                      0.06       0.80 r
+  U4922/ZN (AND4_X2)                                      0.05       0.85 r
+  U9527/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5154/ZN (INV_X2)                                       0.02       0.88 r
+  U4909/ZN (NAND4_X2)                                     0.03       0.91 f
+  U4696/ZN (INV_X1)                                       0.02       0.93 r
+  U4943/ZN (AND2_X2)                                      0.03       0.96 r
+  U4938/ZN (AND2_X2)                                      0.03       0.99 r
+  U4929/ZN (AND3_X2)                                      0.04       1.03 r
+  U4930/ZN (NAND2_X1)                                     0.02       1.05 f
+  U4687/ZN (INV_X2)                                       0.02       1.07 r
+  U4927/ZN (AND2_X2)                                      0.03       1.09 r
+  U4926/ZN (AND4_X2)                                      0.05       1.14 r
+  U4925/ZN (NAND2_X1)                                     0.02       1.16 f
+  U4440/ZN (INV_X2)                                       0.02       1.18 r
+  U4657/ZN (NAND4_X2)                                     0.02       1.20 f
+  U4185/ZN (INV_X1)                                       0.02       1.22 r
+  U4649/ZN (NAND4_X2)                                     0.03       1.25 f
+  U5241/ZN (INV_X2)                                       0.02       1.27 r
+  U13251/ZN (NAND4_X4)                                    0.03       1.30 f
+  U4435/ZN (INV_X2)                                       0.02       1.31 r
+  U4934/ZN (AND3_X4)                                      0.04       1.35 r
+  U4935/ZN (NAND4_X2)                                     0.03       1.39 f
+  U4937/ZN (AND3_X2)                                      0.04       1.43 f
+  U5277/ZN (NAND2_X2)                                     0.02       1.44 r
+  U3965/ZN (NAND4_X1)                                     0.04       1.48 f
+  U4587/ZN (INV_X2)                                       0.03       1.51 r
+  U13577/ZN (NAND2_X4)                                    0.02       1.53 f
+  U4932/ZN (NAND4_X2)                                     0.03       1.56 r
+  U4413/ZN (OR2_X1)                                       0.07       1.63 r
+  U4908/ZN (OR2_X4)                                       0.05       1.67 r
+  U4568/ZN (INV_X4)                                       0.02       1.69 f
+  U4889/ZN (NAND2_X1)                                     0.01       1.70 r
+  U18046/ZN (AND4_X1)                                     0.05       1.76 r
+  U3896/ZN (AND4_X1)                                      0.06       1.82 r
+  U5199/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U5198/ZN (NAND2_X2)                                     0.03       1.89 f
+  U23594/ZN (OR2_X1)                                      0.05       1.95 f
+  U23596/ZN (NAND4_X1)                                    0.02       1.97 r
+  main_decoder/data_out_reg[253]/D (DFFR_X1)              0.00       1.97 r
+  data arrival time                                                  1.97
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[253]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.03       1.97
+  data required time                                                 1.97
+  --------------------------------------------------------------------------
+  data required time                                                 1.97
+  data arrival time                                                 -1.97
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[19]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U15069/ZN (AND2_X4)                                     0.04       1.63 f
+  U4216/ZN (INV_X1)                                       0.02       1.66 r
+  U15094/ZN (NOR2_X4)                                     0.02       1.67 f
+  U23318/ZN (AND2_X1)                                     0.03       1.70 f
+  U3928/ZN (OR2_X1)                                       0.05       1.75 f
+  U23326/ZN (NOR4_X2)                                     0.03       1.78 r
+  U4372/ZN (AND3_X1)                                      0.05       1.83 r
+  U4488/ZN (XNOR2_X1)                                     0.04       1.87 r
+  U4262/ZN (INV_X1)                                       0.01       1.88 f
+  U4285/ZN (INV_X1)                                       0.02       1.90 r
+  U25053/ZN (OR2_X1)                                      0.03       1.93 r
+  U25061/ZN (NAND4_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[19]/D (DFFR_X1)               0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[19]/CK (DFFR_X1)              0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[29]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/Q (DFFR_X1)
+                                                          0.09       0.09 f
+  U6642/S (FA_X1)                                         0.11       0.20 r
+  U6643/S (FA_X1)                                         0.10       0.30 f
+  U6644/S (FA_X1)                                         0.13       0.43 r
+  U6645/ZN (INV_X4)                                       0.02       0.44 f
+  U5130/ZN (INV_X8)                                       0.04       0.49 r
+  U4081/ZN (XNOR2_X1)                                     0.05       0.54 r
+  U7362/ZN (INV_X2)                                       0.04       0.57 f
+  U8004/ZN (XNOR2_X1)                                     0.04       0.62 f
+  U8005/ZN (AND4_X1)                                      0.04       0.66 f
+  U8018/ZN (NAND4_X1)                                     0.02       0.68 r
+  U8064/ZN (AND4_X1)                                      0.06       0.74 r
+  U4746/ZN (AND4_X1)                                      0.06       0.80 r
+  U4922/ZN (AND4_X2)                                      0.05       0.85 r
+  U9527/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5154/ZN (INV_X2)                                       0.02       0.88 r
+  U4909/ZN (NAND4_X2)                                     0.03       0.91 f
+  U4696/ZN (INV_X1)                                       0.02       0.93 r
+  U4943/ZN (AND2_X2)                                      0.03       0.96 r
+  U4938/ZN (AND2_X2)                                      0.03       0.99 r
+  U4929/ZN (AND3_X2)                                      0.04       1.03 r
+  U4930/ZN (NAND2_X1)                                     0.02       1.05 f
+  U4687/ZN (INV_X2)                                       0.02       1.07 r
+  U4927/ZN (AND2_X2)                                      0.03       1.09 r
+  U4926/ZN (AND4_X2)                                      0.05       1.14 r
+  U4925/ZN (NAND2_X1)                                     0.02       1.16 f
+  U4440/ZN (INV_X2)                                       0.02       1.18 r
+  U4657/ZN (NAND4_X2)                                     0.02       1.20 f
+  U4185/ZN (INV_X1)                                       0.02       1.22 r
+  U4649/ZN (NAND4_X2)                                     0.03       1.25 f
+  U5241/ZN (INV_X2)                                       0.02       1.27 r
+  U13251/ZN (NAND4_X4)                                    0.03       1.30 f
+  U4435/ZN (INV_X2)                                       0.02       1.31 r
+  U4934/ZN (AND3_X4)                                      0.04       1.35 r
+  U4935/ZN (NAND4_X2)                                     0.03       1.39 f
+  U4937/ZN (AND3_X2)                                      0.04       1.43 f
+  U5277/ZN (NAND2_X2)                                     0.02       1.44 r
+  U3965/ZN (NAND4_X1)                                     0.04       1.48 f
+  U4587/ZN (INV_X2)                                       0.03       1.51 r
+  U13577/ZN (NAND2_X4)                                    0.02       1.53 f
+  U4932/ZN (NAND4_X2)                                     0.03       1.56 r
+  U4413/ZN (OR2_X1)                                       0.07       1.63 r
+  U4908/ZN (OR2_X4)                                       0.05       1.67 r
+  U4568/ZN (INV_X4)                                       0.02       1.69 f
+  U4889/ZN (NAND2_X1)                                     0.01       1.70 r
+  U18046/ZN (AND4_X1)                                     0.05       1.76 r
+  U3896/ZN (AND4_X1)                                      0.06       1.82 r
+  U5199/ZN (XNOR2_X1)                                     0.04       1.86 r
+  U5198/ZN (NAND2_X2)                                     0.03       1.89 f
+  U5197/ZN (OR2_X1)                                       0.05       1.95 f
+  U19894/ZN (NAND4_X1)                                    0.02       1.97 r
+  main_decoder/data_out_reg[29]/D (DFFR_X1)               0.00       1.97 r
+  data arrival time                                                  1.97
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[29]/CK (DFFR_X1)              0.00       2.00 r
+  library setup time                                     -0.03       1.97
+  data required time                                                 1.97
+  --------------------------------------------------------------------------
+  data required time                                                 1.97
+  data arrival time                                                 -1.97
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[80]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6642/S (FA_X1)                                         0.09       0.20 f
+  U6643/S (FA_X1)                                         0.12       0.32 r
+  U6644/S (FA_X1)                                         0.11       0.42 f
+  U6645/ZN (INV_X4)                                       0.03       0.45 r
+  U5130/ZN (INV_X8)                                       0.03       0.48 f
+  U15265/ZN (OR2_X1)                                      0.05       0.53 f
+  U3992/ZN (NOR2_X1)                                      0.07       0.60 r
+  U15318/ZN (AND2_X1)                                     0.07       0.67 r
+  U15319/ZN (AND2_X1)                                     0.07       0.74 r
+  U15850/ZN (INV_X1)                                      0.02       0.76 f
+  U15851/ZN (NOR4_X1)                                     0.10       0.86 r
+  U15875/ZN (NOR4_X1)                                     0.02       0.88 f
+  U15876/ZN (AND2_X1)                                     0.04       0.91 f
+  U4713/ZN (AND4_X1)                                      0.03       0.94 f
+  U3977/ZN (AND4_X1)                                      0.04       0.98 f
+  U16278/ZN (INV_X1)                                      0.02       1.00 r
+  U16282/ZN (NOR2_X1)                                     0.01       1.01 f
+  U16283/ZN (OR4_X1)                                      0.12       1.12 f
+  U16284/ZN (OR2_X1)                                      0.06       1.19 f
+  U16285/ZN (INV_X1)                                      0.01       1.20 r
+  U16286/ZN (NAND2_X1)                                    0.02       1.22 f
+  U16287/ZN (INV_X1)                                      0.01       1.23 r
+  U16290/ZN (OR2_X1)                                      0.03       1.26 r
+  U16292/ZN (NOR4_X1)                                     0.01       1.27 f
+  U16293/ZN (OR4_X1)                                      0.13       1.40 f
+  U16607/ZN (NOR2_X1)                                     0.03       1.42 r
+  U16608/ZN (NAND2_X1)                                    0.03       1.45 f
+  U16609/ZN (NOR2_X1)                                     0.16       1.61 r
+  U23887/ZN (AND2_X1)                                     0.05       1.66 r
+  U23888/ZN (NOR3_X1)                                     0.01       1.67 f
+  U23900/ZN (NAND4_X1)                                    0.02       1.69 r
+  U23901/ZN (XNOR2_X1)                                    0.04       1.72 r
+  U3898/ZN (OR2_X1)                                       0.11       1.83 r
+  U5344/ZN (NOR2_X1)                                      0.02       1.85 f
+  U4503/ZN (NOR4_X2)                                      0.08       1.93 r
+  U24789/ZN (OAI211_X2)                                   0.03       1.96 f
+  main_decoder/data_out_reg[80]/D (DFFR_X1)               0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[80]/CK (DFFR_X1)              0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[232]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14513/ZN (AND2_X2)                                     0.04       0.91 r
+  U14515/ZN (NAND2_X1)                                    0.02       0.93 f
+  U14516/ZN (AND2_X2)                                     0.03       0.96 f
+  U14517/ZN (NAND2_X2)                                    0.02       0.98 r
+  U14520/ZN (NOR2_X1)                                     0.01       0.99 f
+  U14521/ZN (INV_X1)                                      0.01       1.00 r
+  U14523/ZN (NAND3_X1)                                    0.03       1.03 f
+  U5433/ZN (NOR2_X1)                                      0.05       1.08 r
+  U14525/ZN (OR3_X1)                                      0.04       1.12 r
+  U14527/ZN (NOR2_X1)                                     0.02       1.14 f
+  U14528/ZN (NOR4_X1)                                     0.11       1.24 r
+  U14960/ZN (AOI21_X1)                                    0.02       1.26 f
+  U14961/ZN (OR2_X1)                                      0.05       1.31 f
+  U14963/ZN (NAND2_X1)                                    0.01       1.33 r
+  U5290/ZN (NAND2_X1)                                     0.01       1.34 f
+  U14964/ZN (NAND4_X1)                                    0.02       1.36 r
+  U14987/ZN (AOI21_X1)                                    0.02       1.38 f
+  U15006/ZN (OAI21_X1)                                    0.03       1.40 r
+  U5399/ZN (AND3_X1)                                      0.04       1.45 r
+  U5166/ZN (NAND2_X1)                                     0.01       1.46 f
+  U4415/ZN (AND4_X1)                                      0.03       1.49 f
+  U15021/ZN (NOR2_X1)                                     0.03       1.52 r
+  U15022/ZN (OAI21_X1)                                    0.02       1.53 f
+  U5398/ZN (AND2_X1)                                      0.03       1.56 f
+  U5177/ZN (NAND4_X1)                                     0.02       1.58 r
+  U5178/ZN (NAND3_X1)                                     0.02       1.60 f
+  U15040/ZN (NAND2_X1)                                    0.01       1.62 r
+  U5183/ZN (NAND3_X1)                                     0.02       1.64 f
+  U5182/ZN (NAND4_X2)                                     0.02       1.66 r
+  U15057/ZN (NAND2_X1)                                    0.02       1.68 f
+  U4557/ZN (NAND3_X2)                                     0.02       1.70 r
+  U15061/ZN (INV_X4)                                      0.02       1.72 f
+  U23740/ZN (AND2_X1)                                     0.03       1.75 f
+  U23741/ZN (OR2_X1)                                      0.05       1.80 f
+  U4513/ZN (XNOR2_X1)                                     0.04       1.83 f
+  U4496/ZN (OR2_X2)                                       0.05       1.89 f
+  U23944/ZN (OR2_X1)                                      0.05       1.94 f
+  U23945/ZN (OAI211_X2)                                   0.02       1.96 r
+  main_decoder/data_out_reg[232]/D (DFFR_X1)              0.00       1.96 r
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[232]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[104]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14513/ZN (AND2_X2)                                     0.04       0.91 r
+  U14515/ZN (NAND2_X1)                                    0.02       0.93 f
+  U14516/ZN (AND2_X2)                                     0.03       0.96 f
+  U14517/ZN (NAND2_X2)                                    0.02       0.98 r
+  U14520/ZN (NOR2_X1)                                     0.01       0.99 f
+  U14521/ZN (INV_X1)                                      0.01       1.00 r
+  U14523/ZN (NAND3_X1)                                    0.03       1.03 f
+  U5433/ZN (NOR2_X1)                                      0.05       1.08 r
+  U14525/ZN (OR3_X1)                                      0.04       1.12 r
+  U14527/ZN (NOR2_X1)                                     0.02       1.14 f
+  U14528/ZN (NOR4_X1)                                     0.11       1.24 r
+  U14960/ZN (AOI21_X1)                                    0.02       1.26 f
+  U14961/ZN (OR2_X1)                                      0.05       1.31 f
+  U14963/ZN (NAND2_X1)                                    0.01       1.33 r
+  U5290/ZN (NAND2_X1)                                     0.01       1.34 f
+  U14964/ZN (NAND4_X1)                                    0.02       1.36 r
+  U14987/ZN (AOI21_X1)                                    0.02       1.38 f
+  U15006/ZN (OAI21_X1)                                    0.03       1.40 r
+  U5399/ZN (AND3_X1)                                      0.04       1.45 r
+  U5166/ZN (NAND2_X1)                                     0.01       1.46 f
+  U4415/ZN (AND4_X1)                                      0.03       1.49 f
+  U15021/ZN (NOR2_X1)                                     0.03       1.52 r
+  U15022/ZN (OAI21_X1)                                    0.02       1.53 f
+  U5398/ZN (AND2_X1)                                      0.03       1.56 f
+  U5177/ZN (NAND4_X1)                                     0.02       1.58 r
+  U5178/ZN (NAND3_X1)                                     0.02       1.60 f
+  U15040/ZN (NAND2_X1)                                    0.01       1.62 r
+  U5183/ZN (NAND3_X1)                                     0.02       1.64 f
+  U5182/ZN (NAND4_X2)                                     0.02       1.66 r
+  U15057/ZN (NAND2_X1)                                    0.02       1.68 f
+  U4557/ZN (NAND3_X2)                                     0.02       1.70 r
+  U15061/ZN (INV_X4)                                      0.02       1.72 f
+  U23740/ZN (AND2_X1)                                     0.03       1.75 f
+  U23741/ZN (OR2_X1)                                      0.05       1.80 f
+  U4513/ZN (XNOR2_X1)                                     0.04       1.83 f
+  U4496/ZN (OR2_X2)                                       0.05       1.89 f
+  U24650/ZN (OR2_X1)                                      0.05       1.94 f
+  U24651/ZN (OAI211_X2)                                   0.02       1.96 r
+  main_decoder/data_out_reg[104]/D (DFFR_X1)              0.00       1.96 r
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[104]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[3]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_16/u_mul/gen_registered.p_reg_reg[5]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6531/S (FA_X1)                                         0.09       0.19 f
+  U6532/S (FA_X1)                                         0.12       0.31 r
+  U6533/S (FA_X1)                                         0.11       0.42 f
+  U6960/ZN (XNOR2_X1)                                     0.05       0.47 f
+  U4103/ZN (INV_X1)                                       0.09       0.56 r
+  U8736/ZN (XNOR2_X1)                                     0.02       0.58 f
+  U8739/ZN (AND4_X1)                                      0.04       0.62 f
+  U8746/ZN (NAND4_X1)                                     0.02       0.65 r
+  U8778/ZN (NAND2_X1)                                     0.02       0.66 f
+  U8779/ZN (INV_X1)                                       0.01       0.68 r
+  U5039/ZN (AND4_X2)                                      0.06       0.73 r
+  U5038/ZN (NAND4_X4)                                     0.02       0.76 f
+  U9013/ZN (NOR2_X4)                                      0.03       0.79 r
+  U4412/ZN (NAND4_X2)                                     0.04       0.82 f
+  U4708/ZN (INV_X2)                                       0.02       0.84 r
+  U5036/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5035/ZN (INV_X2)                                       0.02       0.88 r
+  U14529/ZN (AND2_X1)                                     0.04       0.92 r
+  U14533/ZN (NAND2_X1)                                    0.02       0.94 f
+  U14534/ZN (AND2_X1)                                     0.04       0.97 f
+  U14535/ZN (NAND2_X1)                                    0.03       1.00 r
+  U14537/ZN (NOR2_X1)                                     0.01       1.01 f
+  U14538/ZN (OR2_X1)                                      0.05       1.07 f
+  U4685/ZN (INV_X1)                                       0.02       1.09 r
+  U5017/ZN (AND2_X2)                                      0.04       1.12 r
+  U14542/ZN (NAND2_X1)                                    0.02       1.14 f
+  U14543/ZN (AND2_X1)                                     0.03       1.17 f
+  U14546/ZN (AND2_X1)                                     0.03       1.20 f
+  U14550/ZN (AND2_X1)                                     0.03       1.23 f
+  U14551/ZN (NOR2_X1)                                     0.03       1.26 r
+  U4645/ZN (NAND4_X1)                                     0.04       1.30 f
+  U5027/ZN (OR4_X2)                                       0.12       1.41 f
+  U5026/ZN (NOR4_X2)                                      0.07       1.48 r
+  U5294/ZN (AND4_X1)                                      0.07       1.55 r
+  U4581/ZN (NAND4_X2)                                     0.05       1.59 f
+  U15069/ZN (AND2_X4)                                     0.04       1.63 f
+  U4216/ZN (INV_X1)                                       0.02       1.66 r
+  U15094/ZN (NOR2_X4)                                     0.02       1.67 f
+  U23318/ZN (AND2_X1)                                     0.03       1.70 f
+  U3928/ZN (OR2_X1)                                       0.05       1.75 f
+  U23326/ZN (NOR4_X2)                                     0.03       1.78 r
+  U4372/ZN (AND3_X1)                                      0.05       1.83 r
+  U4488/ZN (XNOR2_X1)                                     0.04       1.87 r
+  U4262/ZN (INV_X1)                                       0.01       1.88 f
+  U4285/ZN (INV_X1)                                       0.02       1.90 r
+  U25129/ZN (OR2_X1)                                      0.03       1.93 r
+  U25138/ZN (NAND4_X1)                                    0.02       1.96 f
+  main_decoder/data_out_reg[3]/D (DFFR_X1)                0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[3]/CK (DFFR_X1)               0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_17/u_mul/gen_registered.p_reg_reg[5]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[14]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_17/u_mul/gen_registered.p_reg_reg[5]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_17/u_mul/gen_registered.p_reg_reg[5]/QN (DFFR_X1)
+                                                          0.07       0.07 r
+  U6530/ZN (INV_X1)                                       0.01       0.08 f
+  U6531/S (FA_X1)                                         0.12       0.20 r
+  U6532/S (FA_X1)                                         0.10       0.30 f
+  U6533/S (FA_X1)                                         0.14       0.43 r
+  U6534/ZN (INV_X4)                                       0.03       0.46 f
+  U5059/ZN (XNOR2_X1)                                     0.12       0.58 r
+  U5055/ZN (INV_X1)                                       0.00       0.58 f
+  U5335/ZN (AND4_X1)                                      0.03       0.62 f
+  U4471/ZN (AND4_X1)                                      0.03       0.65 f
+  U6756/ZN (NAND2_X1)                                     0.02       0.67 r
+  U3998/ZN (AND3_X1)                                      0.05       0.72 r
+  U4174/ZN (NAND2_X1)                                     0.03       0.75 f
+  U4463/ZN (NAND3_X1)                                     0.03       0.78 r
+  U4459/ZN (NAND4_X1)                                     0.04       0.81 f
+  U4457/ZN (INV_X1)                                       0.02       0.83 r
+  U3996/ZN (NAND3_X1)                                     0.03       0.86 f
+  U4162/ZN (NOR2_X1)                                      0.04       0.90 r
+  U4172/ZN (NOR2_X1)                                      0.02       0.92 f
+  U4355/ZN (AND3_X1)                                      0.04       0.95 f
+  U4453/ZN (NAND4_X1)                                     0.02       0.98 r
+  U4694/ZN (NAND3_X1)                                     0.03       1.01 f
+  U5046/ZN (NOR2_X2)                                      0.04       1.05 r
+  U4448/ZN (NAND3_X1)                                     0.03       1.08 f
+  U4173/ZN (AND4_X1)                                      0.05       1.13 f
+  U4445/ZN (NOR2_X1)                                      0.03       1.16 r
+  U4673/ZN (NAND2_X1)                                     0.02       1.18 f
+  U4659/ZN (INV_X1)                                       0.01       1.19 r
+  U4188/ZN (AND3_X1)                                      0.05       1.25 r
+  U3978/ZN (NAND4_X1)                                     0.04       1.29 f
+  U4193/ZN (NAND4_X1)                                     0.03       1.32 r
+  U4639/ZN (NOR2_X1)                                      0.02       1.33 f
+  U4436/ZN (NAND2_X1)                                     0.02       1.35 r
+  U4213/ZN (AND3_X1)                                      0.06       1.41 r
+  U5053/ZN (NAND3_X1)                                     0.02       1.43 f
+  U3967/ZN (AND2_X1)                                      0.03       1.46 f
+  U3965/ZN (NAND4_X1)                                     0.03       1.49 r
+  U4587/ZN (INV_X2)                                       0.02       1.50 f
+  U13577/ZN (NAND2_X4)                                    0.02       1.52 r
+  U3951/ZN (NAND4_X1)                                     0.06       1.57 f
+  U4931/ZN (INV_X2)                                       0.03       1.60 r
+  U15234/ZN (AND2_X4)                                     0.05       1.65 r
+  U3925/ZN (INV_X2)                                       0.02       1.67 f
+  U17831/ZN (AND3_X1)                                     0.04       1.71 f
+  U4565/ZN (OR3_X2)                                       0.07       1.78 f
+  U4276/ZN (OAI21_X2)                                     0.07       1.85 r
+  U5381/ZN (NOR2_X1)                                      0.01       1.86 f
+  U5465/ZN (NOR3_X1)                                      0.06       1.93 r
+  U17835/ZN (OAI211_X2)                                   0.03       1.96 f
+  main_decoder/data_out_reg[14]/D (DFFR_X1)               0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[14]/CK (DFFR_X1)              0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[239]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/Q (DFFR_X1)
+                                                          0.09       0.09 f
+  U6642/S (FA_X1)                                         0.11       0.20 r
+  U6643/S (FA_X1)                                         0.10       0.30 f
+  U6644/S (FA_X1)                                         0.13       0.43 r
+  U6645/ZN (INV_X4)                                       0.02       0.44 f
+  U5130/ZN (INV_X8)                                       0.04       0.49 r
+  U4081/ZN (XNOR2_X1)                                     0.05       0.54 r
+  U7362/ZN (INV_X2)                                       0.04       0.57 f
+  U8004/ZN (XNOR2_X1)                                     0.04       0.62 f
+  U8005/ZN (AND4_X1)                                      0.04       0.66 f
+  U8018/ZN (NAND4_X1)                                     0.02       0.68 r
+  U8064/ZN (AND4_X1)                                      0.06       0.74 r
+  U4746/ZN (AND4_X1)                                      0.06       0.80 r
+  U4922/ZN (AND4_X2)                                      0.05       0.85 r
+  U9527/ZN (NAND2_X1)                                     0.02       0.86 f
+  U5154/ZN (INV_X2)                                       0.02       0.88 r
+  U4909/ZN (NAND4_X2)                                     0.03       0.91 f
+  U4696/ZN (INV_X1)                                       0.02       0.93 r
+  U4943/ZN (AND2_X2)                                      0.03       0.96 r
+  U4938/ZN (AND2_X2)                                      0.03       0.99 r
+  U4929/ZN (AND3_X2)                                      0.04       1.03 r
+  U4930/ZN (NAND2_X1)                                     0.02       1.05 f
+  U4687/ZN (INV_X2)                                       0.02       1.07 r
+  U4927/ZN (AND2_X2)                                      0.03       1.09 r
+  U4926/ZN (AND4_X2)                                      0.05       1.14 r
+  U4925/ZN (NAND2_X1)                                     0.02       1.16 f
+  U4440/ZN (INV_X2)                                       0.02       1.18 r
+  U4657/ZN (NAND4_X2)                                     0.02       1.20 f
+  U4185/ZN (INV_X1)                                       0.02       1.22 r
+  U4649/ZN (NAND4_X2)                                     0.03       1.25 f
+  U5241/ZN (INV_X2)                                       0.02       1.27 r
+  U13251/ZN (NAND4_X4)                                    0.03       1.30 f
+  U5273/ZN (NOR2_X1)                                      0.04       1.33 r
+  U4403/ZN (OR2_X1)                                       0.04       1.37 r
+  U4190/ZN (NOR2_X1)                                      0.01       1.39 f
+  U4622/ZN (OR2_X2)                                       0.05       1.43 f
+  U4611/ZN (NOR2_X2)                                      0.02       1.46 r
+  U4605/ZN (NAND3_X1)                                     0.02       1.48 f
+  U15192/ZN (INV_X2)                                      0.02       1.50 r
+  U15193/ZN (NAND4_X2)                                    0.03       1.53 f
+  U15236/ZN (OR2_X2)                                      0.06       1.59 f
+  U4582/ZN (INV_X2)                                       0.02       1.61 r
+  U4253/ZN (AND2_X2)                                      0.05       1.65 r
+  U15241/ZN (AND3_X4)                                     0.06       1.71 r
+  U3924/ZN (INV_X2)                                       0.03       1.74 f
+  U4536/ZN (NAND3_X1)                                     0.02       1.76 r
+  U4516/ZN (NAND4_X1)                                     0.02       1.78 f
+  U4283/ZN (AND2_X1)                                      0.06       1.85 f
+  U4495/ZN (NAND2_X1)                                     0.02       1.87 r
+  U3876/ZN (AND4_X1)                                      0.06       1.93 r
+  U23914/ZN (OAI211_X2)                                   0.03       1.96 f
+  main_decoder/data_out_reg[239]/D (DFFR_X1)              0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[239]/CK (DFFR_X1)             0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  Startpoint: main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: main_decoder/data_out_reg[98]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/CK (DFFR_X1)
+                                                          0.00 #     0.00 r
+  main_decoder/gf_s1_13/u_mul/gen_registered.p_reg_reg[10]/Q (DFFR_X1)
+                                                          0.10       0.10 r
+  U6642/S (FA_X1)                                         0.09       0.20 f
+  U6643/S (FA_X1)                                         0.12       0.32 r
+  U6644/S (FA_X1)                                         0.11       0.42 f
+  U6645/ZN (INV_X4)                                       0.03       0.45 r
+  U5130/ZN (INV_X8)                                       0.03       0.48 f
+  U15265/ZN (OR2_X1)                                      0.05       0.53 f
+  U3992/ZN (NOR2_X1)                                      0.07       0.60 r
+  U15318/ZN (AND2_X1)                                     0.07       0.67 r
+  U15319/ZN (AND2_X1)                                     0.07       0.74 r
+  U15850/ZN (INV_X1)                                      0.02       0.76 f
+  U15851/ZN (NOR4_X1)                                     0.10       0.86 r
+  U15875/ZN (NOR4_X1)                                     0.02       0.88 f
+  U15876/ZN (AND2_X1)                                     0.04       0.91 f
+  U4713/ZN (AND4_X1)                                      0.03       0.94 f
+  U3977/ZN (AND4_X1)                                      0.04       0.98 f
+  U16278/ZN (INV_X1)                                      0.02       1.00 r
+  U16282/ZN (NOR2_X1)                                     0.01       1.01 f
+  U16283/ZN (OR4_X1)                                      0.12       1.12 f
+  U16284/ZN (OR2_X1)                                      0.06       1.19 f
+  U16285/ZN (INV_X1)                                      0.01       1.20 r
+  U16286/ZN (NAND2_X1)                                    0.02       1.22 f
+  U16287/ZN (INV_X1)                                      0.01       1.23 r
+  U16290/ZN (OR2_X1)                                      0.03       1.26 r
+  U16292/ZN (NOR4_X1)                                     0.01       1.27 f
+  U16293/ZN (OR4_X1)                                      0.13       1.40 f
+  U16611/ZN (INV_X1)                                      0.02       1.41 r
+  U4351/ZN (AND4_X1)                                      0.07       1.48 r
+  U16632/ZN (AND2_X1)                                     0.04       1.53 r
+  U16633/ZN (INV_X2)                                      0.04       1.57 f
+  U17734/ZN (OR2_X1)                                      0.06       1.63 f
+  U4313/ZN (AND4_X1)                                      0.04       1.66 f
+  U17742/ZN (NAND4_X1)                                    0.02       1.69 r
+  U17743/ZN (XNOR2_X1)                                    0.04       1.72 r
+  U4254/ZN (OR2_X1)                                       0.11       1.83 r
+  U23974/ZN (INV_X2)                                      0.02       1.85 f
+  U24691/ZN (NAND2_X1)                                    0.02       1.87 r
+  U24692/ZN (AND2_X1)                                     0.03       1.90 r
+  U24694/ZN (AND2_X1)                                     0.03       1.93 r
+  U24695/ZN (OAI211_X2)                                   0.02       1.96 f
+  main_decoder/data_out_reg[98]/D (DFFR_X1)               0.00       1.96 f
+  data arrival time                                                  1.96
+
+  clock clk (rise edge)                                   2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  main_decoder/data_out_reg[98]/CK (DFFR_X1)              0.00       2.00 r
+  library setup time                                     -0.04       1.96
+  data required time                                                 1.96
+  --------------------------------------------------------------------------
+  data required time                                                 1.96
+  data arrival time                                                 -1.96
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
