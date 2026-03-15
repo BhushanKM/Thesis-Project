@@ -1,7 +1,0 @@
-#@ # 
-#@ # Running lc_shell Version W-2024.09-SP5-3 for linux64 -- Aug 28, 2025
-#@ # Date:   Mon Mar  2 10:01:40 2026
-#@ # Run by: bhushan_123@n01-zeus.olympus.ece.tamu.edu
-#@ 
-
-source -echo -verbose lib2db.tcl
