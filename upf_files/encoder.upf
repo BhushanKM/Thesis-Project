@@ -1,0 +1,123 @@
+# # =====================================================
+# # UPF Power Intent for ECC Encoder
+# # Target: Nangate 45nm / Design Compiler
+# # =====================================================
+
+# # 1. SET SCOPE
+# set_scope /
+
+# # 2. CREATE POWER DOMAINS
+# # PD_TOP: The always-on domain
+# create_power_domain PD_TOP
+
+# # PD_ENCODER: The domain we want to shut down
+# # Replace 'u_encoder' with your actual instance name in ecc_engine_top.v
+# create_power_domain PD_ENCODER -elements {.}
+
+# # 3. CREATE SUPPLY PORTS
+# create_supply_port VDD
+# create_supply_port VSS
+
+# # 4. CREATE SUPPLY NETS
+# # Always-on nets
+# create_supply_net VDD -domain PD_TOP
+# create_supply_net VSS -domain PD_TOP
+
+# # Switchable net for the encoder
+# create_supply_net VDD_ENC -domain PD_ENCODER
+# create_supply_net VSS     -domain PD_ENCODER -reuse
+
+# # 5. SET PRIMARY SUPPLIES
+# set_domain_supply_net PD_TOP     -primary_power_net VDD     -primary_ground_net VSS
+# set_domain_supply_net PD_ENCODER -primary_power_net VDD_ENC -primary_ground_net VSS
+
+# # 6. DEFINE POWER SWITCH
+# # This logic creates the "switch" that actually cuts the power
+# create_power_switch encoder_sw \
+#     -domain PD_ENCODER \
+#     -input_supply_port {in VDD} \
+#     -output_supply_port {out VDD_ENC} \
+#     -control_port {ctrl en_encoder_pwr} \
+#     -on_state {on_state in {ctrl}}
+
+# # 7. ISOLATION STRATEGY
+# # When the encoder is OFF, we clamp 'valid_out' and 'codeword_out' to 0
+# # to prevent "crowbar current" in the next block.
+# set_isolation iso_encoder \
+#     -domain PD_ENCODER \
+#     -isolation_supply_net VDD \
+#     -isolation_ground_net VSS \
+#     -clamp_value 0 \
+#     -applies_to outputs
+
+# # Map the isolation control to a signal (e.g., your reset or a power-down signal)
+# set_isolation_control iso_encoder \
+#     -domain PD_ENCODER \
+#     -isolation_signal isolation_en \
+#     -isolation_sense low \
+#     -location parent
+
+# # 8. DEFINE PORT STATES (Voltage Definition)
+# add_port_state VDD -state {ON 1.1}
+# add_port_state encoder_sw/out -state {ON 1.1} -state {OFF off}
+
+# # 9. POWER STATE TABLE (PST)
+# # This tells DC which combinations of power are legal
+# create_pst encoder_pst -supplies {VDD VDD_ENC}
+# add_pst_state ALL_ON  -pst encoder_pst -state {ON ON}
+# add_pst_state ENC_OFF -pst encoder_pst -state {ON OFF}
+
+
+# =====================================================
+# UPF Power Intent for ECC Encoder (Top-Level Mode)
+# =====================================================
+set_scope /
+
+# 1. CREATE POWER DOMAIN
+# We only need one domain if the encoder is the top level
+create_power_domain PD_ENCODER -elements {.}
+
+# 2. CREATE SUPPLY PORTS
+create_supply_port VDD
+create_supply_port VSS
+
+# 3. CREATE SUPPLY NETS
+# Define these directly inside the encoder domain
+create_supply_net VDD     -domain PD_ENCODER
+create_supply_net VSS     -domain PD_ENCODER
+create_supply_net VDD_ENC -domain PD_ENCODER
+
+# 4. SET PRIMARY SUPPLIES
+set_domain_supply_net PD_ENCODER -primary_power_net VDD_ENC -primary_ground_net VSS
+
+# 5. DEFINE POWER SWITCH
+# Connects VDD (Always on) to VDD_ENC (Switchable)
+create_power_switch encoder_sw \
+    -domain PD_ENCODER \
+    -input_supply_port    {in  VDD} \
+    -output_supply_port   {out VDD_ENC} \
+    -control_port         {ctrl rst_n} \
+    -on_state             {on_state in {ctrl}}
+
+# 6. ISOLATION STRATEGY
+set_isolation iso_encoder \
+    -domain PD_ENCODER \
+    -isolation_power_net VDD \
+    -isolation_ground_net VSS \
+    -clamp_value 0 \
+    -applies_to outputs
+
+set_isolation_control iso_encoder \
+    -domain PD_ENCODER \
+    -isolation_signal rst_n \
+    -isolation_sense low \
+    -location self
+
+# 7. DEFINE PORT STATES
+add_port_state VDD            -state {ON 1.1}
+add_port_state encoder_sw/out -state {ON 1.1} -state {OFF off}
+
+# 8. POWER STATE TABLE (PST)
+create_pst encoder_pst -supplies {VDD VDD_ENC}
+add_pst_state ALL_ON  -pst encoder_pst -state {ON ON}
+add_pst_state ENC_OFF -pst encoder_pst -state {ON OFF}

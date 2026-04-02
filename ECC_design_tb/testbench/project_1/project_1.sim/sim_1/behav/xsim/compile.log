@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/grads/b/bhushan_123/thesis_project/design_version_2/ecc_encoder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ecc_encoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/grads/b/bhushan_123/thesis_project/design_version_2/gf_mul_16.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module gf_mul_16_opt
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/testbench/ecc_encoder_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ecc_encoder_tb

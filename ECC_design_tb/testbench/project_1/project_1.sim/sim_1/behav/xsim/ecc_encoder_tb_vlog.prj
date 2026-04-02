@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../../../design_version_2/ecc_encoder.v" \
+"../../../../../../../design_version_2/gf_mul_16.v" \
+"../../../../../ecc_encoder_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

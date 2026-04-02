@@ -1,0 +1,12 @@
+Warning: Design 'ecc_engine_top' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : power_domain
+Design : ecc_engine_top
+Version: V-2023.12-SP1
+Date   : Sun Mar 15 17:42:41 2026
+****************************************
+
+
+No power domains defined in scope ecc_engine_top.
+1

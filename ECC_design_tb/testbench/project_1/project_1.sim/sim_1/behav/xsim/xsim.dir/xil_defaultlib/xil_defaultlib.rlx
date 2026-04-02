@@ -1,0 +1,8 @@
+0.7
+2020.2
+May  7 2023
+15:10:42
+/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/testbench/ecc_encoder_tb.v,1774631513,verilog,,,,ecc_encoder_tb,,,,,,,,
+/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/testbench/project_1/project_1.sim/sim_1/behav/xsim/glbl.v,1683266558,verilog,,,,glbl,,,,,,,,
+/home/grads/b/bhushan_123/thesis_project/design_version_2/ecc_encoder.v,1773470899,verilog,,/home/grads/b/bhushan_123/thesis_project/design_version_2/gf_mul_16.v,,ecc_encoder,,,,,,,,
+/home/grads/b/bhushan_123/thesis_project/design_version_2/gf_mul_16.v,1773470859,verilog,,/home/grads/b/bhushan_123/thesis_project/ECC_design_tb/testbench/ecc_encoder_tb.v,,gf_mul_16_opt,,,,,,,,

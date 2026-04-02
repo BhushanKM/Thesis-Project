@@ -2,9 +2,9 @@
 ****************************************
 Report : power
         -analysis_effort low
-Design : ecc_encoder
+Design : ecc_engine_top
 Version: V-2023.12-SP1
-Date   : Sat Mar 14 01:57:06 2026
+Date   : Sun Mar 15 17:42:31 2026
 ****************************************
 
 
@@ -31,12 +31,12 @@ Attributes
 i - Including register clock pin internal power
 
 
-  Cell Internal Power  =   3.5680 mW   (91%)
-  Net Switching Power  = 358.7470 uW    (9%)
+  Cell Internal Power  =   5.6201 mW    (1%)
+  Net Switching Power  = 423.9577 mW   (99%)
                          ---------
-Total Dynamic Power    =   3.9268 mW  (100%)
+Total Dynamic Power    = 429.5778 mW  (100%)
 
-Cell Leakage Power     = 143.2346 uW
+Cell Leakage Power     = 229.5124 uW
 
 
                  Internal         Switching           Leakage            Total
@@ -45,10 +45,10 @@ Power Group      Power            Power               Power              Power  
 io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
-clock_network  2.7457e+03            0.0000            0.0000        2.7457e+03  (  67.46%)  i
-register         359.3093           61.3787        7.2363e+04          493.0540  (  12.11%)
+clock_network  4.7223e+03        4.2353e+05        9.7141e+03        4.2826e+05  (  99.64%)  i
+register         379.3228           49.5723        1.1697e+05          545.8640  (   0.13%)
 sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational    463.0608          297.3690        7.0871e+04          831.3016  (  20.42%)
+combinational    518.4564          374.5657        1.0283e+05          995.8470  (   0.23%)
 --------------------------------------------------------------------------------------------------
-Total          3.5680e+03 uW       358.7477 uW     1.4323e+05 nW     4.0700e+03 uW
+Total          5.6201e+03 uW     4.2396e+05 uW     2.2951e+05 nW     4.2981e+05 uW
 1

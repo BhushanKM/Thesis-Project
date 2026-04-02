@@ -1,0 +1,1170 @@
+⏺ 
+
+I'll read all 10 files in parallel from the design_version_3/decoder/ directory.
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_symbol_extraction.v"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_syndrome_generation.v"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_gf_utils.vh"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_error_locator.v"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_eloc_weight2.v"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_eloc_weight1.v"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_eloc_weight0.v"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_decision_logic.v"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/ecc_error_corrector.v"})
+⏺ View({"workspace":"thesis_project","file_path":"design_version_3/decoder/gf_mul_16.v"})
+  ⎿ View completed
+  ⎿ View completed
+  ⎿ View completed
+  ⎿ View completed
+  ⎿ View completed
+  ⎿ View completed
+  ⎿ View completed
+  ⎿ View completed
+  ⎿ View completed
+  ⎿ View completed
+⏺ Here are all 10 files from the `design_version_3/decoder/` directory:
+
+---
+
+**File: ecc_symbol_extraction.v**
+```
+`timescale 1ns / 1ps
+
+module ecc_symbol_extract(
+    input  [303:0] codeword_in,
+
+    output [15:0] S0,
+    output [15:0] S1,
+    output [15:0] S2,
+    output [15:0] S3,
+    output [15:0] S4,
+    output [15:0] S5,
+    output [15:0] S6,
+    output [15:0] S7,
+    output [15:0] S8,
+    output [15:0] S9,
+    output [15:0] S10,
+    output [15:0] S11,
+    output [15:0] S12,
+    output [15:0] S13,
+    output [15:0] S14,
+    output [15:0] S15,
+    output [15:0] S16,
+    output [15:0] P0,
+    output [15:0] P1
+);
+
+assign S0  = codeword_in[303:288];
+assign S1  = codeword_in[287:272];
+assign S2  = codeword_in[271:256];
+assign S3  = codeword_in[255:240];
+assign S4  = codeword_in[239:224];
+assign S5  = codeword_in[223:208];
+assign S6  = codeword_in[207:192];
+assign S7  = codeword_in[191:176];
+assign S8  = codeword_in[175:160];
+assign S9  = codeword_in[159:144];
+assign S10 = codeword_in[143:128];
+assign S11 = codeword_in[127:112];
+assign S12 = codeword_in[111:96];
+assign S13 = codeword_in[95:80];
+assign S14 = codeword_in[79:64];
+assign S15 = codeword_in[63:48];
+assign S16 = codeword_in[47:32];
+assign P0 = codeword_in[31:16]; // P0
+assign P1 = codeword_in[15:0];  // P1
+
+endmodule
+```
+
+---
+
+**File: ecc_syndrome_generation.v**
+```
+`timescale 1ns / 1ps
+
+module ecc_syndrome_gen (
+    input  wire        clk,
+    input  wire        rst_n,
+    input  wire        valid_in,
+
+    input  wire [15:0] C0,
+    input  wire [15:0] C1,
+    input  wire [15:0] C2,
+    input  wire [15:0] C3,
+    input  wire [15:0] C4,
+    input  wire [15:0] C5,
+    input  wire [15:0] C6,
+    input  wire [15:0] C7,
+    input  wire [15:0] C8,
+    input  wire [15:0] C9,
+    input  wire [15:0] C10,
+    input  wire [15:0] C11,
+    input  wire [15:0] C12,
+    input  wire [15:0] C13,
+    input  wire [15:0] C14,
+    input  wire [15:0] C15,
+    input  wire [15:0] C16,
+    input  wire [15:0] P0,
+    input  wire [15:0] P1,
+
+    output wire        valid_out,
+    output wire [15:0] S0,
+    output wire [15:0] S1
+);
+
+    // -------------------------------------------------------------------------
+    // T constants must MATCH the encoder exactly
+    // Encoder uses:
+    //   T0  = alpha^18
+    //   ...
+    //   T16 = alpha^2
+    // -------------------------------------------------------------------------
+    localparam [15:0] T0  = 16'h00AC;   // alpha^18
+    localparam [15:0] T1  = 16'h0056;   // alpha^17
+    localparam [15:0] T2  = 16'h002B;   // alpha^16
+    localparam [15:0] T3  = 16'h8000;   // alpha^15
+    localparam [15:0] T4  = 16'h4000;   // alpha^14
+    localparam [15:0] T5  = 16'h2000;   // alpha^13
+    localparam [15:0] T6  = 16'h1000;   // alpha^12
+    localparam [15:0] T7  = 16'h0800;   // alpha^11
+    localparam [15:0] T8  = 16'h0400;   // alpha^10
+    localparam [15:0] T9  = 16'h0200;   // alpha^9
+    localparam [15:0] T10 = 16'h0100;   // alpha^8
+    localparam [15:0] T11 = 16'h0080;   // alpha^7
+    localparam [15:0] T12 = 16'h0040;   // alpha^6
+    localparam [15:0] T13 = 16'h0020;   // alpha^5
+    localparam [15:0] T14 = 16'h0010;   // alpha^4
+    localparam [15:0] T15 = 16'h0008;   // alpha^3
+    localparam [15:0] T16 = 16'h0004;   // alpha^2
+
+    // -------------------------------------------------------------------------
+    // S0 = XOR of 17 data symbols and P0
+    // -------------------------------------------------------------------------
+    wire [15:0] S0_comb;
+    assign S0_comb = C0  ^ C1  ^ C2  ^ C3  ^ C4  ^ C5  ^ C6  ^ C7  ^ C8 ^
+                     C9  ^ C10 ^ C11 ^ C12 ^ C13 ^ C14 ^ C15 ^ C16 ^ P0;
+
+    // -------------------------------------------------------------------------
+    // S1 data contribution = XOR of Ti*Ci for i=0..16
+    // -------------------------------------------------------------------------
+    wire [15:0] TC [0:16];
+
+    gf_mul_16_opt gf_s1_0  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T0),  .b(C0),  .valid_out(),         .p(TC[0]));
+    gf_mul_16_opt gf_s1_1  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T1),  .b(C1),  .valid_out(),         .p(TC[1]));
+    gf_mul_16_opt gf_s1_2  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T2),  .b(C2),  .valid_out(),         .p(TC[2]));
+    gf_mul_16_opt gf_s1_3  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T3),  .b(C3),  .valid_out(),         .p(TC[3]));
+    gf_mul_16_opt gf_s1_4  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T4),  .b(C4),  .valid_out(),         .p(TC[4]));
+    gf_mul_16_opt gf_s1_5  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T5),  .b(C5),  .valid_out(),         .p(TC[5]));
+    gf_mul_16_opt gf_s1_6  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T6),  .b(C6),  .valid_out(),         .p(TC[6]));
+    gf_mul_16_opt gf_s1_7  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T7),  .b(C7),  .valid_out(),         .p(TC[7]));
+    gf_mul_16_opt gf_s1_8  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T8),  .b(C8),  .valid_out(),         .p(TC[8]));
+    gf_mul_16_opt gf_s1_9  (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T9),  .b(C9),  .valid_out(),         .p(TC[9]));
+    gf_mul_16_opt gf_s1_10 (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T10), .b(C10), .valid_out(),         .p(TC[10]));
+    gf_mul_16_opt gf_s1_11 (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T11), .b(C11), .valid_out(),         .p(TC[11]));
+    gf_mul_16_opt gf_s1_12 (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T12), .b(C12), .valid_out(),         .p(TC[12]));
+    gf_mul_16_opt gf_s1_13 (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T13), .b(C13), .valid_out(),         .p(TC[13]));
+    gf_mul_16_opt gf_s1_14 (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T14), .b(C14), .valid_out(),         .p(TC[14]));
+    gf_mul_16_opt gf_s1_15 (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T15), .b(C15), .valid_out(),         .p(TC[15]));
+    gf_mul_16_opt gf_s1_16 (.clk(clk), .rst_n(rst_n), .valid_in(valid_in), .a(T16), .b(C16), .valid_out(valid_out), .p(TC[16]));
+
+    wire [15:0] S1_data_comb;
+    assign S1_data_comb = TC[0]  ^ TC[1]  ^ TC[2]  ^ TC[3]  ^ TC[4]  ^
+                          TC[5]  ^ TC[6]  ^ TC[7]  ^ TC[8]  ^ TC[9]  ^
+                          TC[10] ^ TC[11] ^ TC[12] ^ TC[13] ^ TC[14] ^
+                          TC[15] ^ TC[16];
+
+    // -------------------------------------------------------------------------
+    // Register S0 and P1 one cycle to align with multiplier latency
+    // -------------------------------------------------------------------------
+    reg [15:0] S0_reg;
+    reg [15:0] P1_reg;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            S0_reg <= 16'h0000;
+            P1_reg <= 16'h0000;
+        end
+        else if (valid_in) begin
+            S0_reg <= S0_comb;
+            P1_reg <= P1;
+        end
+    end
+
+    assign S0 = S0_reg;
+    assign S1 = S1_data_comb ^ P1_reg;
+
+endmodule
+```
+
+---
+
+**File: ecc_gf_utils.vh**
+```
+// =============================================================================
+//
+//  File        : ecc_gf_utils.vh
+//  Description : Shared GF(2^16) helper functions for the ECC error locator.
+//
+//  Contains:
+//    - t_const      : T-coefficient lookup (alpha powers for each symbol)
+//    - gf_mul_func  : GF(2^16) multiplication (elaboration-time)
+//    - gf_inv_func  : GF(2^16) multiplicative inverse (elaboration-time)
+//
+//  Primitive polynomial: x^16 + x^5 + x^3 + x + 1  (POLY = 0x002B)
+//
+//  Usage: `include "ecc_gf_utils.vh" inside each module that needs these.
+//
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+//  T-constant lookup
+//
+//  Returns the GF(2^16) element T[idx] used as the multiplier for symbol idx:
+//    idx  0..16  —  data symbols   T[i] = alpha^(18-i)
+//    idx 17      —  parity P0      T[17] = alpha^1
+//    idx 18      —  parity P1      T[18] = alpha^0 = 1
+// -----------------------------------------------------------------------------
+
+function [15:0] t_const;
+    input integer idx;
+    begin
+        case (idx)
+            0:  t_const = 16'h00AC;     // alpha^18
+            1:  t_const = 16'h0056;     // alpha^17
+            2:  t_const = 16'h002B;     // alpha^16
+            3:  t_const = 16'h8000;     // alpha^15
+            4:  t_const = 16'h4000;     // alpha^14
+            5:  t_const = 16'h2000;     // alpha^13
+            6:  t_const = 16'h1000;     // alpha^12
+            7:  t_const = 16'h0800;     // alpha^11
+            8:  t_const = 16'h0400;     // alpha^10
+            9:  t_const = 16'h0200;     // alpha^9
+            10: t_const = 16'h0100;     // alpha^8
+            11: t_const = 16'h0080;     // alpha^7
+            12: t_const = 16'h0040;     // alpha^6
+            13: t_const = 16'h0020;     // alpha^5
+            14: t_const = 16'h0010;     // alpha^4
+            15: t_const = 16'h0008;     // alpha^3
+            16: t_const = 16'h0004;     // alpha^2
+            17: t_const = 16'h0002;     // alpha^1  (P0)
+            18: t_const = 16'h0001;     // alpha^0  (P1)
+            default: t_const = 16'h0000;
+        endcase
+    end
+endfunction
+
+// -----------------------------------------------------------------------------
+//  GF(2^16) multiplication — shift-and-add with reduction by POLY.
+//  Used at elaboration time only (localparam evaluation).
+// -----------------------------------------------------------------------------
+
+function [15:0] gf_mul_func;
+    input [15:0] a;
+    input [15:0] b;
+    reg [15:0] result;
+    reg [15:0] shifted;
+    integer i;
+    begin
+        result  = 16'h0000;
+        shifted = a;
+        for (i = 0; i < 16; i = i + 1) begin
+            if (b[i])
+                result = result ^ shifted;
+            if (shifted[15])
+                shifted = {shifted[14:0], 1'b0} ^ 16'h002B;
+            else
+                shifted = {shifted[14:0], 1'b0};
+        end
+        gf_mul_func = result;
+    end
+endfunction
+
+// -----------------------------------------------------------------------------
+//  GF(2^16) multiplicative inverse: a^(-1) = a^(2^16 - 2).
+//  Computes a^2 * a^4 * a^8 * ... * a^(2^15) via repeated squaring.
+//  Used at elaboration time only (localparam evaluation).
+// -----------------------------------------------------------------------------
+
+function [15:0] gf_inv_func;
+    input [15:0] a;
+    reg [15:0] r;
+    reg [15:0] sq;
+    integer i;
+    begin
+        r  = 16'h0001;
+        sq = a;
+        for (i = 0; i < 15; i = i + 1) begin
+            sq = gf_mul_func(sq, sq);
+            r  = gf_mul_func(r, sq);
+        end
+        gf_inv_func = r;
+    end
+endfunction
+```
+
+---
+
+**File: ecc_error_locator.v**
+```
+// =============================================================================
+//
+//  Module      : ecc_error_locator
+//  Description : Top-level Double-Bit Error (DBE) locator for a (19,17)
+//                GF(2^16) ECC code.
+//
+//  Receives syndromes S0 and S1, computes the Hamming weight of S0, and
+//  dispatches to one of three sublocator modules:
+//
+//    weight(S0) = 2 : ecc_eloc_weight2 — two single-bit errors in data/P0
+//    weight(S0) = 1 : ecc_eloc_weight1 — one data error + one P1 error
+//    weight(S0) = 0 : ecc_eloc_weight0 — identical errors in two symbols
+//
+//  Each sublocator runs combinationally in parallel.  The top-level gates
+//  each sublocator's "found" output based on the actual S0 weight.
+//
+// =============================================================================
+
+`timescale 1ns / 1ps
+
+module ecc_error_locator (
+    input         clk,
+    input         rst_n,
+    input         valid_in,
+    input  [15:0] S0,
+    input  [15:0] S1,
+
+    output        valid_out,
+    output        no_error,
+
+    // --- Weight-2 result ---
+    output reg        dbe_w2_found,
+    output reg [4:0]  dbe_w2_loc0,
+    output reg [4:0]  dbe_w2_loc1,
+    output reg [15:0] dbe_w2_err0,
+    output reg [15:0] dbe_w2_err1,
+
+    // --- Weight-1 result ---
+    output reg        dbe_w1_found,
+    output reg [4:0]  dbe_w1_loc0,
+    output reg [15:0] dbe_w1_err0,
+    output reg [15:0] dbe_w1_err1,
+
+    // --- Weight-0 result ---
+    output reg        dbe_w0_found,
+    output reg [4:0]  dbe_w0_loc0,
+    output reg [4:0]  dbe_w0_loc1,
+    output reg [15:0] dbe_w0_err
+);
+
+    // -------------------------------------------------------------------------
+    //  Valid & No-Error (combinational pass-through)
+    // -------------------------------------------------------------------------
+
+    assign valid_out = valid_in;
+    assign no_error  = (S0 == 16'h0000) && (S1 == 16'h0000);
+
+    // -------------------------------------------------------------------------
+    //  Hamming Weight of S0
+    // -------------------------------------------------------------------------
+
+    wire [4:0] s0_weight;
+
+    assign s0_weight = S0[0]  + S0[1]  + S0[2]  + S0[3]
+                     + S0[4]  + S0[5]  + S0[6]  + S0[7]
+                     + S0[8]  + S0[9]  + S0[10] + S0[11]
+                     + S0[12] + S0[13] + S0[14] + S0[15];
+
+    // -------------------------------------------------------------------------
+    //  Syndrome Splitter (for weight-2 path)
+    //  Isolate lowest set bit: Ej0 = S0 & (-S0), Ej1 = S0 ^ Ej0
+    // -------------------------------------------------------------------------
+
+    wire [15:0] Ej0_w2 = S0 & (~S0 + 16'h0001);
+    wire [15:0] Ej1_w2 = S0 ^ Ej0_w2;
+
+    // -------------------------------------------------------------------------
+    //  Sublocator instances (all run in parallel, combinationally)
+    // -------------------------------------------------------------------------
+
+    wire        w2_found;
+    wire [4:0]  w2_loc0, w2_loc1;
+    wire [15:0] w2_err0, w2_err1;
+
+    ecc_eloc_weight2 u_weight2 (
+        .clk       (clk),
+        .rst_n     (rst_n),
+        .valid_in  (valid_in),
+        .Ej0       (Ej0_w2),
+        .Ej1       (Ej1_w2),
+        .S1        (S1),
+        .found     (w2_found),
+        .loc0      (w2_loc0),
+        .loc1      (w2_loc1),
+        .err0      (w2_err0),
+        .err1      (w2_err1)
+    );
+
+    wire        w1_found;
+    wire [4:0]  w1_loc0;
+    wire [15:0] w1_err0, w1_err1;
+
+    ecc_eloc_weight1 u_weight1 (
+        .clk       (clk),
+        .rst_n     (rst_n),
+        .valid_in  (valid_in),
+        .S0        (S0),
+        .S1        (S1),
+        .found     (w1_found),
+        .loc0      (w1_loc0),
+        .err0      (w1_err0),
+        .err1      (w1_err1)
+    );
+
+    wire        w0_found;
+    wire [4:0]  w0_loc0, w0_loc1;
+    wire [15:0] w0_err;
+
+    ecc_eloc_weight0 u_weight0 (
+        .clk       (clk),
+        .rst_n     (rst_n),
+        .valid_in  (valid_in),
+        .S1        (S1),
+        .found     (w0_found),
+        .loc0      (w0_loc0),
+        .loc1      (w0_loc1),
+        .err       (w0_err)
+    );
+
+    // -------------------------------------------------------------------------
+    //  Output gating — enable each path only for the matching S0 weight
+    // -------------------------------------------------------------------------
+
+    always @(*) begin
+        dbe_w2_found = 1'b0;
+        dbe_w2_loc0  = 5'd0;
+        dbe_w2_loc1  = 5'd0;
+        dbe_w2_err0  = 16'h0000;
+        dbe_w2_err1  = 16'h0000;
+
+        if (s0_weight == 5'd2) begin
+            dbe_w2_found = w2_found;
+            dbe_w2_loc0  = w2_loc0;
+            dbe_w2_loc1  = w2_loc1;
+            dbe_w2_err0  = w2_err0;
+            dbe_w2_err1  = w2_err1;
+        end
+    end
+
+    always @(*) begin
+        dbe_w1_found = 1'b0;
+        dbe_w1_loc0  = 5'd0;
+        dbe_w1_err0  = 16'h0000;
+        dbe_w1_err1  = 16'h0000;
+
+        if (s0_weight == 5'd1) begin
+            dbe_w1_found = w1_found;
+            dbe_w1_loc0  = w1_loc0;
+            dbe_w1_err0  = w1_err0;
+            dbe_w1_err1  = w1_err1;
+        end
+    end
+
+    always @(*) begin
+        dbe_w0_found = 1'b0;
+        dbe_w0_loc0  = 5'd0;
+        dbe_w0_loc1  = 5'd0;
+        dbe_w0_err   = 16'h0000;
+
+        if ((s0_weight == 5'd0) && (S1 != 16'h0000)) begin
+            dbe_w0_found = w0_found;
+            dbe_w0_loc0  = w0_loc0;
+            dbe_w0_loc1  = w0_loc1;
+            dbe_w0_err   = w0_err;
+        end
+    end
+
+endmodule
+```
+
+---
+
+**File: ecc_eloc_weight2.v**
+```
+// =============================================================================
+//
+//  Module      : ecc_eloc_weight2
+//  Description : Weight-2 sublocator for the ECC error locator.
+//
+//  Handles the case where Hamming weight of S0 = 2, meaning two single-bit
+//  errors in separate data/P0 symbols contribute distinct bits to S0.
+//
+//  34 GF multipliers compute T[k]*Ej0 and T[k]*Ej1 for k = 0..16.
+//  A priority-select search checks:
+//    Type 1 — both errors in data:  T[i]*Ej0 ^ T[j]*Ej1 == S1  (136 pairs)
+//    Type 2 — one in data, one P0:  T[k]*Ej == S1               (17 candidates)
+//
+// =============================================================================
+
+`timescale 1ns / 1ps
+
+module ecc_eloc_weight2 (
+    input         clk,
+    input         rst_n,
+    input         valid_in,
+    input  [15:0] Ej0,                  // First  one-hot error pattern (low bit of S0)
+    input  [15:0] Ej1,                  // Second one-hot error pattern (remaining bit)
+    input  [15:0] S1,                   // Syndrome 1
+
+    output reg        found,
+    output reg [4:0]  loc0,
+    output reg [4:0]  loc1,
+    output reg [15:0] err0,
+    output reg [15:0] err1
+);
+
+`include "ecc_gf_utils.vh"
+
+    // -------------------------------------------------------------------------
+    //  GF Multiplications: T[k] * Ej0,  T[k] * Ej1   for k = 0..16
+    // -------------------------------------------------------------------------
+
+    wire [15:0] T_Ej0 [0:16];
+    wire [15:0] T_Ej1 [0:16];
+
+    genvar gk;
+    generate
+        for (gk = 0; gk < 17; gk = gk + 1) begin : GEN_W2_MUL
+            localparam [15:0] TK = t_const(gk);
+
+            gf_mul_16_opt #(.REGISTERED(0)) u_ej0 (
+                .clk       (clk),
+                .rst_n     (rst_n),
+                .valid_in  (valid_in),
+                .a         (TK),
+                .b         (Ej0),
+                .valid_out (),
+                .p         (T_Ej0[gk])
+            );
+
+            gf_mul_16_opt #(.REGISTERED(0)) u_ej1 (
+                .clk       (clk),
+                .rst_n     (rst_n),
+                .valid_in  (valid_in),
+                .a         (TK),
+                .b         (Ej1),
+                .valid_out (),
+                .p         (T_Ej1[gk])
+            );
+        end
+    endgenerate
+
+    // -------------------------------------------------------------------------
+    //  Priority search: Type 1 (data-data) then Type 2 (data-P0)
+    // -------------------------------------------------------------------------
+
+    integer w2i, w2j;
+
+    always @(*) begin
+        found = 1'b0;
+        loc0  = 5'd0;
+        loc1  = 5'd0;
+        err0  = 16'h0000;
+        err1  = 16'h0000;
+
+        // Type 1: both errors in data symbols (C(17,2) = 136 pairs)
+        for (w2i = 0; w2i < 17; w2i = w2i + 1) begin
+            for (w2j = w2i + 1; w2j < 17; w2j = w2j + 1) begin
+                if (!found && ((T_Ej0[w2i] ^ T_Ej1[w2j]) == S1)) begin
+                    found = 1'b1;
+                    loc0  = w2i[4:0];
+                    loc1  = w2j[4:0];
+                    err0  = Ej0;
+                    err1  = Ej1;
+                end
+                else if (!found && ((T_Ej1[w2i] ^ T_Ej0[w2j]) == S1)) begin
+                    found = 1'b1;
+                    loc0  = w2i[4:0];
+                    loc1  = w2j[4:0];
+                    err0  = Ej1;
+                    err1  = Ej0;
+                end
+            end
+        end
+
+        // Type 2: one error in data, one in P0 (17 candidates, lower priority)
+        for (w2i = 0; w2i < 17; w2i = w2i + 1) begin
+            if (!found && (T_Ej0[w2i] == S1)) begin
+                found = 1'b1;
+                loc0  = w2i[4:0];
+                loc1  = 5'd17;
+                err0  = Ej0;
+                err1  = Ej1;
+            end
+            else if (!found && (T_Ej1[w2i] == S1)) begin
+                found = 1'b1;
+                loc0  = w2i[4:0];
+                loc1  = 5'd17;
+                err0  = Ej1;
+                err1  = Ej0;
+            end
+        end
+    end
+
+endmodule
+```
+
+---
+
+**File: ecc_eloc_weight1.v**
+```
+// =============================================================================
+//
+//  Module      : ecc_eloc_weight1
+//  Description : Weight-1 sublocator for the ECC error locator.
+//
+//  Handles the case where Hamming weight of S0 = 1, meaning one single-bit
+//  error in a data symbol and one single-bit error in P1.
+//
+//  17 GF multipliers compute T[k] * S0 for k = 0..16.
+//  For each location k, the inferred P1 error is:
+//      p1_err = T[k]*S0 ^ S1
+//  If p1_err is one-hot, location k is the data error and p1_err is the P1
+//  error pattern.
+//
+// =============================================================================
+
+`timescale 1ns / 1ps
+
+module ecc_eloc_weight1 (
+    input         clk,
+    input         rst_n,
+    input         valid_in,
+    input  [15:0] S0,                   // Syndrome 0 (weight = 1)
+    input  [15:0] S1,                   // Syndrome 1
+
+    output reg        found,
+    output reg [4:0]  loc0,             // Data symbol location (0..16)
+    output reg [15:0] err0,             // Data error pattern (= S0)
+    output reg [15:0] err1              // P1 error pattern (one-hot)
+);
+
+`include "ecc_gf_utils.vh"
+
+    // -------------------------------------------------------------------------
+    //  GF Multiplications: T[k] * S0  for k = 0..16
+    // -------------------------------------------------------------------------
+
+    wire [15:0] T_S0 [0:16];
+
+    genvar gk;
+    generate
+        for (gk = 0; gk < 17; gk = gk + 1) begin : GEN_W1_MUL
+            localparam [15:0] TK = t_const(gk);
+
+            gf_mul_16_opt #(.REGISTERED(0)) u_ts0 (
+                .clk       (clk),
+                .rst_n     (rst_n),
+                .valid_in  (valid_in),
+                .a         (TK),
+                .b         (S0),
+                .valid_out (),
+                .p         (T_S0[gk])
+            );
+        end
+    endgenerate
+
+    // -------------------------------------------------------------------------
+    //  Priority search: find first location where inferred P1 error is one-hot
+    // -------------------------------------------------------------------------
+
+    integer w1i;
+    reg [15:0] w1_p1_err;
+
+    always @(*) begin
+        found = 1'b0;
+        loc0  = 5'd0;
+        err0  = 16'h0000;
+        err1  = 16'h0000;
+
+        for (w1i = 0; w1i < 17; w1i = w1i + 1) begin
+            w1_p1_err = T_S0[w1i] ^ S1;
+            if (!found &&
+                (w1_p1_err != 16'h0000) &&
+                ((w1_p1_err & (w1_p1_err - 16'h0001)) == 16'h0000)) begin
+                found = 1'b1;
+                loc0  = w1i[4:0];
+                err0  = S0;
+                err1  = w1_p1_err;
+            end
+        end
+    end
+
+endmodule
+```
+
+---
+
+**File: ecc_eloc_weight0.v**
+```
+// =============================================================================
+//
+//  Module      : ecc_eloc_weight0
+//  Description : Weight-0 sublocator for the ECC error locator.
+//
+//  Handles the case where S0 = 0 and S1 != 0, meaning both errors are the
+//  same 16-bit pattern applied to two different symbols (S0 cancels).
+//
+//      S1 = (T[i] ^ T[j]) * e
+//      e  = inv(T[i] ^ T[j]) * S1
+//
+//  GF inverses are precomputed as elaboration-time constants.
+//  If the computed e is one-hot, it is a valid single-bit error pattern.
+//
+//  Type 1: both in data — 136 multipliers (one per C(17,2) pair)
+//  Type 2: data + P0    — 17 multipliers
+//  Total: 153 GF multipliers
+//
+// =============================================================================
+
+`timescale 1ns / 1ps
+
+module ecc_eloc_weight0 (
+    input         clk,
+    input         rst_n,
+    input         valid_in,
+    input  [15:0] S1,                   // Syndrome 1
+
+    output reg        found,
+    output reg [4:0]  loc0,
+    output reg [4:0]  loc1,
+    output reg [15:0] err
+);
+
+`include "ecc_gf_utils.vh"
+
+    // -------------------------------------------------------------------------
+    //  Type 1 — both errors in data symbols (136 pairs)
+    //
+    //  For each pair (i, j) with i < j:
+    //      e = inv(T[i] ^ T[j]) * S1
+    //  Match if e is one-hot.
+    // -------------------------------------------------------------------------
+
+    wire [15:0] t1_err [0:135];
+    wire [135:0] t1_match;
+
+    genvar g7i, g7j;
+    generate
+        for (g7i = 0; g7i < 17; g7i = g7i + 1) begin : GEN_W0T1_I
+            for (g7j = g7i + 1; g7j < 17; g7j = g7j + 1) begin : GEN_W0T1_J
+                localparam integer IDX =
+                    g7i * 17 - (g7i * (g7i + 1)) / 2 + (g7j - g7i - 1);
+                localparam [15:0] INV_TIJ =
+                    gf_inv_func(t_const(g7i) ^ t_const(g7j));
+
+                gf_mul_16_opt #(.REGISTERED(0)) u_mul (
+                    .clk       (clk),
+                    .rst_n     (rst_n),
+                    .valid_in  (valid_in),
+                    .a         (INV_TIJ),
+                    .b         (S1),
+                    .valid_out (),
+                    .p         (t1_err[IDX])
+                );
+
+                assign t1_match[IDX] =
+                    (t1_err[IDX] != 16'h0000) &&
+                    ((t1_err[IDX] & (t1_err[IDX] - 16'h0001)) == 16'h0000);
+            end
+        end
+    endgenerate
+
+    // -------------------------------------------------------------------------
+    //  Type 2 — one error in data symbol k, one in P0 (17 candidates)
+    //
+    //      e = inv(T[k] ^ T[17]) * S1
+    // -------------------------------------------------------------------------
+
+    wire [15:0] t2_err [0:16];
+    wire [16:0] t2_match;
+
+    generate
+        for (g7i = 0; g7i < 17; g7i = g7i + 1) begin : GEN_W0T2
+            localparam [15:0] INV_TIP0 =
+                gf_inv_func(t_const(g7i) ^ t_const(17));
+
+            gf_mul_16_opt #(.REGISTERED(0)) u_mul (
+                .clk       (clk),
+                .rst_n     (rst_n),
+                .valid_in  (valid_in),
+                .a         (INV_TIP0),
+                .b         (S1),
+                .valid_out (),
+                .p         (t2_err[g7i])
+            );
+
+            assign t2_match[g7i] =
+                (t2_err[g7i] != 16'h0000) &&
+                ((t2_err[g7i] & (t2_err[g7i] - 16'h0001)) == 16'h0000);
+        end
+    endgenerate
+
+    // -------------------------------------------------------------------------
+    //  Priority selection: Type 1 (data-data) then Type 2 (data-P0)
+    // -------------------------------------------------------------------------
+
+    integer w0i, w0j, w0_flat;
+
+    always @(*) begin
+        found = 1'b0;
+        loc0  = 5'd0;
+        loc1  = 5'd0;
+        err   = 16'h0000;
+
+        // Type 1: data-data pairs
+        w0_flat = 0;
+        for (w0i = 0; w0i < 17; w0i = w0i + 1) begin
+            for (w0j = w0i + 1; w0j < 17; w0j = w0j + 1) begin
+                if (!found && t1_match[w0_flat]) begin
+                    found = 1'b1;
+                    loc0  = w0i[4:0];
+                    loc1  = w0j[4:0];
+                    err   = t1_err[w0_flat];
+                end
+                w0_flat = w0_flat + 1;
+            end
+        end
+
+        // Type 2: data-P0 pairs (lower priority)
+        for (w0i = 0; w0i < 17; w0i = w0i + 1) begin
+            if (!found && t2_match[w0i]) begin
+                found = 1'b1;
+                loc0  = w0i[4:0];
+                loc1  = 5'd17;
+                err   = t2_err[w0i];
+            end
+        end
+    end
+
+endmodule
+```
+
+---
+
+**File: ecc_decision_logic.v**
+```
+// =============================================================================
+//
+//  Module      : ecc_decision_logic
+//  Description : Priority arbitration and status flags for the ECC decoder.
+//
+//  Correction priority (highest first): dbe_w2 > dbe_w1 > dbe_w0
+//
+// =============================================================================
+
+`timescale 1ns / 1ps
+
+module ecc_decision_logic (
+    input  wire no_error,
+    input  wire dbe_w2_found,
+    input  wire dbe_w1_found,
+    input  wire dbe_w0_found,
+
+    output wire use_dbe_w2,
+    output wire use_dbe_w1,
+    output wire use_dbe_w0,
+
+    output wire error_detected,
+    output wire error_corrected,
+    output wire multi_bit_error,
+    output wire uncorrectable
+);
+
+    assign use_dbe_w2 = dbe_w2_found;
+    assign use_dbe_w1 = dbe_w1_found & ~use_dbe_w2;
+    assign use_dbe_w0 = dbe_w0_found & ~use_dbe_w2 & ~use_dbe_w1;
+
+    assign error_detected  = ~no_error;
+    assign error_corrected = use_dbe_w2 | use_dbe_w1 | use_dbe_w0;
+    assign multi_bit_error = use_dbe_w2 | use_dbe_w1 | use_dbe_w0;
+    assign uncorrectable   = ~no_error & ~error_corrected;
+
+endmodule
+```
+
+---
+
+**File: ecc_error_corrector.v**
+```
+// =============================================================================
+//
+//  Module      : ecc_error_corrector
+//  Description : Error corrector for DBE-ECC RS16(19,17).
+//
+//  Receives the 19 raw codeword symbols C0..C18 plus correction selectors
+//  and error values from the decision/locator pipeline, and outputs the
+//  17 corrected data symbols (272 bits).
+//
+//  Correction modes (mutually exclusive, driven by decision logic):
+//    use_dbe_w2 — two SBE errors in two different data/P0 symbols (loc 0..17)
+//    use_dbe_w1 — one error in a data symbol (loc 0..16), one in P1 (C18)
+//    use_dbe_w0 — identical SBE errors in two data/P0 symbols (loc 0..17)
+//
+//  Only data symbols C0..C16 appear in data_out.
+//
+// =============================================================================
+
+`timescale 1ns / 1ps
+
+module ecc_error_corrector (
+    input  wire [15:0] C0,
+    input  wire [15:0] C1,
+    input  wire [15:0] C2,
+    input  wire [15:0] C3,
+    input  wire [15:0] C4,
+    input  wire [15:0] C5,
+    input  wire [15:0] C6,
+    input  wire [15:0] C7,
+    input  wire [15:0] C8,
+    input  wire [15:0] C9,
+    input  wire [15:0] C10,
+    input  wire [15:0] C11,
+    input  wire [15:0] C12,
+    input  wire [15:0] C13,
+    input  wire [15:0] C14,
+    input  wire [15:0] C15,
+    input  wire [15:0] C16,
+    input  wire [15:0] C17,    // P0
+    input  wire [15:0] C18,    // P1
+
+    // DBE weight=2 correction inputs (loc 0..17)
+    input  wire        use_dbe_w2,
+    input  wire [4:0]  dbe_w2_loc0,
+    input  wire [4:0]  dbe_w2_loc1,
+    input  wire [15:0] dbe_w2_err0,
+    input  wire [15:0] dbe_w2_err1,
+
+    // DBE weight=1 correction inputs (data loc 0..16, P1 error separate)
+    input  wire        use_dbe_w1,
+    input  wire [4:0]  dbe_w1_loc0,
+    input  wire [15:0] dbe_w1_err0,
+    input  wire [15:0] dbe_w1_err1,
+
+    // DBE weight=0 correction inputs (loc 0..17)
+    input  wire        use_dbe_w0,
+    input  wire [4:0]  dbe_w0_loc0,
+    input  wire [4:0]  dbe_w0_loc1,
+    input  wire [15:0] dbe_w0_err,
+
+    output wire [271:0] data_out
+);
+
+    // -------------------------------------------------------------------------
+    //  Per-symbol correction using explicit index comparison.
+    //  Each symbol checks whether it is targeted by the active correction mode.
+    // -------------------------------------------------------------------------
+
+    reg [15:0] D [0:18];
+
+    integer idx;
+
+    always @(*) begin
+        D[0]  = C0;   D[1]  = C1;   D[2]  = C2;   D[3]  = C3;
+        D[4]  = C4;   D[5]  = C5;   D[6]  = C6;   D[7]  = C7;
+        D[8]  = C8;   D[9]  = C9;   D[10] = C10;  D[11] = C11;
+        D[12] = C12;  D[13] = C13;  D[14] = C14;  D[15] = C15;
+        D[16] = C16;  D[17] = C17;  D[18] = C18;
+
+        for (idx = 0; idx < 19; idx = idx + 1) begin
+            if (use_dbe_w2) begin
+                if (dbe_w2_loc0 == idx[4:0] && dbe_w2_loc0 <= 5'd17)
+                    D[idx] = D[idx] ^ dbe_w2_err0;
+                if (dbe_w2_loc1 == idx[4:0] && dbe_w2_loc1 <= 5'd17)
+                    D[idx] = D[idx] ^ dbe_w2_err1;
+            end
+            else if (use_dbe_w1) begin
+                if (dbe_w1_loc0 == idx[4:0] && dbe_w1_loc0 <= 5'd16)
+                    D[idx] = D[idx] ^ dbe_w1_err0;
+                if (idx == 18)
+                    D[18] = D[18] ^ dbe_w1_err1;
+            end
+            else if (use_dbe_w0) begin
+                if (dbe_w0_loc0 == idx[4:0] && dbe_w0_loc0 <= 5'd17)
+                    D[idx] = D[idx] ^ dbe_w0_err;
+                if (dbe_w0_loc1 == idx[4:0] && dbe_w0_loc1 <= 5'd17)
+                    D[idx] = D[idx] ^ dbe_w0_err;
+            end
+        end
+    end
+
+    // -------------------------------------------------------------------------
+    //  Output: 17 data symbols only (D0..D16), MSB-first matching encoder
+    // -------------------------------------------------------------------------
+
+    assign data_out = { D[0],  D[1],  D[2],  D[3],  D[4],  D[5],  D[6],  D[7],
+                        D[8],  D[9],  D[10], D[11], D[12], D[13], D[14], D[15],
+                        D[16] };
+
+endmodule
+```
+
+---
+
+**File: gf_mul_16.v**
+```
+`timescale 1ns / 1ps
+
+module gf_mul_16_opt #(
+    parameter REGISTERED      = 1,   // 0 = combinational, 1 = registered output
+    parameter CLOCK_GATING    = 1,   // 1 = update output reg only when valid_in=1
+    parameter OPERAND_ISOLATE = 1    // 1 = gate inputs when invalid
+)(
+    input  wire        clk,
+    input  wire        rst_n,
+    input  wire        valid_in,
+    input  wire [15:0] a,
+    input  wire [15:0] b,
+    output wire        valid_out,
+    output wire [15:0] p
+);
+
+    // Primitive polynomial: x^16 + x^5 + x^3 + x + 1
+    localparam [15:0] POLY = 16'h002B;
+
+    // -------------------------------------------------------------------------
+    // Operand isolation
+    // -------------------------------------------------------------------------
+    wire [15:0] a_gated;
+    wire [15:0] b_gated;
+
+    generate
+        if (OPERAND_ISOLATE && REGISTERED) begin : gen_isolate
+            assign a_gated = valid_in ? a : 16'h0000;
+            assign b_gated = valid_in ? b : 16'h0000;
+        end else begin : gen_no_isolate
+            assign a_gated = a;
+            assign b_gated = b;
+        end
+    endgenerate
+
+    // -------------------------------------------------------------------------
+    // Zero operand bypass
+    // -------------------------------------------------------------------------
+    wire a_is_zero;
+    wire b_is_zero;
+    wire zero_bypass;
+
+    assign a_is_zero  = (a_gated == 16'h0000);
+    assign b_is_zero  = (b_gated == 16'h0000);
+    assign zero_bypass = a_is_zero | b_is_zero;
+
+    // -------------------------------------------------------------------------
+    // GF shift-and-add core
+    //
+    // tmp_a[i] = a * x^i mod POLY
+    // term[i]  = tmp_a[i] if b[i]=1 else 0
+    // -------------------------------------------------------------------------
+    wire [15:0] tmp_a [0:15];
+    wire [15:0] term  [0:15];
+    wire [15:0] partial [0:15];
+
+    assign tmp_a[0] = a_gated;
+    assign term[0]  = b_gated[0] ? tmp_a[0] : 16'h0000;
+    assign partial[0] = term[0];
+
+    genvar i;
+    generate
+        for (i = 1; i < 16; i = i + 1) begin : gen_shift_add
+            assign tmp_a[i] = tmp_a[i-1][15] ?
+                              ({tmp_a[i-1][14:0], 1'b0} ^ POLY) :
+                              {tmp_a[i-1][14:0], 1'b0};
+
+            assign term[i] = b_gated[i] ? tmp_a[i] : 16'h0000;
+
+            assign partial[i] = partial[i-1] ^ term[i];
+        end
+    endgenerate
+
+    // -------------------------------------------------------------------------
+    // Balanced XOR tree
+    // Same result as partial[15], but lower XOR depth
+    // -------------------------------------------------------------------------
+    wire [15:0] tree_l0 [0:7];
+    wire [15:0] tree_l1 [0:3];
+    wire [15:0] tree_l2 [0:1];
+    wire [15:0] tree_result;
+
+    generate
+        for (i = 0; i < 8; i = i + 1) begin : gen_tree_l0
+            assign tree_l0[i] = term[2*i] ^ term[2*i+1];
+        end
+
+        for (i = 0; i < 4; i = i + 1) begin : gen_tree_l1
+            assign tree_l1[i] = tree_l0[2*i] ^ tree_l0[2*i+1];
+        end
+
+        for (i = 0; i < 2; i = i + 1) begin : gen_tree_l2
+            assign tree_l2[i] = tree_l1[2*i] ^ tree_l1[2*i+1];
+        end
+    endgenerate
+
+    assign tree_result = tree_l2[0] ^ tree_l2[1];
+
+    // -------------------------------------------------------------------------
+    // Final multiplication result selection
+    // -------------------------------------------------------------------------
+    wire [15:0] mul_result;
+
+    generate
+        if (REGISTERED) begin : gen_use_tree
+            assign mul_result = zero_bypass ? 16'h0000 : tree_result;
+        end else begin : gen_use_chain
+            assign mul_result = zero_bypass ? 16'h0000 : partial[15];
+        end
+    endgenerate
+
+    // -------------------------------------------------------------------------
+    // Output stage
+    // -------------------------------------------------------------------------
+    generate
+        if (REGISTERED) begin : gen_registered
+            reg [15:0] p_reg;
+            reg        valid_reg;
+
+            if (CLOCK_GATING) begin : gen_clk_gate
+                always @(posedge clk or negedge rst_n) begin
+                    if (!rst_n) begin
+                        p_reg     <= 16'h0000;
+                        valid_reg <= 1'b0;
+                    end else begin
+                        valid_reg <= valid_in;
+                        if (valid_in) begin
+                            p_reg <= mul_result;
+                        end
+                    end
+                end
+            end else begin : gen_no_clk_gate
+                always @(posedge clk or negedge rst_n) begin
+                    if (!rst_n) begin
+                        p_reg     <= 16'h0000;
+                        valid_reg <= 1'b0;
+                    end else begin
+                        valid_reg <= valid_in;
+                        p_reg     <= mul_result;
+                    end
+                end
+            end
+
+            assign p         = p_reg;
+            assign valid_out = valid_reg;
+
+        end else begin : gen_combinational
+            assign p         = mul_result;
+            assign valid_out = valid_in;
+        end
+    endgenerate
+
+endmodule
+```
+
+Successfully read and returned the full contents of all 10 files in the design_version_3/decoder/ directory: ecc_symbol_extraction.v (47 lines), ecc_syndrome_generation.v (114 lines), ecc_gf_utils.vh (101 lines), ecc_error_locator.v (179 lines), ecc_eloc_weight2.v (122 lines), ecc_eloc_weight1.v (84 lines), ecc_eloc_weight0.v (142 lines), ecc_decision_logic.v (37 lines), ecc_error_corrector.v (111 lines), and gf_mul_16.v (154 lines).

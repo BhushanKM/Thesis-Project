@@ -89,10 +89,6 @@ module ecc_engine_top (
     wire         loc_valid_out;
     wire         no_error;
 
-    wire         sse_found;
-    wire [4:0]   sse_location;
-    wire [15:0]  sse_error;
-
     wire         dbe_w2_found;
     wire [4:0]   dbe_w2_loc0,  dbe_w2_loc1;
     wire [15:0]  dbe_w2_err0,  dbe_w2_err1;
@@ -108,7 +104,7 @@ module ecc_engine_top (
     //--------------------------------------------------------------------------
     // Decision logic outputs
     //--------------------------------------------------------------------------
-    wire         use_sse, use_dbe_w2, use_dbe_w1, use_dbe_w0;
+    wire         use_dbe_w2, use_dbe_w1, use_dbe_w0;
     wire         dec_error_detected;
     wire         dec_error_corrected;
     wire         dec_multi_bit_error;
@@ -186,7 +182,7 @@ module ecc_engine_top (
         .C0  (C0),  .C1  (C1),  .C2  (C2),  .C3  (C3),  .C4  (C4),
         .C5  (C5),  .C6  (C6),  .C7  (C7),  .C8  (C8),  .C9  (C9),
         .C10 (C10), .C11 (C11), .C12 (C12), .C13 (C13), .C14 (C14),
-        .C15 (C15), .C16 (C16), .C17 (C17), .C18 (C18),
+        .C15 (C15), .C16 (C16), .P0  (C17), .P1  (C18),
 
         .valid_out (synd_valid_out),
         .S0        (S0),
@@ -207,10 +203,6 @@ module ecc_engine_top (
 
         .valid_out    (loc_valid_out),
         .no_error     (no_error),
-
-        .sse_found    (sse_found),
-        .sse_location (sse_location),
-        .sse_error    (sse_error),
 
         .dbe_w2_found (dbe_w2_found),
         .dbe_w2_loc0  (dbe_w2_loc0),
@@ -234,12 +226,10 @@ module ecc_engine_top (
     //==========================================================================
     ecc_decision_logic u_decision_logic (
         .no_error        (no_error),
-        .sse_found       (sse_found),
         .dbe_w2_found    (dbe_w2_found),
         .dbe_w1_found    (dbe_w1_found),
         .dbe_w0_found    (dbe_w0_found),
 
-        .use_sse         (use_sse),
         .use_dbe_w2      (use_dbe_w2),
         .use_dbe_w1      (use_dbe_w1),
         .use_dbe_w0      (use_dbe_w0),
@@ -283,11 +273,6 @@ module ecc_engine_top (
         .C5  (C5r),  .C6  (C6r),  .C7  (C7r),  .C8  (C8r),  .C9  (C9r),
         .C10 (C10r), .C11 (C11r), .C12 (C12r), .C13 (C13r), .C14 (C14r),
         .C15 (C15r), .C16 (C16r), .C17 (C17r), .C18 (C18r),
-
-        // SSE
-        .use_sse      (use_sse),
-        .sse_location (sse_location),
-        .sse_error    (sse_error),
 
         // DBE weight-2
         .use_dbe_w2   (use_dbe_w2),

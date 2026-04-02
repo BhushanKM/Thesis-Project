@@ -29,6 +29,8 @@ source /opt/coe/ncsu/ncsu-cdk-1.6.0.beta/ncsu.sh
 
 
 dc_shell
+
+dc_shell -topographical_mode
 gui_start
 
 
@@ -39,3 +41,19 @@ lc_shell -f lib2db.tcl
 this command was executed to convert the files from .lib to .db
 
 now  i  m going to start with the synthesis process
+
+
+
+| What                                |        Lines |
+| ----------------------------------- | -----------: |
+| No error check                      |    **65–69** |
+| SSE matching logic                  |    **74–97** |
+| SSE found + location + error output |   **99–114** |
+| DBE weight=2 logic                  |  **117–299** |
+| DBE weight=1 logic                  |  **301–351** |
+| DBE weight=0 logic                  |  **353–532** |
+| SSE location output                 |      **109** |
+| SSE error output                    | **103, 110** |
+| DBE w2 location/error outputs       |  **286–296** |
+| DBE w1 location/error outputs       |  **345–347** |
+| DBE w0 location/error outputs       |  **521–529** |

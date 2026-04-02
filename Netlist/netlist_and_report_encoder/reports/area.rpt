@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : ecc_encoder
+Version: V-2023.12-SP1
+Date   : Sat Mar 14 01:57:06 2026
+****************************************
+
+Library(s) Used:
+
+    nangate45_merged (File: /home/grads/b/bhushan_123/thesis_project/Git_hub_repo/nangate/db_files/merged.db)
+
+Number of ports:                          580
+Number of nets:                          3832
+Number of cells:                         3089
+Number of combinational cells:           2223
+Number of sequential cells:               866
+Number of macros/black boxes:               0
+Number of buf/inv:                        289
+Number of references:                      19
+
+Combinational area:               2809.492014
+Buf/Inv area:                      155.344001
+Noncombinational area:            4607.652149
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                  7417.144163
+Total area:                 undefined
+1
